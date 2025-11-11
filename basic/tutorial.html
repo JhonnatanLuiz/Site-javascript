@@ -5,12 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Tutorial - Aprenda JS do Zero</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Animação suave para o menu */
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        /* Overlay escuro quando menu está aberto */
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
     <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
         <div class="max-w-screen-xl mx-auto px-4 py-3">
             <div class="flex items-center justify-between">
+                <!-- Menu Hambúrguer (Mobile) -->
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
                 <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
                     <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
                     <span class="text-2xl font-bold">Tutorial</span>
@@ -24,11 +42,24 @@
         </div>
     </header>
 
+    <!-- Overlay escuro (Mobile) -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
     <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
         <!-- Sidebar -->
-        <aside class="w-full lg:w-64 bg-white border-r border-gray-200 lg:min-h-screen">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
             <div class="p-4">
-                <h3 class="font-bold text-gray-800 mb-3 text-lg">JavaScript Tutorial</h3>
+                <!-- Botão Fechar (Mobile) -->
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
                 <nav class="space-y-1">
                     <a href="tutorial.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Tutorial</a>
                     <a href="introduction.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Introduction</a>
@@ -222,6 +253,54 @@
         </div>
     </footer>
 
+    <script>
+        // Menu Hambúrguer - Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const closeMenu = document.getElementById('closeMenu');
+        const sidebar = document.getElementById('sidebar');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function openMenu() {
+            sidebar.classList.remove('-translate-x-full');
+            menuOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                menuOverlay.classList.remove('opacity-0');
+                menuOverlay.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Previne scroll do body
+        }
+
+        function closeMenuFunc() {
+            sidebar.classList.add('-translate-x-full');
+            menuOverlay.classList.remove('opacity-100');
+            menuOverlay.classList.add('opacity-0');
+            setTimeout(() => {
+                menuOverlay.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = ''; // Restaura scroll do body
+        }
+
+        menuToggle.addEventListener('click', openMenu);
+        closeMenu.addEventListener('click', closeMenuFunc);
+        menuOverlay.addEventListener('click', closeMenuFunc);
+
+        // Fechar menu ao clicar em um link (mobile)
+        const sidebarLinks = sidebar.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 1024) { // lg breakpoint
+                    closeMenuFunc();
+                }
+            });
+        });
+
+        // Fechar menu ao pressionar ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+                closeMenuFunc();
+            }
+        });
+    </script>
     <script src="../js/script.js"></script>
 </body>
 </html>
