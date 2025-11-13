@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Logical Operators - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition { transition: transform 0.3s ease-in-out; }
+        .menu-overlay { transition: opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="logical.html" class="font-semibold border-b-2 border-white pb-1">Logical</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="operators.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Operators</a>
+                    <a href="arithmetic.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arithmetic</a>
+                    <a href="assignment.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Assignment</a>
+                    <a href="comparisons.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Comparisons</a>
+                    <a href="if-conditions.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Conditionals</a>
+                    <a href="if.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS If</a>
+                    <a href="ifelse.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS If Else</a>
+                    <a href="ternary.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Ternary</a>
+                    <a href="switch.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Switch</a>
+                    <a href="booleans.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Booleans</a>
+                    <a href="logical.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Logical</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="operators.html" class="text-blue-600 hover:underline">JS Operators</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Logical Operators</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Logical Operators</h1>
+
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">Os operadores lógicos são usados para determinar a lógica entre variáveis ou valores.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Operadores Lógicos</h2>
+                <p class="text-gray-700 mb-4">Dado que <code class="bg-gray-100 px-2 py-1 rounded text-red-600">x = 6</code> e <code class="bg-gray-100 px-2 py-1 rounded text-red-600">y = 3</code>, a tabela abaixo explica os operadores lógicos:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Tabela de Operadores Lógicos</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-blue-100 to-indigo-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Operador</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Descrição</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Exemplo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">&&</td>
+                                        <td class="border border-gray-300 px-4 py-2">AND lógico</td>
+                                        <td class="border border-gray-300 px-4 py-2">(x < 10 && y > 1) é true</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">||</td>
+                                        <td class="border border-gray-300 px-4 py-2">OR lógico</td>
+                                        <td class="border border-gray-300 px-4 py-2">(x == 5 || y == 5) é false</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">!</td>
+                                        <td class="border border-gray-300 px-4 py-2">NOT lógico</td>
+                                        <td class="border border-gray-300 px-4 py-2">!(x == y) é true</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Operador AND Lógico (&&)</h2>
+                <p class="text-gray-700 mb-4">O operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">&&</code> retorna <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code> se <strong>ambas</strong> as expressões forem verdadeiras:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - AND (&&)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> idade = <span class="text-green-400">18</span>;
+<span class="text-purple-400">let</span> temCarteira = <span class="text-purple-400">true</span>;
+
+<span class="text-purple-400">if</span> (idade >= <span class="text-green-400">18</span> && temCarteira) {
+    texto = <span class="text-green-400">"Pode dirigir!"</span>;
+} <span class="text-purple-400">else</span> {
+    texto = <span class="text-green-400">"Não pode dirigir"</span>;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let age = 18; let hasLicense = true; let txt; if(age >= 18 && hasLicense) { txt = 'Pode dirigir!'; } else { txt = 'Não pode dirigir'; } document.getElementById('demo1').innerHTML = 'Idade: ' + age + ', Tem carteira: ' + hasLicense + ' → ' + txt;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Tabela Verdade - AND (&&)</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-green-100 to-teal-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">A</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">B</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">A && B</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-green-100 font-bold">true</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-red-100 font-bold">false</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-red-100 font-bold">false</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-red-100 font-bold">false</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Operador OR Lógico (||)</h2>
+                <p class="text-gray-700 mb-4">O operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">||</code> retorna <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code> se <strong>pelo menos uma</strong> das expressões for verdadeira:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - OR (||)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> dia = <span class="text-green-400">"Sábado"</span>;
+
+<span class="text-purple-400">if</span> (dia == <span class="text-green-400">"Sábado"</span> || dia == <span class="text-green-400">"Domingo"</span>) {
+    texto = <span class="text-green-400">"É fim de semana!"</span>;
+} <span class="text-purple-400">else</span> {
+    texto = <span class="text-green-400">"É dia de semana"</span>;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let day = 'Sábado'; let msg; if(day == 'Sábado' || day == 'Domingo') { msg = 'É fim de semana!'; } else { msg = 'É dia de semana'; } document.getElementById('demo2').innerHTML = 'Dia: ' + day + ' → ' + msg;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Tabela Verdade - OR (||)</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-purple-100 to-pink-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">A</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">B</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">A || B</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-green-100 font-bold">true</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-green-100 font-bold">true</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-green-100 font-bold">true</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-red-100 font-bold">false</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Operador NOT Lógico (!)</h2>
+                <p class="text-gray-700 mb-4">O operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">!</code> inverte o valor booleano. Se for <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code>, retorna <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>. Se for <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>, retorna <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code>:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - NOT (!)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> logado = <span class="text-purple-400">false</span>;
+
+<span class="text-purple-400">if</span> (!logado) {
+    texto = <span class="text-green-400">"Por favor, faça login"</span>;
+} <span class="text-purple-400">else</span> {
+    texto = <span class="text-green-400">"Bem-vindo!"</span>;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let logged = false; let message; if(!logged) { message = 'Por favor, faça login'; } else { message = 'Bem-vindo!'; } document.getElementById('demo3').innerHTML = 'Logado: ' + logged + ' → ' + message;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Tabela Verdade - NOT (!)</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-orange-100 to-red-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">A</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">!A</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">true</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-red-100 font-bold">false</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2">false</td>
+                                        <td class="border border-gray-300 px-4 py-2 bg-green-100 font-bold">true</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Avaliação de Curto-Circuito (Short-Circuit)</h2>
+                <p class="text-gray-700 mb-4">Os operadores lógicos usam avaliação de curto-circuito, o que significa que eles param de avaliar assim que o resultado é determinado:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Short-Circuit com AND (&&)</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Com <code class="bg-gray-100 px-2 py-1 rounded text-red-600">&&</code>, se a primeira expressão for <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>, a segunda nem é avaliada:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">0</span>;
+<span class="text-purple-400">let</span> result = (x > <span class="text-green-400">5</span>) && (x++);
+<span class="text-gray-400">// x++ não é executado porque (x > 5) é false</span>
+<span class="text-gray-400">// x ainda é 0</span></code></pre>
+                        <button class="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let num = 0; let res = (num > 5) && (num++); document.getElementById('demo4').innerHTML = 'Valor inicial: 0<br>Após (x > 5) && (x++): x = ' + num + '<br>Resultado: ' + res;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Short-Circuit com OR (||)</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Com <code class="bg-gray-100 px-2 py-1 rounded text-red-600">||</code>, se a primeira expressão for <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code>, a segunda nem é avaliada:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> y = <span class="text-green-400">10</span>;
+<span class="text-purple-400">let</span> result = (y > <span class="text-green-400">5</span>) || (y++);
+<span class="text-gray-400">// y++ não é executado porque (y > 5) é true</span>
+<span class="text-gray-400">// y ainda é 10</span></code></pre>
+                        <button class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let num2 = 10; let res2 = (num2 > 5) || (num2++); document.getElementById('demo5').innerHTML = 'Valor inicial: 10<br>Após (y > 5) || (y++): y = ' + num2 + '<br>Resultado: ' + res2;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800 font-semibold mb-2">💡 Benefícios do Short-Circuit:</p>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Melhora a performance (evita avaliações desnecessárias)</li>
+                        <li>Pode prevenir erros (ex: verificar se variável existe antes de acessá-la)</li>
+                        <li>Permite atribuições condicionais compactas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Combinando Operadores Lógicos</h2>
+                <p class="text-gray-700 mb-4">Você pode combinar vários operadores lógicos para criar condições complexas:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Múltiplas Condições</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> idade = <span class="text-green-400">25</span>;
+<span class="text-purple-400">let</span> temIngresso = <span class="text-purple-400">true</span>;
+<span class="text-purple-400">let</span> estaAberto = <span class="text-purple-400">true</span>;
+
+<span class="text-purple-400">if</span> ((idade >= <span class="text-green-400">18</span> && temIngresso) && estaAberto) {
+    texto = <span class="text-green-400">"Pode entrar no evento!"</span>;
+} <span class="text-purple-400">else</span> {
+    texto = <span class="text-green-400">"Não pode entrar"</span>;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let age2 = 25; let hasTicket = true; let isOpen = true; let result; if((age2 >= 18 && hasTicket) && isOpen) { result = 'Pode entrar no evento!'; } else { result = 'Não pode entrar'; } document.getElementById('demo6').innerHTML = 'Idade: ' + age2 + ', Tem ingresso: ' + hasTicket + ', Aberto: ' + isOpen + '<br>→ ' + result;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Precedência de Operadores</h2>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Ordem de Precedência (do maior para o menor)</h3>
+                    </div>
+                    <div class="p-4">
+                        <ol class="list-decimal list-inside space-y-2 text-gray-700 text-lg">
+                            <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">!</code> (NOT) - maior precedência</li>
+                            <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">&&</code> (AND)</li>
+                            <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">||</code> (OR) - menor precedência</li>
+                        </ol>
+                        
+                        <div class="mt-6 p-4 bg-gray-50 rounded">
+                            <p class="text-gray-700 mb-2 font-semibold">Exemplo:</p>
+                            <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">let</span> result = <span class="text-purple-400">true</span> || <span class="text-purple-400">false</span> && <span class="text-purple-400">false</span>;
+<span class="text-gray-400">// Avaliado como: true || (false && false)</span>
+<span class="text-gray-400">// Resultado: true</span></code></pre>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 mt-4 rounded-r">
+                            <p class="text-gray-800">💡 <strong>Dica:</strong> Use parênteses para deixar suas intenções claras e evitar confusão!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Veja Também</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                        <h3 class="font-bold text-lg mb-2 text-blue-900">📚 Próximos Passos</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="if.html" class="text-blue-600 hover:underline font-medium">→ JavaScript if Statement</a></li>
+                            <li><a href="loops.html" class="text-blue-600 hover:underline font-medium">→ JavaScript Loops</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                        <h3 class="font-bold text-lg mb-2 text-purple-900">🔗 Tópicos Relacionados</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="booleans.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Booleans</a></li>
+                            <li><a href="comparisons.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Comparisons</a></li>
+                            <li><a href="if-conditions.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Conditionals</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="booleans.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: JS Booleans
+                </a>
+                <a href="loops.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: JS Loops →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

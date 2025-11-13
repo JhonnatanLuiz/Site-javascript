@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript If Statement - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition { transition: transform 0.3s ease-in-out; }
+        .menu-overlay { transition: opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="if.html" class="font-semibold border-b-2 border-white pb-1">If Statement</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="operators.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Operators</a>
+                    <a href="arithmetic.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arithmetic</a>
+                    <a href="assignment.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Assignment</a>
+                    <a href="comparisons.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Comparisons</a>
+                    <a href="if-conditions.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Conditionals</a>
+                    <a href="if.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS If</a>
+                    <a href="ifelse.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS If Else</a>
+                    <a href="ternary.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Ternary</a>
+                    <a href="switch.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Switch</a>
+                    <a href="booleans.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Booleans</a>
+                    <a href="logical.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Logical</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="if-conditions.html" class="text-blue-600 hover:underline">JS Conditionals</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS If</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript if Statement</h1>
+
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">A declaração <code class="bg-gray-100 px-2 py-1 rounded text-red-600">if</code> especifica um bloco de código JavaScript a ser executado se uma condição for verdadeira.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">A Declaração if</h2>
+                <p class="text-gray-700 mb-4">Use a declaração <code class="bg-gray-100 px-2 py-1 rounded text-red-600">if</code> para especificar um bloco de código a ser executado se uma condição especificada for verdadeira.</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Sintaxe</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">if</span> (condição) {
+    <span class="text-gray-400">// bloco de código a ser executado se a condição for verdadeira</span>
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 Note que <code class="bg-white px-2 py-1 rounded text-red-600">if</code> está em letras minúsculas. Letras maiúsculas (If ou IF) gerarão um erro JavaScript.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Faça uma saudação "Bom dia" se a hora for menor que 18:00:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">if</span> (hora < <span class="text-green-400">18</span>) {
+    saudacao = <span class="text-green-400">"Bom dia"</span>;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let h = new Date().getHours(); let g = ''; if(h < 18) { g = 'Bom dia'; } document.getElementById('demo1').innerHTML = 'Hora atual: ' + h + ':00 - ' + g">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Mais Exemplos</h2>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Verificar Idade</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Verifique se a idade é maior ou igual a 18:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> idade = <span class="text-green-400">20</span>;
+<span class="text-purple-400">if</span> (idade >= <span class="text-green-400">18</span>) {
+    console.log(<span class="text-green-400">"Você é maior de idade"</span>);
+}</code></pre>
+                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let idade = 20; let msg = ''; if(idade >= 18) { msg = 'Você é maior de idade'; } document.getElementById('demo2').innerHTML = 'Idade: ' + idade + ' - ' + msg">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Verificar Número</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Mostre mensagem se o número for positivo:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> numero = <span class="text-green-400">42</span>;
+<span class="text-purple-400">if</span> (numero > <span class="text-green-400">0</span>) {
+    console.log(<span class="text-green-400">"O número é positivo"</span>);
+}</code></pre>
+                        <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let num = 42; let msg = ''; if(num > 0) { msg = 'O número é positivo'; } document.getElementById('demo3').innerHTML = 'Número: ' + num + ' - ' + msg">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Verificar String</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Verifique se o nome não está vazio:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> nome = <span class="text-green-400">"João"</span>;
+<span class="text-purple-400">if</span> (nome) {
+    console.log(<span class="text-green-400">"Bem-vindo, "</span> + nome);
+}</code></pre>
+                        <button class="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let nome = 'João'; let msg = ''; if(nome) { msg = 'Bem-vindo, ' + nome; } document.getElementById('demo4').innerHTML = msg">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Declaração if Sem Chaves</h2>
+                <p class="text-gray-700 mb-4">Você pode omitir as chaves quando há apenas uma declaração a ser executada:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">if</span> (hora < <span class="text-green-400">18</span>) saudacao = <span class="text-green-400">"Bom dia"</span>;</code></pre>
+                        <button class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let h = new Date().getHours(); let s; if(h < 18) s = 'Bom dia'; document.getElementById('demo5').innerHTML = s || 'Boa noite'">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 <strong>Boa Prática:</strong> Use sempre chaves, mesmo para declarações únicas, para melhor legibilidade e evitar erros ao adicionar mais código posteriormente.</p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Condições Compostas</h2>
+                <p class="text-gray-700 mb-4">Você pode usar operadores lógicos para criar condições mais complexas:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo com AND (&&)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> idade = <span class="text-green-400">20</span>;
+<span class="text-purple-400">let</span> temCarteira = <span class="text-green-400">true</span>;
+
+<span class="text-purple-400">if</span> (idade >= <span class="text-green-400">18</span> && temCarteira) {
+    console.log(<span class="text-green-400">"Pode dirigir"</span>);
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let idade = 20; let carteira = true; let msg = ''; if(idade >= 18 && carteira) { msg = 'Pode dirigir'; } document.getElementById('demo6').innerHTML = msg">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo com OR (||)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> dia = <span class="text-green-400">"Sábado"</span>;
+
+<span class="text-purple-400">if</span> (dia === <span class="text-green-400">"Sábado"</span> || dia === <span class="text-green-400">"Domingo"</span>) {
+    console.log(<span class="text-green-400">"É fim de semana!"</span>);
+}</code></pre>
+                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let dia = 'Sábado'; let msg = ''; if(dia === 'Sábado' || dia === 'Domingo') { msg = 'É fim de semana!'; } document.getElementById('demo7').innerHTML = msg">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo7" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Veja Também</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                        <h3 class="font-bold text-lg mb-2 text-blue-900">📚 Próximos Passos</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="ifelse.html" class="text-blue-600 hover:underline font-medium">→ JavaScript if else</a></li>
+                            <li><a href="ternary.html" class="text-blue-600 hover:underline font-medium">→ JavaScript Ternary Operator</a></li>
+                            <li><a href="switch.html" class="text-blue-600 hover:underline font-medium">→ JavaScript switch Statement</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                        <h3 class="font-bold text-lg mb-2 text-purple-900">🔗 Tópicos Relacionados</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="comparisons.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Comparisons</a></li>
+                            <li><a href="logical.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Logical Operators</a></li>
+                            <li><a href="booleans.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Booleans</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="if-conditions.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: JS Conditionals
+                </a>
+                <a href="ifelse.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: JS If Else →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

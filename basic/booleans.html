@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Booleans - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition { transition: transform 0.3s ease-in-out; }
+        .menu-overlay { transition: opacity 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="booleans.html" class="font-semibold border-b-2 border-white pb-1">Booleans</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="operators.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Operators</a>
+                    <a href="arithmetic.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arithmetic</a>
+                    <a href="assignment.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Assignment</a>
+                    <a href="comparisons.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Comparisons</a>
+                    <a href="if-conditions.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Conditionals</a>
+                    <a href="if.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS If</a>
+                    <a href="ifelse.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS If Else</a>
+                    <a href="ternary.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Ternary</a>
+                    <a href="switch.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Switch</a>
+                    <a href="booleans.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Booleans</a>
+                    <a href="logical.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Logical</a>
+                </nav>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="if-conditions.html" class="text-blue-600 hover:underline">JS Conditionals</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Booleans</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Booleans</h1>
+
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">Um Boolean JavaScript representa um de dois valores: <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code> ou <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>.</p>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Valores Boolean</h2>
+                <p class="text-gray-700 mb-4">Muito frequentemente, em programação, você precisará de um tipo de dados que possa ter apenas um de dois valores, como:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6 p-6">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-lg">
+                        <li>SIM / NÃO</li>
+                        <li>LIGADO / DESLIGADO</li>
+                        <li>VERDADEIRO / FALSO</li>
+                    </ul>
+                </div>
+
+                <p class="text-gray-700 mb-4">Para isso, JavaScript tem um tipo de dados <strong>Boolean</strong>. Ele pode ter apenas dois valores: <code class="bg-gray-100 px-2 py-1 rounded text-red-600">true</code> ou <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>.</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">5</span>;
+<span class="text-purple-400">let</span> y = <span class="text-green-400">5</span>;
+<span class="text-purple-400">let</span> z = <span class="text-green-400">6</span>;
+
+(x == y)  <span class="text-gray-400">// Retorna true</span>
+(x == z)  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let x1 = 5; let y1 = 5; let z1 = 6; document.getElementById('demo1').innerHTML = 'x == y: ' + (x1 == y1) + '<br>x == z: ' + (x1 == z1)">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">A Função Boolean()</h2>
+                <p class="text-gray-700 mb-4">Você pode usar a função <code class="bg-gray-100 px-2 py-1 rounded text-red-600">Boolean()</code> para descobrir se uma expressão (ou uma variável) é verdadeira:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">Boolean</span>(<span class="text-green-400">10</span> > <span class="text-green-400">9</span>)  <span class="text-gray-400">// Retorna true</span></code></pre>
+                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="document.getElementById('demo2').innerHTML = 'Boolean(10 > 9) = ' + Boolean(10 > 9)">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Ou ainda mais fácil:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code>(<span class="text-green-400">10</span> > <span class="text-green-400">9</span>)  <span class="text-gray-400">// Também retorna true</span></code></pre>
+                        <button class="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="document.getElementById('demo3').innerHTML = '(10 > 9) = ' + (10 > 9)">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Comparações e Condições</h2>
+                <p class="text-gray-700 mb-4">Os operadores de comparação são frequentemente usados em testes condicionais:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Operadores de Comparação</h3>
+                    </div>
+                    <div class="p-4">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-gradient-to-r from-blue-100 to-indigo-100">
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Operador</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Descrição</th>
+                                        <th class="border border-gray-300 px-4 py-2 text-left font-semibold">Retorna true quando</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">==</td>
+                                        <td class="border border-gray-300 px-4 py-2">Igual a</td>
+                                        <td class="border border-gray-300 px-4 py-2">x == 8</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">===</td>
+                                        <td class="border border-gray-300 px-4 py-2">Estritamente igual</td>
+                                        <td class="border border-gray-300 px-4 py-2">x === 5</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">!=</td>
+                                        <td class="border border-gray-300 px-4 py-2">Diferente de</td>
+                                        <td class="border border-gray-300 px-4 py-2">x != 8</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">!==</td>
+                                        <td class="border border-gray-300 px-4 py-2">Estritamente diferente</td>
+                                        <td class="border border-gray-300 px-4 py-2">x !== 5</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">></td>
+                                        <td class="border border-gray-300 px-4 py-2">Maior que</td>
+                                        <td class="border border-gray-300 px-4 py-2">x > 8</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600"><</td>
+                                        <td class="border border-gray-300 px-4 py-2">Menor que</td>
+                                        <td class="border border-gray-300 px-4 py-2">x < 8</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600">>=</td>
+                                        <td class="border border-gray-300 px-4 py-2">Maior ou igual a</td>
+                                        <td class="border border-gray-300 px-4 py-2">x >= 8</td>
+                                    </tr>
+                                    <tr class="hover:bg-gray-50">
+                                        <td class="border border-gray-300 px-4 py-2 font-mono text-red-600"><=</td>
+                                        <td class="border border-gray-300 px-4 py-2">Menor ou igual a</td>
+                                        <td class="border border-gray-300 px-4 py-2">x <= 8</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tudo Que Tem Um "Valor" é True</h2>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Valores Truthy</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">Boolean</span>(<span class="text-green-400">100</span>)         <span class="text-gray-400">// true</span>
+<span class="text-purple-400">Boolean</span>(<span class="text-green-400">3.14</span>)        <span class="text-gray-400">// true</span>
+<span class="text-purple-400">Boolean</span>(<span class="text-green-400">-15</span>)         <span class="text-gray-400">// true</span>
+<span class="text-purple-400">Boolean</span>(<span class="text-green-400">"Olá"</span>)       <span class="text-gray-400">// true</span>
+<span class="text-purple-400">Boolean</span>(<span class="text-green-400">"false"</span>)     <span class="text-gray-400">// true (qualquer string não vazia)</span>
+<span class="text-purple-400">Boolean</span>(<span class="text-green-400">7</span> + <span class="text-green-400">1</span> + <span class="text-green-400">3.14</span>) <span class="text-gray-400">// true</span></code></pre>
+                        <button class="bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let results = 'Boolean(100): ' + Boolean(100) + '&lt;br&gt;Boolean(3.14): ' + Boolean(3.14) + '&lt;br&gt;Boolean(-15): ' + Boolean(-15) + '&lt;br&gt;Boolean(&quot;Olá&quot;): ' + Boolean('Olá') + '&lt;br&gt;Boolean(&quot;false&quot;): ' + Boolean('false') + '&lt;br&gt;Boolean(7+1+3.14): ' + Boolean(7+1+3.14); document.getElementById('demo4').innerHTML = results;">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Tudo Sem Um "Valor" é False</h2>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Valores Falsy</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">0</code> (zero) é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">0</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        <button class="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let x5 = 0; document.getElementById('demo5').innerHTML = 'Boolean(0) = ' + Boolean(x5)">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Outros Valores Falsy</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">-0</code> é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">-0</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">""</code> (string vazia) é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">""</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">undefined</code> é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">null</code> é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-purple-400">null</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code> é (obviamente) <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-purple-400">false</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">O valor Boolean de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">NaN</code> é <code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-green-400">10</span> / <span class="text-green-400">"Olá"</span>;
+<span class="text-purple-400">Boolean</span>(x);  <span class="text-gray-400">// Retorna false</span></code></pre>
+                        
+                        <button class="bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let falsy = 'Boolean(0): ' + Boolean(0) + '&lt;br&gt;Boolean(-0): ' + Boolean(-0) + '&lt;br&gt;Boolean(&quot;&quot;): ' + Boolean('') + '&lt;br&gt;Boolean(undefined): ' + Boolean(undefined) + '&lt;br&gt;Boolean(null): ' + Boolean(null) + '&lt;br&gt;Boolean(false): ' + Boolean(false) + '&lt;br&gt;Boolean(NaN): ' + Boolean(NaN); document.getElementById('demo6').innerHTML = falsy;">
+                            ▶ Experimente todos os valores Falsy »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800 font-semibold mb-2">📋 Resumo dos Valores Falsy:</p>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">false</code></li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">0</code> (zero)</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">-0</code> (zero negativo)</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">""</code> (string vazia)</li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">null</code></li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">undefined</code></li>
+                        <li><code class="bg-gray-100 px-2 py-1 rounded text-red-600">NaN</code></li>
+                    </ul>
+                    <p class="text-gray-700 mt-3">⚠️ Todos os outros valores são considerados <strong>truthy</strong> (verdadeiros)!</p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Booleans Podem Ser Objetos</h2>
+                <p class="text-gray-700 mb-4">Normalmente, Booleans JavaScript são valores primitivos criados a partir de literais:</p>
+                <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-purple-400">false</span>;</code></pre>
+
+                <p class="text-gray-700 mb-4">Mas Booleans também podem ser definidos como objetos com a palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">new</code>:</p>
+                <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> y = <span class="text-purple-400">new</span> Boolean(<span class="text-purple-400">false</span>);</code></pre>
+
+                <div class="bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800"><strong>⚠️ Não crie objetos Boolean.</strong></p>
+                    <p class="text-gray-700 mt-2">A palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">new</code> complica o código e diminui a velocidade de execução.</p>
+                    <p class="text-gray-700 mt-2">Objetos Boolean podem produzir resultados inesperados.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Comparação de Boolean</h3>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-gray-700 mb-4">Quando usando o operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">==</code>, x e y são <strong>iguais</strong>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-purple-400">false</span>;
+<span class="text-purple-400">let</span> y = <span class="text-purple-400">new</span> Boolean(<span class="text-purple-400">false</span>);
+
+(x == y)  <span class="text-gray-400">// Retorna true porque x e y têm valores iguais</span></code></pre>
+                        
+                        <p class="text-gray-700 mb-4 mt-4">Quando usando o operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">===</code>, x e y <strong>não são iguais</strong>:</p>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> x = <span class="text-purple-400">false</span>;
+<span class="text-purple-400">let</span> y = <span class="text-purple-400">new</span> Boolean(<span class="text-purple-400">false</span>);
+
+(x === y)  <span class="text-gray-400">// Retorna false porque x é boolean e y é objeto</span></code></pre>
+                        
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="let x7 = false; let y7 = new Boolean(false); document.getElementById('demo7').innerHTML = 'x == y: ' + (x7 == y7) + '<br>x === y: ' + (x7 === y7) + '<br>Tipo de x: ' + typeof x7 + '<br>Tipo de y: ' + typeof y7">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo7" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 Note a diferença entre <code class="bg-gray-100 px-2 py-1 rounded text-red-600">(x==y)</code> e <code class="bg-gray-100 px-2 py-1 rounded text-red-600">(x===y)</code>.</p>
+                    <p class="text-gray-700 mt-2"><code class="bg-gray-100 px-2 py-1 rounded text-red-600">==</code> compara apenas o <strong>valor</strong>.</p>
+                    <p class="text-gray-700 mt-1"><code class="bg-gray-100 px-2 py-1 rounded text-red-600">===</code> compara o <strong>valor E o tipo</strong>.</p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Veja Também</h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg border border-blue-200">
+                        <h3 class="font-bold text-lg mb-2 text-blue-900">📚 Próximos Passos</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="logical.html" class="text-blue-600 hover:underline font-medium">→ JavaScript Logical Operators</a></li>
+                            <li><a href="if.html" class="text-blue-600 hover:underline font-medium">→ JavaScript if Statement</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                        <h3 class="font-bold text-lg mb-2 text-purple-900">🔗 Tópicos Relacionados</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><a href="comparisons.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Comparisons</a></li>
+                            <li><a href="if-conditions.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Conditionals</a></li>
+                            <li><a href="switch.html" class="text-purple-600 hover:underline font-medium">→ JavaScript Switch</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="switch.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: JS Switch
+                </a>
+                <a href="logical.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: JS Logical →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
