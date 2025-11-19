@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Numbers - JS Tutorial</title>
+    <title>JavaScript Number Methods - JS Tutorial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .sidebar-transition {
@@ -63,11 +63,10 @@
                     <a href="tutorial.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
                     <a href="numbers.html"
-                        class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS
-                        Numbers</a>
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Numbers</a>
                     <a href="number_methods.html"
-                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
-                        Methods</a>
+                        class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS
+                        Number Methods</a>
                     <a href="number_properties.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
                         Properties</a>
@@ -87,36 +86,27 @@
                 <span class="mx-2">›</span>
                 <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
                 <span class="mx-2">›</span>
-                <span class="text-gray-800 font-semibold">JS Numbers</span>
+                <span class="text-gray-800 font-semibold">JS Number Methods</span>
             </div>
 
-            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Numbers</h1>
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Number Methods</h1>
 
-            <!-- Intro -->
+            <!-- toString -->
             <div class="mb-8">
-                <p class="text-gray-700 mb-4 text-lg">JavaScript tem apenas um tipo de número. Números podem ser
-                    escritos com ou sem decimais.</p>
-                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6 p-4">
-                    <pre
-                        class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">3.14</span>;    <span class="text-gray-400">// Com decimais</span>
-<span class="text-blue-400">let</span> y = <span class="text-green-400">3</span>;       <span class="text-gray-400">// Sem decimais</span></code></pre>
-                </div>
-            </div>
-
-            <!-- Floating Precision -->
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Precisão de Ponto Flutuante</h2>
-                <p class="text-gray-700 mb-4">Aritmética de ponto flutuante nem sempre é 100% precisa.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">O método toString()</h2>
+                <p class="text-gray-700 mb-4">O método <code>toString()</code> retorna um número como uma string.</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">0.1</span> + <span class="text-green-400">0.2</span>;
-<span class="text-gray-400">// 0.30000000000000004</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">123</span>;
+x.toString();
+(<span class="text-green-400">123</span>).toString();
+(<span class="text-green-400">100</span> + <span class="text-green-400">23</span>).toString();</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo1()">
+                            onclick="numberMethods_demo1()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result1" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -127,22 +117,24 @@
                 </div>
             </div>
 
-            <!-- Adding Numbers and Strings -->
+            <!-- toFixed -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Adicionando Números e Strings</h2>
-                <p class="text-gray-700 mb-4">Se você adicionar dois números, o resultado será um número. Se você
-                    adicionar um número e uma string, o resultado será uma concatenação de string.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">O método toFixed()</h2>
+                <p class="text-gray-700 mb-4"><code>toFixed()</code> retorna uma string, com o número escrito com um
+                    número especificado de decimais:</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">10</span>;
-<span class="text-blue-400">let</span> y = <span class="text-yellow-300">"20"</span>;
-<span class="text-blue-400">let</span> z = x + y;   <span class="text-gray-400">// "1020"</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">9.656</span>;
+x.toFixed(<span class="text-green-400">0</span>);
+x.toFixed(<span class="text-green-400">2</span>);
+x.toFixed(<span class="text-green-400">4</span>);
+x.toFixed(<span class="text-green-400">6</span>);</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo2()">
+                            onclick="numberMethods_demo2()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result2" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -153,21 +145,24 @@
                 </div>
             </div>
 
-            <!-- NaN -->
+            <!-- toPrecision -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">NaN - Not a Number</h2>
-                <p class="text-gray-700 mb-4">NaN é uma palavra reservada do JavaScript indicando que um número não é um
-                    número legal.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">O método toPrecision()</h2>
+                <p class="text-gray-700 mb-4"><code>toPrecision()</code> retorna uma string, com um número escrito com
+                    um comprimento especificado:</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre
-                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">100</span> / <span class="text-yellow-300">"Apple"</span>;  <span class="text-gray-400">// NaN</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">9.656</span>;
+x.toPrecision();
+x.toPrecision(<span class="text-green-400">2</span>);
+x.toPrecision(<span class="text-green-400">4</span>);
+x.toPrecision(<span class="text-green-400">6</span>);</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo3()">
+                            onclick="numberMethods_demo3()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result3" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -178,19 +173,35 @@
                 </div>
             </div>
 
-            <!-- Infinity -->
+            <!-- Converting Variables to Numbers -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Infinity</h2>
-                <p class="text-gray-700 mb-4">Infinity (ou -Infinity) é o valor que o JavaScript retornará se você
-                    calcular um número fora do maior número possível.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Convertendo Variáveis para Números</h2>
+                <p class="text-gray-700 mb-4">Existem 3 métodos JavaScript que podem ser usados para converter uma
+                    variável em um número:</p>
+                <ul class="list-disc list-inside text-gray-700 mb-4 ml-4">
+                    <li><code>Number()</code></li>
+                    <li><code>parseInt()</code></li>
+                    <li><code>parseFloat()</code></li>
+                </ul>
+
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
-                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                        <h3 class="font-semibold text-gray-800">O método Number()</h3>
                     </div>
                     <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code>Number(<span class="text-blue-400">true</span>);
+Number(<span class="text-blue-400">false</span>);
+Number(<span class="text-yellow-300">"10"</span>);
+Number(<span class="text-yellow-300">"  10"</span>);
+Number(<span class="text-yellow-300">"10  "</span>);
+Number(<span class="text-yellow-300">" 10  "</span>);
+Number(<span class="text-yellow-300">"10.33"</span>);
+Number(<span class="text-yellow-300">"10,33"</span>);
+Number(<span class="text-yellow-300">"10 33"</span>);
+Number(<span class="text-yellow-300">"John"</span>);</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo4()">
+                            onclick="numberMethods_demo4()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result4" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -199,23 +210,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Hexadecimal -->
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Hexadecimal</h2>
-                <p class="text-gray-700 mb-4">JavaScript interpreta constantes numéricas como hexadecimais se forem
-                    precedidas por 0x.</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
-                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                        <h3 class="font-semibold text-gray-800">O método parseInt()</h3>
                     </div>
                     <div class="p-4">
-                        <pre
-                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">0xFF</span>;   <span class="text-gray-400">// 255</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code>parseInt(<span class="text-yellow-300">"-10"</span>);
+parseInt(<span class="text-yellow-300">"-10.33"</span>);
+parseInt(<span class="text-yellow-300">"10"</span>);
+parseInt(<span class="text-yellow-300">"10.33"</span>);
+parseInt(<span class="text-yellow-300">"10 20 30"</span>);
+parseInt(<span class="text-yellow-300">"10 years"</span>);
+parseInt(<span class="text-yellow-300">"years 10"</span>);</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo5()">
+                            onclick="numberMethods_demo5()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result5" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -226,15 +236,39 @@
                 </div>
             </div>
 
+            <!-- Number Object Methods -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Métodos de Objeto Number</h2>
+                <p class="text-gray-700 mb-4">Estes métodos pertencem ao objeto Number do JavaScript:</p>
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Number.isInteger()</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code>Number.isInteger(<span class="text-green-400">10</span>);
+Number.isInteger(<span class="text-green-400">10.5</span>);</code></pre>
+                        <button
+                            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
+                            onclick="numberMethods_demo6()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <div id="result6" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
+                            <p class="text-gray-700 font-medium">Resultado:</p>
+                            <div class="text-gray-900 mt-1 font-mono"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Navigation -->
             <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
-                <a href="strings.html"
+                <a href="numbers.html"
                     class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
-                    ← Anterior: JS Strings
+                    ← Anterior: JS Numbers
                 </a>
-                <a href="number_methods.html"
+                <a href="number_properties.html"
                     class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
-                    Próximo: JS Number Methods →
+                    Próximo: JS Number Properties →
                 </a>
             </div>
         </main>

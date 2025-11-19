@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JavaScript Tutorial - Aprenda JavaScript do Básico ao Avançado</title>
+    <meta name="description" content="Tutorial completo de JavaScript em português. Aprenda desde o básico até conceitos avançados com exemplos práticos e interativos.">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
@@ -18,60 +21,63 @@
         }
     </script>
 </head>
-<body class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 min-h-screen">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-gradient-to-r from-blue-500 to-indigo-600">
+
+<body class="bg-gray-50">
+    <!-- Fixed Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0 left-0 border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center space-x-2">
-                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-2xl px-4 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-transform">
-                        <span class="text-yellow-300">JS</span><span class="text-white">Tutorial</span>
-                    </div>
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <div class="bg-js-yellow text-js-dark font-bold text-xl px-3 py-1 rounded-md shadow-sm group-hover:shadow-md transition-all">
+                            JS
+                        </div>
+                        <span class="text-gray-800 font-semibold text-lg tracking-tight group-hover:text-blue-600 transition-colors">Tutorial</span>
+                    </a>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="index.html" class="text-blue-600 font-semibold hover:text-indigo-700 transition-colors border-b-2 border-blue-600 pb-1">Home</a>
-                    <a href="basic/tutorial.html" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Tutorial</a>
-                    <a href="#references" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Referências</a>
-                </nav>
-                <!-- Mobile menu button -->
-                <button class="md:hidden text-gray-700 hover:text-blue-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-blue-600 font-medium border-b-2 border-blue-600">Home</a>
+                    <a href="basic/tutorial.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Tutorial</a>
+                    <a href="basic/references.html" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Referências</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menuToggle" class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white py-20 overflow-hidden">
-        <!-- Decorative elements -->
-        <div class="absolute inset-0 opacity-20">
-            <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-xl animate-blob"></div>
-            <div class="absolute top-0 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000"></div>
-            <div class="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000"></div>
+    <div class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 pt-32 pb-20 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl"></div>
         </div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 animate-fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-white mb-6 tracking-tight">
                 Aprenda <span class="text-yellow-300">JavaScript</span>
             </h1>
-            <p class="text-xl md:text-2xl mb-10 text-blue-100 max-w-3xl mx-auto">
+            <p class="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto leading-relaxed">
                 O guia completo para aprender JavaScript do básico ao avançado com exemplos práticos e interativos
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a href="basic/tutorial.html" class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold px-8 py-4 rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300 hover:shadow-yellow-500/50">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="basic/tutorial.html" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-1">
                     🚀 Começar Tutorial
                 </a>
-                <a href="basic/introduction.html" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full border-2 border-white shadow-lg transform hover:scale-105 transition-all duration-300">
+                <a href="basic/introduction.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-purple-600 transition-all shadow-lg">
                     📖 Introdução
                 </a>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        
         <!-- Basic JavaScript Section -->
         <section class="mb-20">
             <div class="text-center mb-12">
@@ -83,6 +89,7 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Existing cards remain the same -->
                 <a href="basic/tutorial.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
                     <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">📚 Tutorial</h3>
                     <p class="text-gray-600">Comece sua jornada JavaScript</p>
@@ -191,72 +198,92 @@
                     <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📖 JS String Reference</h3>
                     <p class="text-gray-600">Referência completa</p>
                 </a>
-                <a href="basic/numbers.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">🔢 Numbers</h3>
+                <a href="basic/numbers.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🔢 Numbers</h3>
                     <p class="text-gray-600">Trabalhando com números</p>
                 </a>
-                <a href="basic/functions.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">⚙️ Functions</h3>
+                <a href="basic/number_methods.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">⚙️ Number Methods</h3>
+                    <p class="text-gray-600">Métodos numéricos</p>
+                </a>
+                <a href="basic/number_properties.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📏 Number Properties</h3>
+                    <p class="text-gray-600">Propriedades numéricas</p>
+                </a>
+                <a href="basic/number_reference.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">📖 Number Reference</h3>
+                    <p class="text-gray-600">Referência de números</p>
+                </a>
+                <a href="basic/bigint.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🐘 BigInt</h3>
+                    <p class="text-gray-600">Números grandes</p>
+                </a>
+                <a href="basic/bitwise.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">0️⃣1️⃣ Bitwise</h3>
+                    <p class="text-gray-600">Operações bit a bit</p>
+                </a>
+                <a href="basic/functions.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">⚙️ Functions</h3>
                     <p class="text-gray-600">Criando funções</p>
                 </a>
-                <a href="basic/events.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">⚡ Events</h3>
+                <a href="basic/events.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">⚡ Events</h3>
                     <p class="text-gray-600">Eventos JavaScript</p>
                 </a>
-                <a href="basic/dates.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">📅 Dates</h3>
+                <a href="basic/dates.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">📅 Dates</h3>
                     <p class="text-gray-600">Manipulando datas</p>
                 </a>
-                <a href="basic/arrays.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📋 Arrays</h3>
+                <a href="basic/arrays.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">📋 Arrays</h3>
                     <p class="text-gray-600">Arrays e listas</p>
                 </a>
-                <a href="basic/typed-arrays.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🎯 Typed Arrays</h3>
+                <a href="basic/typed-arrays.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">🎯 Typed Arrays</h3>
                     <p class="text-gray-600">Arrays tipados</p>
                 </a>
-                <a href="basic/sets.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🔗 Sets</h3>
+                <a href="basic/sets.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🔗 Sets</h3>
                     <p class="text-gray-600">Conjuntos de dados</p>
                 </a>
-                <a href="basic/maps.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">🗺️ Maps</h3>
+                <a href="basic/maps.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🗺️ Maps</h3>
                     <p class="text-gray-600">Mapas chave-valor</p>
                 </a>
-                <a href="basic/math.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🧮 Math</h3>
+                <a href="basic/math.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">🧮 Math</h3>
                     <p class="text-gray-600">Operações matemáticas</p>
                 </a>
-                <a href="basic/regexp.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🔍 RegExp</h3>
+                <a href="basic/regexp.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🔍 RegExp</h3>
                     <p class="text-gray-600">Expressões regulares</p>
                 </a>
-                <a href="basic/datatypes.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📊 Data Types</h3>
+                <a href="basic/datatypes.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">📊 Data Types</h3>
                     <p class="text-gray-600">Tipos de dados</p>
                 </a>
-                <a href="basic/errors.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">❌ Errors</h3>
+                <a href="basic/errors.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">❌ Errors</h3>
                     <p class="text-gray-600">Tratamento de erros</p>
                 </a>
-                <a href="basic/debugging.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🐛 Debugging</h3>
+                <a href="basic/debugging.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🐛 Debugging</h3>
                     <p class="text-gray-600">Depurando código</p>
                 </a>
-                <a href="basic/programming.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">💻 Programming</h3>
+                <a href="basic/programming.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">💻 Programming</h3>
                     <p class="text-gray-600">Boas práticas</p>
                 </a>
-                <a href="basic/references.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">📖 References</h3>
+                <a href="basic/references.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📖 References</h3>
                     <p class="text-gray-600">Referências completas</p>
                 </a>
-                <a href="basic/utf8.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">🌐 UTF-8</h3>
+                <a href="basic/utf8.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-blue-500 hover:border-blue-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">🌐 UTF-8</h3>
                     <p class="text-gray-600">Codificação de caracteres</p>
                 </a>
-                <a href="basic/versions.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-purple-500 hover:border-purple-600">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-purple-600 transition-colors">📜 Versions</h3>
+                <a href="basic/versions.html" class="group bg-white rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 border-l-4 border-indigo-500 hover:border-indigo-600">
+                    <h3 class="text-xl font-bold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors">📜 Versions</h3>
                     <p class="text-gray-600">Versões do JavaScript</p>
                 </a>
             </div>
@@ -273,140 +300,91 @@
                 </p>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- JS Functions -->
-                <a href="advanced/functions.html" class="group bg-gradient-to-br from-orange-500 to-red-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Functions</h3>
-                    <p class="text-orange-100">Funções avançadas e closures</p>
+                <a href="advanced/functions.html" class="group bg-orange-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Functions</h3>
+                    <p class="text-orange-100 text-sm">Funções avançadas e closures</p>
                 </a>
-                
-                <!-- JS Objects -->
-                <a href="advanced/objects.html" class="group bg-gradient-to-br from-pink-500 to-rose-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Objects</h3>
-                    <p class="text-pink-100">Objetos e protótipos</p>
+                <a href="advanced/objects.html" class="group bg-pink-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Objects</h3>
+                    <p class="text-pink-100 text-sm">Objetos e protótipos</p>
                 </a>
-                
-                <!-- JS Classes -->
-                <a href="advanced/classes.html" class="group bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Classes</h3>
-                    <p class="text-violet-100">Classes e POO</p>
+                <a href="advanced/classes.html" class="group bg-purple-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Classes</h3>
+                    <p class="text-purple-100 text-sm">Classes e POO</p>
                 </a>
-                
-                <!-- JS Iterations -->
-                <a href="advanced/iterations.html" class="group bg-gradient-to-br from-cyan-500 to-blue-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Iterations</h3>
-                    <p class="text-cyan-100">Iteradores e geradores</p>
+                <a href="advanced/iterations.html" class="group bg-blue-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Iterations</h3>
+                    <p class="text-blue-100 text-sm">Iteradores e geradores</p>
                 </a>
-                
-                <!-- JS Asynchronous -->
-                <a href="advanced/async.html" class="group bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Asynchronous</h3>
-                    <p class="text-emerald-100">Promises, Async/Await</p>
+                <a href="advanced/async.html" class="group bg-teal-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Asynchronous</h3>
+                    <p class="text-teal-100 text-sm">Promises, Async/Await</p>
                 </a>
-                
-                <!-- JS Modules -->
-                <a href="advanced/modules.html" class="group bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Modules</h3>
-                    <p class="text-amber-100">Import e Export</p>
+                <a href="advanced/modules.html" class="group bg-orange-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Modules</h3>
+                    <p class="text-orange-100 text-sm">Import e Export</p>
                 </a>
-                
-                <!-- JS HTML DOM -->
-                <a href="advanced/dom.html" class="group bg-gradient-to-br from-lime-500 to-green-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS HTML DOM</h3>
-                    <p class="text-lime-100">Manipulação do DOM</p>
+                <a href="advanced/dom.html" class="group bg-green-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS HTML DOM</h3>
+                    <p class="text-green-100 text-sm">Manipulação do DOM</p>
                 </a>
-                
-                <!-- JS Windows -->
-                <a href="advanced/windows.html" class="group bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Windows</h3>
-                    <p class="text-sky-100">Window e BOM</p>
+                <a href="advanced/windows.html" class="group bg-blue-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Windows</h3>
+                    <p class="text-blue-100 text-sm">Window e BOM</p>
                 </a>
-                
-                <!-- JS Web API -->
-                <a href="advanced/web-api.html" class="group bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Web API</h3>
-                    <p class="text-indigo-100">APIs do navegador</p>
+                <a href="advanced/webapi.html" class="group bg-purple-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Web API</h3>
+                    <p class="text-purple-100 text-sm">APIs do navegador</p>
                 </a>
-                
-                <!-- JS AJAX -->
-                <a href="advanced/ajax.html" class="group bg-gradient-to-br from-rose-500 to-pink-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS AJAX</h3>
-                    <p class="text-rose-100">Requisições assíncronas</p>
+                <a href="advanced/ajax.html" class="group bg-pink-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS AJAX</h3>
+                    <p class="text-pink-100 text-sm">Requisições assíncronas</p>
                 </a>
-                
-                <!-- JS JSON -->
-                <a href="advanced/json.html" class="group bg-gradient-to-br from-fuchsia-500 to-purple-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS JSON</h3>
-                    <p class="text-fuchsia-100">JavaScript Object Notation</p>
+                <a href="advanced/json.html" class="group bg-purple-400 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS JSON</h3>
+                    <p class="text-purple-100 text-sm">JavaScript Object Notation</p>
                 </a>
-                
-                <!-- JS jQuery -->
-                <a href="advanced/jquery.html" class="group bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS jQuery</h3>
-                    <p class="text-blue-100">Biblioteca jQuery</p>
+                <a href="advanced/jquery.html" class="group bg-sky-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS jQuery</h3>
+                    <p class="text-sky-100 text-sm">Biblioteca jQuery</p>
                 </a>
-                
-                <!-- JS Graphics -->
-                <a href="advanced/graphics.html" class="group bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Graphics</h3>
-                    <p class="text-teal-100">Canvas e SVG</p>
+                <a href="advanced/graphics.html" class="group bg-emerald-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Graphics</h3>
+                    <p class="text-emerald-100 text-sm">Canvas e SVG</p>
                 </a>
-                
-                <!-- JS Examples -->
-                <a href="advanced/examples.html" class="group bg-gradient-to-br from-yellow-500 to-amber-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Examples</h3>
-                    <p class="text-yellow-100">Exemplos práticos</p>
+                <a href="advanced/examples.html" class="group bg-yellow-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Examples</h3>
+                    <p class="text-yellow-100 text-sm">Exemplos práticos</p>
                 </a>
-                
-                <!-- JS Reference -->
-                <a href="advanced/reference.html" class="group bg-gradient-to-br from-red-500 to-orange-600 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
-                    <h3 class="text-xl font-bold mb-2 group-hover:scale-110 transition-transform">JS Reference</h3>
-                    <p class="text-red-100">Referência completa</p>
+                <a href="advanced/reference.html" class="group bg-red-500 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">JS Reference</h3>
+                    <p class="text-red-100 text-sm">Referência completa</p>
                 </a>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <div class="mb-6">
-                    <div class="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-3xl px-6 py-3 rounded-lg shadow-lg">
-                        <span class="text-yellow-300">JS</span><span class="text-white">Tutorial</span>
-                    </div>
-                </div>
-                <p class="text-gray-300 mb-2 text-lg">Aprenda JavaScript de forma prática e interativa</p>
-                <p class="text-gray-400 text-sm">Desenvolvido por Jhonnatan Luiz para fins educacionais</p>
-                <p class="text-gray-500 text-xs mt-4">&copy; 2025 JS Tutorial. Todos os direitos reservados.</p>
+    <footer class="bg-gray-900 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-4">
+                <a href="#" class="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-bold text-xl px-6 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-colors">
+                    <span class="text-yellow-300">JS</span>Tutorial
+                </a>
+            </div>
+            <p class="text-gray-400 text-base mb-1">
+                Aprenda JavaScript de forma prática e interativa
+            </p>
+            <p class="text-gray-500 text-xs mb-4">
+                Desenvolvido por Jhonnatan Luiz para fins educacionais
+            </p>
+            <div class="border-t border-gray-800 pt-4 text-gray-600 text-xs">
+                <p>&copy; 2025 JS Tutorial. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <style>
-        @keyframes blob {
-            0% { transform: translate(0px, 0px) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-            100% { transform: translate(0px, 0px) scale(1); }
-        }
-        .animate-blob {
-            animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-            animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-            animation-delay: 4s;
-        }
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-            animation: fade-in 1s ease-out;
-        }
-    </style>
-
     <script src="js/script.js"></script>
 </body>
+
 </html>

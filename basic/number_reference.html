@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Number Reference - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors"
+                    aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="numbers.html" class="font-semibold border-b-2 border-white pb-1">Numbers</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="numbers.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Numbers</a>
+                    <a href="number_methods.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
+                        Methods</a>
+                    <a href="number_properties.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
+                        Properties</a>
+                    <a href="number_reference.html"
+                        class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS
+                        Number Reference</a>
+                    <a href="bitwise.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Bitwise</a>
+                    <a href="bigint.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS BigInt</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8">
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Number Reference</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Number Reference</h1>
+
+            <!-- Reference Table -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Referência Completa de Number</h2>
+                <p class="text-gray-700 mb-4">Abaixo está uma lista completa de propriedades e métodos do objeto Number.
+                </p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6 overflow-x-auto">
+                    <table class="min-w-full">
+                        <thead class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+                            <tr>
+                                <th class="px-6 py-3 text-left">Nome</th>
+                                <th class="px-6 py-3 text-left">Descrição</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">constructor</td>
+                                <td class="px-6 py-4">Retorna a função que criou o protótipo do objeto Number</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">EPSILON</td>
+                                <td class="px-6 py-4">A diferença entre 1 e o menor número > 1</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">isFinite()</td>
+                                <td class="px-6 py-4">Verifica se um valor é um número finito</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">isInteger()</td>
+                                <td class="px-6 py-4">Verifica se um valor é um inteiro</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">isNaN()</td>
+                                <td class="px-6 py-4">Verifica se um valor é Number.NaN</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">isSafeInteger()</td>
+                                <td class="px-6 py-4">Verifica se um valor é um inteiro seguro</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">MAX_SAFE_INTEGER</td>
+                                <td class="px-6 py-4">O inteiro seguro máximo em JavaScript (2^53 - 1)</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">MIN_SAFE_INTEGER</td>
+                                <td class="px-6 py-4">O inteiro seguro mínimo em JavaScript -(2^53 - 1)</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">MAX_VALUE</td>
+                                <td class="px-6 py-4">O maior número possível em JavaScript</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">MIN_VALUE</td>
+                                <td class="px-6 py-4">O menor número possível em JavaScript</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">NaN</td>
+                                <td class="px-6 py-4">"Not-a-Number" (Não é um número)</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">NEGATIVE_INFINITY</td>
+                                <td class="px-6 py-4">Infinito negativo</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">POSITIVE_INFINITY</td>
+                                <td class="px-6 py-4">Infinito positivo</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">parseFloat()</td>
+                                <td class="px-6 py-4">Analisa uma string e retorna um número</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">parseInt()</td>
+                                <td class="px-6 py-4">Analisa uma string e retorna um inteiro</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">prototype</td>
+                                <td class="px-6 py-4">Permite adicionar propriedades e métodos a um objeto</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">toExponential()</td>
+                                <td class="px-6 py-4">Retorna uma string, com um número arredondado e escrito usando
+                                    notação exponencial</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">toFixed()</td>
+                                <td class="px-6 py-4">Retorna uma string, com o número escrito com um número
+                                    especificado de decimais</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">toLocaleString()</td>
+                                <td class="px-6 py-4">Retorna um número como uma string, usando configurações locais
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">toPrecision()</td>
+                                <td class="px-6 py-4">Retorna uma string, com um número escrito com um comprimento
+                                    especificado</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">toString()</td>
+                                <td class="px-6 py-4">Retorna um número como uma string</td>
+                            </tr>
+                            <tr class="hover:bg-gray-50">
+                                <td class="px-6 py-4 font-mono text-blue-600">valueOf()</td>
+                                <td class="px-6 py-4">Retorna um número como um número</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="number_properties.html"
+                    class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: JS Number Properties
+                </a>
+                <a href="bitwise.html"
+                    class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: JS Bitwise →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

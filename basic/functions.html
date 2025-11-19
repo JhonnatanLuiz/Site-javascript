@@ -1,36 +1,401 @@
 ﻿<!DOCTYPE html>
-<html lang='pt-BR'>
+<html lang="pt-BR">
+
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>functions - JS Tutorial</title>
-    <link rel='stylesheet' href='../css/style.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions - Tutorial Completo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'js-yellow': '#f0db4f',
+                        'js-dark': '#323330',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
-<body>
-    <div class='wrapper'>
-        <header class='header'>
-            <div class='header-container'>
-                <div class='logo'>
-                    <h1>JS<span>Tutorial</span></h1>
-                </div>
-                <nav class='main-nav'>
-                    <a href='../index.html'>Home</a>
-                </nav>
-            </div>
-        </header>
 
-        <main class='container'>
-            <h1>functions</h1>
-            <p>Conteúdo será adicionado aqui.</p>
-        </main>
+<body class="bg-gray-50 font-sans text-gray-800">
 
-        <footer class='footer'>
-            <div class='footer-content'>
-                <p>&copy; 2025 JS Tutorial</p>
-            </div>
-        </footer>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay"
+        class="fixed inset-0 bg-black/50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobile-menu-sidebar"
+        class="fixed top-0 left-0 w-64 h-full bg-white shadow-2xl z-50 transform -translate-x-full transition-transform duration-300">
+        <div
+            class="p-4 border-b flex justify-between items-center bg-gradient-to-r from-blue-600 to-indigo-600 text-white">
+            <h2 class="text-xl font-bold">Menu</h2>
+            <button id="close-mobile-menu" class="p-2 hover:bg-white/20 rounded-lg transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                    </path>
+                </svg>
+            </button>
+        </div>
+        <nav class="p-4 overflow-y-auto h-[calc(100vh-64px)]" id="mobile-nav-content">
+            <!-- Links will be injected by script.js -->
+        </nav>
     </div>
-    
-    <script src='../js/script.js'></script>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-4">
+                    <button id="mobile-menu-btn" class="lg:hidden p-2 hover:bg-white/20 rounded-lg transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                    <a href="../index.html" class="text-2xl font-bold flex items-center gap-2 group">
+                        <span
+                            class="bg-yellow-400 text-gray-900 px-2 py-1 rounded transform group-hover:rotate-3 transition-transform">JS</span>
+                        <span class="group-hover:text-yellow-300 transition-colors">Tutorial</span>
+                    </a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="../index.html" class="hover:text-yellow-300 transition-colors font-medium">Home</a>
+                    <a href="introduction.html" class="hover:text-yellow-300 transition-colors font-medium">Início</a>
+                    <div class="relative group">
+                        <button class="hover:text-yellow-300 transition-colors font-medium flex items-center gap-1">
+                            Tópicos
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <!-- Dropdown could go here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex max-w-7xl mx-auto min-h-[calc(100vh-64px)]">
+        <!-- Desktop Sidebar -->
+        <aside
+            class="hidden lg:block w-64 bg-white border-r border-gray-200 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
+            <nav class="p-4 space-y-1" id="desktop-nav">
+                <!-- Links will be injected by script.js -->
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-4 sm:p-6 lg:p-8">
+            <!-- Breadcrumbs -->
+            <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                    <li class="inline-flex items-center">
+                        <a href="../index.html" class="hover:text-blue-600 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                                </path>
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <a href="#" class="ml-1 hover:text-blue-600">Basic</a>
+                        </div>
+                    </li>
+                    <li aria-current="page">
+                        <div class="flex items-center">
+                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="ml-1 text-gray-800 font-semibold">Functions</span>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+
+            <div class="prose max-w-none">
+                <h1
+                    class="text-4xl font-extrabold text-gray-900 mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                    JavaScript Functions</h1>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-8 rounded-r-lg shadow-sm">
+                    <p class="text-lg text-blue-900">Uma função JavaScript é um bloco de código projetado para executar
+                        uma tarefa específica.</p>
+                    <p class="text-blue-800 mt-2">Uma função JavaScript é executada quando "algo" a invoca (chama-a).
+                    </p>
+                </div>
+
+                <!-- Example 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-700">Exemplo</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto group relative">
+                            <button onclick="copyCode(this)"
+                                class="absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">Copiar</button>
+                            <pre><code class="text-green-400">function</code> <code class="text-yellow-300">myFunction</code><code class="text-white">(p1, p2) {</code>
+  <code class="text-pink-400">return</code> <code class="text-white">p1 * p2;</code>   <code class="text-gray-400">// A função retorna o produto de p1 e p2</code>
+<code class="text-white">}</code></pre>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <p class="mb-2 font-semibold text-gray-700">Resultado:</p>
+                            <p id="result2" class="font-mono text-lg text-blue-600 min-h-[1.5rem]">Clique no botão para
+                                ver o resultado.</p>
+                        </div>
+                        <button onclick="functions_demo2()"
+                            class="mt-4 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-2 rounded-lg hover:scale-105 transform transition-all shadow-md hover:shadow-lg font-semibold flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Executar Código
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 mt-12 flex items-center gap-2">
+                    <span class="bg-indigo-100 text-indigo-600 p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                        </svg>
+                    </span>
+                    Sintaxe da Função
+                </h2>
+                <p class="text-gray-600 mb-4 text-lg">Uma função JavaScript é definida com a palavra-chave <code
+                        class="bg-gray-100 text-red-500 px-1 rounded">function</code>, seguida por um
+                    <strong>nome</strong>, seguido por parênteses <strong>()</strong>.</p>
+                <p class="text-gray-600 mb-4 text-lg">Os nomes das funções podem conter letras, dígitos, sublinhados e
+                    cifrões (mesmas regras das variáveis).</p>
+                <p class="text-gray-600 mb-4 text-lg">Os parênteses podem incluir nomes de parâmetros separados por
+                    vírgulas: <br><code
+                        class="bg-gray-100 text-gray-800 px-2 py-1 rounded mt-2 inline-block">(parâmetro1, parâmetro2, ...)</code>
+                </p>
+                <p class="text-gray-600 mb-6 text-lg">O código a ser executado pela função é colocado dentro de chaves:
+                    <strong>{}</strong></p>
+
+                <div class="bg-gray-900 rounded-lg p-6 mb-8 shadow-lg border-l-4 border-yellow-400">
+                    <pre><code class="text-green-400">function</code> <code class="text-yellow-300">name</code><code class="text-white">(parameter1, parameter2, parameter3) {</code>
+  <code class="text-gray-400">// código a ser executado</code>
+<code class="text-white">}</code></pre>
+                </div>
+
+                <p class="text-gray-600 mb-4 text-lg">Os <strong>parâmetros</strong> da função são listados dentro dos
+                    parênteses na definição da função.</p>
+                <p class="text-gray-600 mb-8 text-lg">Os <strong>argumentos</strong> da função são os
+                    <strong>valores</strong> recebidos pela função quando ela é invocada.</p>
+
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 mt-12 flex items-center gap-2">
+                    <span class="bg-purple-100 text-purple-600 p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </span>
+                    Invocação de Função
+                </h2>
+                <p class="text-gray-600 mb-4 text-lg">O código dentro da função será executado quando "algo" invocar
+                    (chamar) a função:</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-600 mb-8 ml-4">
+                    <li>Quando um evento ocorre (quando um usuário clica em um botão)</li>
+                    <li>Quando é invocado (chamado) a partir do código JavaScript</li>
+                    <li>Automaticamente (auto-invocado)</li>
+                </ul>
+
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 mt-12 flex items-center gap-2">
+                    <span class="bg-green-100 text-green-600 p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                        </svg>
+                    </span>
+                    Retorno da Função
+                </h2>
+                <p class="text-gray-600 mb-4 text-lg">Quando o JavaScript atinge uma declaração <code
+                        class="bg-gray-100 text-red-500 px-1 rounded">return</code>, a função para de executar.</p>
+                <p class="text-gray-600 mb-6 text-lg">Se a função foi invocada a partir de uma declaração, o JavaScript
+                    "retornará" para executar o código após a declaração de invocação.</p>
+
+                <!-- Example 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-700">Exemplo: Converter Fahrenheit para Celsius</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto group relative">
+                            <button onclick="copyCode(this)"
+                                class="absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">Copiar</button>
+                            <pre><code class="text-green-400">function</code> <code class="text-yellow-300">toCelsius</code><code class="text-white">(fahrenheit) {</code>
+  <code class="text-pink-400">return</code> <code class="text-white">(5/9) * (fahrenheit-32);</code>
+<code class="text-white">}</code>
+
+<code class="text-green-400">let</code> <code class="text-white">value = toCelsius(77);</code></pre>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <p class="mb-2 font-semibold text-gray-700">Resultado:</p>
+                            <p id="result3" class="font-mono text-lg text-blue-600 min-h-[1.5rem]">Clique no botão para
+                                ver o resultado.</p>
+                        </div>
+                        <button onclick="functions_demo3()"
+                            class="mt-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-2 rounded-lg hover:scale-105 transform transition-all shadow-md hover:shadow-lg font-semibold flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Calcular Temperatura
+                        </button>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 mt-12 flex items-center gap-2">
+                    <span class="bg-yellow-100 text-yellow-600 p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </span>
+                    O Operador ()
+                </h2>
+                <p class="text-gray-600 mb-4 text-lg">O operador <code
+                        class="bg-gray-100 text-red-500 px-1 rounded">()</code> invoca a função.</p>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8 rounded-r-lg">
+                    <p class="text-yellow-800">Acessar uma função sem () retornará a definição da função em vez do
+                        resultado da função.</p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-gray-800 mb-4 mt-12 flex items-center gap-2">
+                    <span class="bg-pink-100 text-pink-600 p-2 rounded-lg">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                            </path>
+                        </svg>
+                    </span>
+                    Variáveis Locais
+                </h2>
+                <p class="text-gray-600 mb-4 text-lg">Variáveis declaradas dentro de uma função JavaScript tornam-se
+                    <strong>LOCAIS</strong> para a função.</p>
+                <p class="text-gray-600 mb-4 text-lg">Variáveis locais só podem ser acessadas de dentro da função.</p>
+
+                <!-- Example 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-10 border border-gray-100">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex justify-between items-center">
+                        <h3 class="font-bold text-gray-700">Exemplo: Escopo Local</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto group relative">
+                            <button onclick="copyCode(this)"
+                                class="absolute top-2 right-2 bg-gray-700 text-white px-2 py-1 rounded text-xs opacity-0 group-hover:opacity-100 transition-opacity">Copiar</button>
+                            <pre><code class="text-gray-400">// código aqui NÃO pode usar carName</code>
+
+<code class="text-green-400">function</code> <code class="text-yellow-300">myFunction</code><code class="text-white">() {</code>
+  <code class="text-green-400">let</code> <code class="text-white">carName = "Volvo";</code>
+  <code class="text-gray-400">// código aqui PODE usar carName</code>
+<code class="text-white">}</code>
+
+<code class="text-gray-400">// código aqui NÃO pode usar carName</code></pre>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                            <p class="mb-2 font-semibold text-gray-700">Resultado:</p>
+                            <p id="result5" class="font-mono text-lg text-blue-600 min-h-[1.5rem]">Clique no botão para
+                                ver o resultado.</p>
+                        </div>
+                        <button onclick="functions_demo5()"
+                            class="mt-4 bg-gradient-to-r from-green-500 to-teal-600 text-white px-6 py-2 rounded-lg hover:scale-105 transform transition-all shadow-md hover:shadow-lg font-semibold flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            Testar Escopo
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg mt-12">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">Resumo</h3>
+                    <ul class="list-disc list-inside text-blue-800 space-y-2">
+                        <li>Funções são blocos de código reutilizáveis.</li>
+                        <li>Elas são definidas com a palavra-chave <code>function</code>.</li>
+                        <li>Valores passados para funções são chamados de <em>argumentos</em>.</li>
+                        <li>Funções podem retornar valores usando <code>return</code>.</li>
+                        <li>Variáveis dentro de funções são locais e não acessíveis fora delas.</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between mt-12 border-t pt-8">
+                <a href="bigint.html"
+                    class="flex items-center px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-blue-500 transition-all group shadow-sm">
+                    <svg class="w-5 h-5 mr-2 text-gray-500 group-hover:text-blue-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                    <div class="text-left">
+                        <span class="block text-xs text-gray-500">Anterior</span>
+                        <span class="block font-semibold text-gray-800 group-hover:text-blue-600">BigInt</span>
+                    </div>
+                </a>
+                <a href="events.html"
+                    class="flex items-center px-6 py-3 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 hover:border-blue-500 transition-all group shadow-sm">
+                    <div class="text-right">
+                        <span class="block text-xs text-gray-500">Próximo</span>
+                        <span class="block font-semibold text-gray-800 group-hover:text-blue-600">Events</span>
+                    </div>
+                    <svg class="w-5 h-5 ml-2 text-gray-500 group-hover:text-blue-600" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/script.js"></script>
 </body>
+
 </html>

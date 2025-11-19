@@ -1,36 +1,425 @@
 ﻿<!DOCTYPE html>
-<html lang='pt-BR'>
+<html lang="pt-BR">
+
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>events - JS Tutorial</title>
-    <link rel='stylesheet' href='../css/style.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events - Tutorial Completo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'js-yellow': '#f0db4f',
+                        'js-dark': '#323330',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
 </head>
-<body>
-    <div class='wrapper'>
-        <header class='header'>
-            <div class='header-container'>
-                <div class='logo'>
-                    <h1>JS<span>Tutorial</span></h1>
+
+<body class="bg-gray-50 font-sans leading-relaxed">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md fixed w-full z-50 top-0 left-0 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="../index.html" class="flex items-center gap-2 group">
+                        <div
+                            class="bg-js-yellow text-js-dark font-bold text-xl px-3 py-1 rounded-md shadow-sm group-hover:shadow-md transition-all">
+                            JS
+                        </div>
+                        <span
+                            class="text-gray-800 font-semibold text-lg tracking-tight group-hover:text-blue-600 transition-colors">Tutorial</span>
+                    </a>
                 </div>
-                <nav class='main-nav'>
-                    <a href='../index.html'>Home</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html"
+                        class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Home</a>
+                    <a href="tutorial.html" class="text-blue-600 font-medium border-b-2 border-blue-600">Tutorial</a>
+                    <a href="references.html"
+                        class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Referências</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="menuToggle"
+                        class="text-gray-600 hover:text-blue-600 focus:outline-none p-2 rounded-md hover:bg-gray-100 transition-colors">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menuOverlay"
+        class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <!-- Sidebar Navigation (Mobile & Desktop) -->
+    <div class="flex pt-16 min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 lg:static lg:block transition-transform duration-300 ease-in-out overflow-y-auto pt-16 lg:pt-0 shadow-lg lg:shadow-none">
+            <div class="p-4 lg:hidden flex justify-end">
+                <button id="closeMenu" class="text-gray-500 hover:text-red-500 focus:outline-none">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 py-6 space-y-1">
+                <h3 class="px-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Básico</h3>
+                <a href="tutorial.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Introdução</a>
+                <a href="where-to.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Onde
+                    Colocar</a>
+                <a href="output.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Saída
+                    (Output)</a>
+                <a href="syntax.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Sintaxe</a>
+                <a href="variables.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Variáveis</a>
+                <a href="operators.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Operadores</a>
+                <a href="arithmetic.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Aritmética</a>
+                <a href="assignment.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Atribuição</a>
+                <a href="data-types.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Tipos
+                    de Dados</a>
+                <a href="functions.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Funções</a>
+                <a href="objects.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Objetos</a>
+                <a href="events.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium bg-blue-50 text-blue-700 border-l-4 border-blue-600">Eventos</a>
+                <a href="strings.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Strings</a>
+                <a href="numbers.html"
+                    class="block px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Numbers</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 min-w-0 overflow-hidden">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+                <!-- Breadcrumbs -->
+                <nav class="flex mb-8 text-sm text-gray-500" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                        <li class="inline-flex items-center">
+                            <a href="../index.html"
+                                class="inline-flex items-center hover:text-blue-600 transition-colors">
+                                <i class="fas fa-home mr-2"></i> Home
+                            </a>
+                        </li>
+                        <li>
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-gray-300 mx-2"></i>
+                                <a href="tutorial.html" class="hover:text-blue-600 transition-colors">Básico</a>
+                            </div>
+                        </li>
+                        <li aria-current="page">
+                            <div class="flex items-center">
+                                <i class="fas fa-chevron-right text-gray-300 mx-2"></i>
+                                <span class="text-gray-900 font-medium">Eventos</span>
+                            </div>
+                        </li>
+                    </ol>
                 </nav>
-            </div>
-        </header>
 
-        <main class='container'>
-            <h1>events</h1>
-            <p>Conteúdo será adicionado aqui.</p>
+                <!-- Page Header -->
+                <div class="mb-10 border-b border-gray-200 pb-6">
+                    <h1 class="text-4xl font-extrabold text-gray-900 mb-4">JavaScript Events</h1>
+                    <p class="text-xl text-gray-600 leading-relaxed">
+                        Eventos HTML são "coisas" que acontecem com elementos HTML.
+                        Quando o JavaScript é usado em páginas HTML, o JavaScript pode "reagir" a esses eventos.
+                    </p>
+                </div>
+
+                <!-- Content Sections -->
+                <div class="space-y-12">
+
+                    <!-- Section 1: HTML Events -->
+                    <section
+                        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-blue-100 text-blue-600 p-2 rounded-lg mr-3"><i
+                                    class="fas fa-bolt"></i></span>
+                            Eventos HTML
+                        </h2>
+                        <p class="text-gray-700 mb-4">
+                            Um evento HTML pode ser algo que o navegador faz, ou algo que o usuário faz.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            Aqui estão alguns exemplos de eventos HTML:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6 ml-4">
+                            <li>Uma página da web HTML terminou de carregar</li>
+                            <li>Um campo de entrada HTML foi alterado</li>
+                            <li>Um botão HTML foi clicado</li>
+                        </ul>
+                        <p class="text-gray-700 mb-4">
+                            Muitas vezes, quando eventos acontecem, você pode querer fazer algo.
+                        </p>
+                        <p class="text-gray-700 mb-4">
+                            O JavaScript permite executar código quando eventos são detectados.
+                        </p>
+                        <p class="text-gray-700">
+                            O HTML permite que atributos de manipuladores de eventos, com código JavaScript, sejam
+                            adicionados a elementos HTML.
+                        </p>
+                    </section>
+
+                    <!-- Section 2: Example -->
+                    <section
+                        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-green-100 text-green-600 p-2 rounded-lg mr-3"><i
+                                    class="fas fa-code"></i></span>
+                            Exemplo
+                        </h2>
+                        <p class="text-gray-700 mb-4">
+                            Com aspas simples:
+                        </p>
+                        <div class="bg-gray-800 rounded-lg overflow-hidden mb-6 shadow-inner">
+                            <div
+                                class="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-700">
+                                <span class="text-xs text-gray-400 font-mono">HTML</span>
+                                <button onclick="copyCode(this)"
+                                    class="text-xs text-gray-400 hover:text-white transition-colors">
+                                    <i class="far fa-copy mr-1"></i> Copiar
+                                </button>
+                                <pre
+                                    class="hidden"><button onclick='document.getElementById("demo").innerHTML = Date()'>The time is?</button></pre>
+                            </div>
+                            <div class="p-4 overflow-x-auto">
+                                <code class="text-sm font-mono text-gray-300">
+                                    &lt;button onclick='document.getElementById("demo").innerHTML = Date()'&gt;The time is?&lt;/button&gt;
+                                </code>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-700 mb-4">
+                            Com aspas duplas:
+                        </p>
+                        <div class="bg-gray-800 rounded-lg overflow-hidden mb-6 shadow-inner">
+                            <div
+                                class="flex items-center justify-between px-4 py-2 bg-gray-900 border-b border-gray-700">
+                                <span class="text-xs text-gray-400 font-mono">HTML</span>
+                                <button onclick="copyCode(this)"
+                                    class="text-xs text-gray-400 hover:text-white transition-colors">
+                                    <i class="far fa-copy mr-1"></i> Copiar
+                                </button>
+                                <pre
+                                    class="hidden"><button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button></pre>
+                            </div>
+                            <div class="p-4 overflow-x-auto">
+                                <code class="text-sm font-mono text-gray-300">
+                                    &lt;button onclick="document.getElementById('demo').innerHTML = Date()"&gt;The time is?&lt;/button&gt;
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                            <p class="text-blue-700 font-medium">
+                                <i class="fas fa-info-circle mr-2"></i>
+                                No exemplo acima, o código JavaScript altera o conteúdo do elemento com id="demo".
+                            </p>
+                        </div>
+
+                        <!-- Interactive Demo -->
+                        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3">Teste você mesmo:</h3>
+                            <div class="flex flex-col sm:flex-row gap-4 items-center">
+                                <button onclick="events_demo1()"
+                                    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors shadow-sm">
+                                    Que horas são?
+                                </button>
+                                <div id="result1"
+                                    class="hidden p-3 bg-white border border-gray-300 rounded text-gray-800 font-mono shadow-inner w-full sm:w-auto min-w-[200px] text-center">
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Section 3: Common HTML Events -->
+                    <section
+                        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                            <span class="bg-purple-100 text-purple-600 p-2 rounded-lg mr-3"><i
+                                    class="fas fa-list"></i></span>
+                            Eventos HTML Comuns
+                        </h2>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Evento</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Descrição</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">
+                                            onchange</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">Um elemento HTML foi alterado</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">
+                                            onclick</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">O usuário clica em um elemento HTML
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">
+                                            onmouseover</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">O usuário move o mouse sobre um
+                                            elemento HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">
+                                            onmouseout</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">O usuário move o mouse para fora de
+                                            um elemento HTML</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">
+                                            onkeydown</td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">O usuário pressiona uma tecla do
+                                            teclado</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-purple-600">onload
+                                        </td>
+                                        <td class="px-6 py-4 text-sm text-gray-700">O navegador terminou de carregar a
+                                            página</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <!-- Section 4: What can JavaScript Do? -->
+                    <section
+                        class="bg-white rounded-xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4 flex items-center">
+                            <span class="bg-yellow-100 text-yellow-600 p-2 rounded-lg mr-3"><i
+                                    class="fas fa-magic"></i></span>
+                            O que o JavaScript pode fazer?
+                        </h2>
+                        <p class="text-gray-700 mb-4">
+                            Manipuladores de eventos podem ser usados para lidar e verificar a entrada do usuário, ações
+                            do usuário e ações do navegador:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6 ml-4">
+                            <li>Coisas que devem ser feitas toda vez que uma página carrega</li>
+                            <li>Coisas que devem ser feitas quando a página é fechada</li>
+                            <li>Ação que deve ser executada quando um usuário clica em um botão</li>
+                            <li>Conteúdo que deve ser verificado quando um usuário insere dados</li>
+                            <li>E muito mais...</li>
+                        </ul>
+                        <p class="text-gray-700 mb-4">
+                            Muitos métodos diferentes podem ser usados para permitir que o JavaScript trabalhe com
+                            eventos:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6 ml-4">
+                            <li>Atributos de evento HTML podem executar código JavaScript diretamente</li>
+                            <li>Atributos de evento HTML podem chamar funções JavaScript</li>
+                            <li>Você pode atribuir suas próprias funções de manipulador de eventos a elementos HTML</li>
+                            <li>Você pode impedir que eventos sejam enviados ou manipulados</li>
+                            <li>E muito mais...</li>
+                        </ul>
+                    </section>
+
+                </div>
+
+                <!-- Navigation Buttons -->
+                <div class="flex justify-between mt-12 pt-8 border-t border-gray-200">
+                    <a href="functions.html"
+                        class="flex items-center px-6 py-3 bg-white border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 hover:border-blue-500 hover:text-blue-600 transition-all shadow-sm group">
+                        <i class="fas fa-arrow-left mr-2 transform group-hover:-translate-x-1 transition-transform"></i>
+                        <span>Anterior: Functions</span>
+                    </a>
+                    <a href="strings.html"
+                        class="flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-md hover:shadow-lg group">
+                        <span>Próximo: Strings</span>
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+            </div>
         </main>
-
-        <footer class='footer'>
-            <div class='footer-content'>
-                <p>&copy; 2025 JS Tutorial</p>
-            </div>
-        </footer>
     </div>
-    
-    <script src='../js/script.js'></script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <span class="bg-js-yellow text-js-dark px-2 py-1 rounded text-sm">JS</span> Tutorial
+                    </h3>
+                    <p class="text-gray-400">
+                        Aprenda JavaScript de forma fácil e interativa.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="../index.html" class="hover:text-white transition-colors">Home</a></li>
+                        <li><a href="tutorial.html" class="hover:text-white transition-colors">Tutorial</a></li>
+                        <li><a href="references.html" class="hover:text-white transition-colors">Referências</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Sobre</h4>
+                    <p class="text-gray-400">
+                        Este projeto é um tutorial completo de JavaScript, cobrindo desde o básico até conceitos
+                        avançados.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 JavaScript Tutorial. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
+
 </html>

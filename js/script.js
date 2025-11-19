@@ -6,18 +6,18 @@
 // ========================================
 // NAVEGAÇÃO RESPONSIVA
 // ========================================
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log('Site JavaScript Tutorial carregado!');
-    
+
     // Inicializar menu hambúrguer mobile
     initMobileMenu();
-    
+
     // Detectar página ativa
     highlightActivePage();
-    
+
     // Scroll suave para âncoras
     initSmoothScroll();
-    
+
     // Code syntax highlighting (básico)
     highlightCodeBlocks();
 });
@@ -31,12 +31,12 @@ function initMobileMenu() {
     const sidebar = document.getElementById('sidebar');
     const menuOverlay = document.getElementById('menuOverlay');
     const closeMenu = document.getElementById('closeMenu');
-    
+
     // Verifica se os elementos existem (nem todas as páginas têm menu hambúrguer)
     if (!menuToggle || !sidebar || !menuOverlay || !closeMenu) {
         return;
     }
-    
+
     const menuLinks = sidebar.querySelectorAll('a');
 
     // Função para abrir menu
@@ -83,7 +83,7 @@ function initMobileMenu() {
 function highlightActivePage() {
     const currentPage = window.location.pathname;
     const navLinks = document.querySelectorAll('.main-nav a, .sidebar a');
-    
+
     navLinks.forEach(link => {
         if (link.getAttribute('href') && currentPage.includes(link.getAttribute('href'))) {
             link.classList.add('active');
@@ -96,12 +96,12 @@ function highlightActivePage() {
  */
 function initSmoothScroll() {
     const links = document.querySelectorAll('a[href^="#"]');
-    
+
     links.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href').substring(1);
             const targetElement = document.getElementById(targetId);
-            
+
             if (targetElement) {
                 e.preventDefault();
                 targetElement.scrollIntoView({
@@ -118,7 +118,7 @@ function initSmoothScroll() {
  */
 function highlightCodeBlocks() {
     const codeBlocks = document.querySelectorAll('pre code, .code-block');
-    
+
     codeBlocks.forEach(block => {
         // Adiciona classe para estilização
         block.classList.add('highlighted');
@@ -138,33 +138,6 @@ function toggleSidebar() {
 /**
  * Copiar código para clipboard
  */
-function copyCode(button) {
-    const codeBlock = button.nextElementSibling;
-    const code = codeBlock.textContent;
-    
-    navigator.clipboard.writeText(code).then(() => {
-        button.textContent = '✅ Copiado!';
-        setTimeout(() => {
-            button.textContent = '📋 Copiar';
-        }, 2000);
-    });
-}
-
-/**
- * Executar código JavaScript no navegador (Try it yourself)
- */
-function runCode(code) {
-    try {
-        const result = eval(code);
-        return result !== undefined ? String(result) : 'Código executado com sucesso!';
-    } catch (error) {
-        return `Erro: ${error.message}`;
-    }
-}
-
-// ========================================
-// UTILITÁRIOS
-// ========================================
 
 /**
  * Formata data para exibição
@@ -322,13 +295,13 @@ function demoDoWhile() {
 
 function demoCompare() {
     let output = '';
-    
+
     // For Loop
     for (let i = 1; i <= 3; i++) {
         output += "For: " + i + "\n";
     }
     output += "\n";
-    
+
     // While Loop
     let j = 1;
     while (j <= 3) {
@@ -336,14 +309,14 @@ function demoCompare() {
         j++;
     }
     output += "\n";
-    
+
     // Do-While Loop
     let k = 1;
     do {
         output += "Do-While: " + k + "\n";
         k++;
     } while (k <= 3);
-    
+
     const resultDiv = document.getElementById('result-compare');
     resultDiv.querySelector('div').textContent = output;
     resultDiv.classList.remove('hidden');
@@ -473,7 +446,7 @@ function loopsWhile_demo3() {
 
 function loopsWhile_demo4() {
     let output = '';
-    
+
     // While Loop
     output += "--- While Loop ---\n";
     let x = 10;
@@ -482,7 +455,7 @@ function loopsWhile_demo4() {
         x++;
     }
     if (x === 10) output += "(While não executou)\n";
-    
+
     output += "\n--- Do-While Loop ---\n";
     // Do-While Loop
     let y = 10;
@@ -490,7 +463,7 @@ function loopsWhile_demo4() {
         output += "Do-While: " + y + "\n";
         y++;
     } while (y < 5);
-    
+
     const resultDiv = document.getElementById('result4');
     resultDiv.querySelector('div').textContent = output;
     resultDiv.classList.remove('hidden');
@@ -545,7 +518,7 @@ function break_demo2() {
     while (i < 10) {
         output += "Contando: " + i + "\n";
         i++;
-        
+
         if (i === 7) {
             output += "🛑 Break ativado!\n";
             break;
@@ -564,14 +537,14 @@ function break_demo3() {
 
     for (let i = 0; i < frutas.length; i++) {
         output += "Verificando: " + frutas[i] + "\n";
-        
+
         if (frutas[i] === procurar) {
             output += "✅ Encontrado!\n";
             encontrado = true;
             break;
         }
     }
-    
+
     const resultDiv = document.getElementById('result3');
     resultDiv.querySelector('div').textContent = output;
     resultDiv.classList.remove('hidden');
@@ -581,7 +554,7 @@ function break_demo4() {
     let output = '';
     for (let i = 1; i <= 3; i++) {
         output += "Grupo " + i + "\n";
-        
+
         for (let j = 1; j <= 5; j++) {
             if (j === 3) {
                 output += "  Break no loop interno\n";
@@ -612,13 +585,204 @@ function break_demo5() {
     if (todosPositivos) {
         output += "✅ Todos os números são positivos!";
     }
-    
+
     const resultDiv = document.getElementById('result5');
     resultDiv.querySelector('div').textContent = output;
     resultDiv.classList.remove('hidden');
 }
 
-// Export functions if using modules (opcional)
+// ========================================
+// NUMBERS.HTML DEMOS
+// ========================================
+function numbers_demo1() {
+    let x = 0.1 + 0.2;
+    showResult('result1', "0.1 + 0.2 = " + x);
+}
+function numbers_demo2() {
+    let x = 10;
+    let y = "20";
+    let z = x + y;
+    showResult('result2', "10 + '20' = " + z);
+}
+function numbers_demo3() {
+    let x = 100 / "Apple";
+    showResult('result3', "100 / 'Apple' = " + x);
+}
+function numbers_demo4() {
+    let myNumber = 2;
+    let txt = "";
+    while (myNumber != Infinity) {
+        myNumber = myNumber * myNumber;
+        txt = txt + myNumber + "<br>";
+    }
+    showResult('result4', txt);
+}
+function numbers_demo5() {
+    let x = 0xFF;
+    showResult('result5', "0xFF = " + x);
+}
+
+// ========================================
+// NUMBER_METHODS.HTML DEMOS
+// ========================================
+function numberMethods_demo1() {
+    let x = 123;
+    showResult('result1', x.toString() + "<br>" + (123).toString() + "<br>" + (100 + 23).toString());
+}
+function numberMethods_demo2() {
+    let x = 9.656;
+    showResult('result2', x.toFixed(0) + "<br>" + x.toFixed(2) + "<br>" + x.toFixed(4) + "<br>" + x.toFixed(6));
+}
+function numberMethods_demo3() {
+    let x = 9.656;
+    showResult('result3', x.toPrecision() + "<br>" + x.toPrecision(2) + "<br>" + x.toPrecision(4) + "<br>" + x.toPrecision(6));
+}
+function numberMethods_demo4() {
+    showResult('result4', Number(true) + "<br>" + Number(false) + "<br>" + Number("10") + "<br>" + Number("  10") + "<br>" + Number("10  ") + "<br>" + Number(" 10  ") + "<br>" + Number("10.33") + "<br>" + Number("10,33") + "<br>" + Number("10 33") + "<br>" + Number("John"));
+}
+function numberMethods_demo5() {
+    showResult('result5', parseInt("-10") + "<br>" + parseInt("-10.33") + "<br>" + parseInt("10") + "<br>" + parseInt("10.33") + "<br>" + parseInt("10 20 30") + "<br>" + parseInt("10 years") + "<br>" + parseInt("years 10"));
+}
+function numberMethods_demo6() {
+    showResult('result6', Number.isInteger(10) + "<br>" + Number.isInteger(10.5));
+}
+
+// ========================================
+// NUMBER_PROPERTIES.HTML DEMOS
+// ========================================
+function numberProperties_demo1() {
+    let x = Number.EPSILON;
+    showResult('result1', x);
+}
+function numberProperties_demo2() {
+    showResult('result2', "MAX_VALUE: " + Number.MAX_VALUE + "<br>MIN_VALUE: " + Number.MIN_VALUE);
+}
+function numberProperties_demo3() {
+    showResult('result3', "MAX_SAFE_INTEGER: " + Number.MAX_SAFE_INTEGER + "<br>MIN_SAFE_INTEGER: " + Number.MIN_SAFE_INTEGER);
+}
+
+// ========================================
+// BITWISE.HTML DEMOS
+// ========================================
+function bitwise_demo1() {
+    showResult('result1', "5 & 1 = " + (5 & 1));
+}
+function bitwise_demo2() {
+    showResult('result2', "5 | 1 = " + (5 | 1));
+}
+function bitwise_demo3() {
+    showResult('result3', "5 ^ 1 = " + (5 ^ 1));
+}
+function bitwise_demo4() {
+    showResult('result4', "~5 = " + (~5));
+}
+function bitwise_demo5() {
+    showResult('result5', "5 << 1 = " + (5 << 1) + "<br>5 >> 1 = " + (5 >> 1) + "<br>5 >>> 1 = " + (5 >>> 1));
+}
+function bitwise_demo6() {
+    showResult('result6', dec2bin(-5));
+}
+function dec2bin(dec) {
+    return (dec >>> 0).toString(2);
+}
+
+// ========================================
+// BIGINT.HTML DEMOS
+// ========================================
+function bigint_demo1() {
+    let x = 1234567890123456789012345n;
+    let y = BigInt("1234567890123456789012345");
+    showResult('result1', x + "<br>" + y);
+}
+function bigint_demo2() {
+    let x = 9007199254740995n;
+    let y = 9007199254740995n;
+    let z = x * y;
+    showResult('result2', z);
+}
+function bigint_demo3() {
+    let x = 5n;
+    let y = Number(x) / 2;
+    showResult('result3', y);
+}
+function bigint_demo4() {
+    showResult('result4', typeof 1234567890123456789012345n);
+}
+
+// ========================================
+// FUNCTIONS.HTML DEMOS
+// ========================================
+function functions_demo1() {
+    myFunction();
+}
+function myFunction() {
+    showResult('result1', "Minha primeira função foi chamada!");
+}
+
+function functions_demo2() {
+    let x = myFunctionProduct(4, 3);
+    showResult('result2', "O produto de 4 e 3 é: " + x);
+}
+function myFunctionProduct(p1, p2) {
+    return p1 * p2;
+}
+
+function functions_demo3() {
+    let fahrenheit = 77;
+    let celsius = toCelsius(fahrenheit);
+    showResult('result3', fahrenheit + "°F é igual a " + celsius + "°C");
+}
+function toCelsius(fahrenheit) {
+    return (5 / 9) * (fahrenheit - 32);
+}
+
+function functions_demo4() {
+    let text = "A temperatura é " + toCelsius(77) + " Celsius";
+    showResult('result4', text);
+}
+
+function functions_demo5() {
+    let carName = "Volvo";
+    let text = "Dentro da função: " + typeof carName + " " + carName;
+    showResult('result5', text);
+}
+
+// ========================================
+// EVENTS.HTML DEMOS
+// ========================================
+function events_demo1() {
+    showResult('result1', Date());
+}
+
+// ========================================
+// ARRAYS.HTML DEMOS
+// ========================================
+function arrays_demo1() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    showResult('result1', cars);
+}
+
+function arrays_demo2() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    showResult('result2', cars[0]);
+}
+
+function arrays_demo3() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    cars[0] = "Opel";
+    showResult('result3', cars);
+}
+
+function arrays_demo4() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    showResult('result4', cars.toString());
+}
+
+function arrays_demo5() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    showResult('result5', typeof cars);
+}
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         highlightActivePage,

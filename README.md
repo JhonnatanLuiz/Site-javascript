@@ -84,7 +84,7 @@ Site-javascript/
 └── README.md                   # Este arquivo
 ```
 
-## 📚 Páginas Completas (22 de 22 implementadas)
+## 📚 Páginas Completas (30 de 30 implementadas)
 
 ### 🔢 Operadores (4 páginas)
 1. **operators.html** - Visão geral de todos os tipos de operadores JavaScript
@@ -115,11 +115,21 @@ Site-javascript/
 20. **string_search.html** - Métodos de busca (indexOf, includes, match)
 21. **string_reference.html** - Referência completa de métodos de string
 
+### 🔢 Numbers (6 páginas) - ✅ COMPLETO
+22. **numbers.html** - Tipos numéricos, precisão, NaN, Infinity, Hexadecimal
+23. **number_methods.html** - Métodos (toString, toFixed, toPrecision, parseInt, parseFloat)
+24. **number_properties.html** - Propriedades (EPSILON, MAX_VALUE, MIN_VALUE, SAFE_INTEGER)
+25. **number_reference.html** - Tabela de referência completa
+26. **bitwise.html** - Operadores bitwise (AND, OR, XOR, NOT, Shifts)
+27. **bigint.html** - Inteiros de precisão arbitrária (BigInt)
+
+### 🔧 Functions & Events (2 páginas) - ✅ COMPLETO
+28. **functions.html** - Declaração, invocação, retorno e escopo de variáveis
+29. **events.html** - Eventos HTML e manipuladores de eventos JavaScript
+
 ### 📝 Próximas Seções
-- **Numbers** (numbers.html)
-- **Functions** (functions.html)
-- **Events** (events.html)
 - **Arrays** (arrays.html)
+- **Array Methods** (array_methods.html)
 
 ## 🎨 Design e Tecnologias
 
@@ -231,4 +241,4 @@ Projeto desenvolvido por **Jhonnatan Luiz** para fins educacionais.
 
 **Desenvolvido com ❤️ para aprender e ensinar JavaScript**
 
-**Status**: 🟢 **22 de 22 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings ✅ completos)
+**Status**: 🟢 **30 de 30 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings + Numbers + Functions/Events ✅ completos)

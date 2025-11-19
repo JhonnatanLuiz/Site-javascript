@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript Numbers - JS Tutorial</title>
+    <title>JavaScript BigInt - JS Tutorial</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .sidebar-transition {
@@ -63,18 +63,21 @@
                     <a href="tutorial.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
                     <a href="numbers.html"
-                        class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS
-                        Numbers</a>
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Numbers</a>
                     <a href="number_methods.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
                         Methods</a>
                     <a href="number_properties.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
                         Properties</a>
+                    <a href="number_reference.html"
+                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Number
+                        Reference</a>
                     <a href="bitwise.html"
                         class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Bitwise</a>
                     <a href="bigint.html"
-                        class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS BigInt</a>
+                        class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS
+                        BigInt</a>
                 </nav>
             </div>
         </aside>
@@ -87,36 +90,34 @@
                 <span class="mx-2">›</span>
                 <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
                 <span class="mx-2">›</span>
-                <span class="text-gray-800 font-semibold">JS Numbers</span>
+                <span class="text-gray-800 font-semibold">JS BigInt</span>
             </div>
 
-            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Numbers</h1>
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript BigInt</h1>
 
             <!-- Intro -->
             <div class="mb-8">
-                <p class="text-gray-700 mb-4 text-lg">JavaScript tem apenas um tipo de número. Números podem ser
-                    escritos com ou sem decimais.</p>
-                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6 p-4">
-                    <pre
-                        class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">3.14</span>;    <span class="text-gray-400">// Com decimais</span>
-<span class="text-blue-400">let</span> y = <span class="text-green-400">3</span>;       <span class="text-gray-400">// Sem decimais</span></code></pre>
-                </div>
+                <p class="text-gray-700 mb-4 text-lg">Variáveis JavaScript <code>BigInt</code> são usadas para armazenar
+                    números inteiros grandes demais para serem representados por um <code>Number</code> normal do
+                    JavaScript.</p>
             </div>
 
-            <!-- Floating Precision -->
+            <!-- Creating BigInt -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Precisão de Ponto Flutuante</h2>
-                <p class="text-gray-700 mb-4">Aritmética de ponto flutuante nem sempre é 100% precisa.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Criando BigInt</h2>
+                <p class="text-gray-700 mb-4">Para criar um <code>BigInt</code>, adicione <code>n</code> ao final de um
+                    inteiro ou chame <code>BigInt()</code>:</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">0.1</span> + <span class="text-green-400">0.2</span>;
-<span class="text-gray-400">// 0.30000000000000004</span></code></pre>
+                        <pre
+                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">1234567890123456789012345n</span>;
+<span class="text-blue-400">let</span> y = BigInt(<span class="text-yellow-300">"1234567890123456789012345"</span>);</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo1()">
+                            onclick="bigint_demo1()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result1" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -127,22 +128,22 @@
                 </div>
             </div>
 
-            <!-- Adding Numbers and Strings -->
+            <!-- Arithmetic -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Adicionando Números e Strings</h2>
-                <p class="text-gray-700 mb-4">Se você adicionar dois números, o resultado será um número. Se você
-                    adicionar um número e uma string, o resultado será uma concatenação de string.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Aritmética BigInt</h2>
+                <p class="text-gray-700 mb-4">Operadores como <code>+</code>, <code>-</code>, <code>*</code>,
+                    <code>/</code>, <code>**</code> e <code>%</code> funcionam com <code>BigInt</code>.</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">10</span>;
-<span class="text-blue-400">let</span> y = <span class="text-yellow-300">"20"</span>;
-<span class="text-blue-400">let</span> z = x + y;   <span class="text-gray-400">// "1020"</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">9007199254740995n</span>;
+<span class="text-blue-400">let</span> y = <span class="text-green-400">9007199254740995n</span>;
+<span class="text-blue-400">let</span> z = x * y;</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo2()">
+                            onclick="bigint_demo2()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result2" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -153,21 +154,21 @@
                 </div>
             </div>
 
-            <!-- NaN -->
+            <!-- Mixing Types -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">NaN - Not a Number</h2>
-                <p class="text-gray-700 mb-4">NaN é uma palavra reservada do JavaScript indicando que um número não é um
-                    número legal.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Misturando Tipos</h2>
+                <p class="text-gray-700 mb-4">Você não pode misturar <code>BigInt</code> e <code>Number</code> em
+                    operações aritméticas. Você deve converter explicitamente.</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
-                        <pre
-                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">100</span> / <span class="text-yellow-300">"Apple"</span>;  <span class="text-gray-400">// NaN</span></code></pre>
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">5n</span>;
+<span class="text-blue-400">let</span> y = Number(x) / <span class="text-green-400">2</span>;</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo3()">
+                            onclick="bigint_demo3()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result3" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -178,19 +179,20 @@
                 </div>
             </div>
 
-            <!-- Infinity -->
+            <!-- Typeof -->
             <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Infinity</h2>
-                <p class="text-gray-700 mb-4">Infinity (ou -Infinity) é o valor que o JavaScript retornará se você
-                    calcular um número fora do maior número possível.</p>
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Typeof BigInt</h2>
+                <p class="text-gray-700 mb-4">O operador <code>typeof</code> retorna "bigint" para variáveis BigInt.</p>
                 <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
                     <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
                         <h3 class="font-semibold text-gray-800">Exemplo</h3>
                     </div>
                     <div class="p-4">
+                        <pre
+                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">typeof</span> <span class="text-green-400">1234567890123456789012345n</span>;</code></pre>
                         <button
                             class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo4()">
+                            onclick="bigint_demo4()">
                             ▶ Experimente você mesmo »
                         </button>
                         <div id="result4" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
@@ -201,40 +203,15 @@
                 </div>
             </div>
 
-            <!-- Hexadecimal -->
-            <div class="mb-8">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">Hexadecimal</h2>
-                <p class="text-gray-700 mb-4">JavaScript interpreta constantes numéricas como hexadecimais se forem
-                    precedidas por 0x.</p>
-                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
-                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
-                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
-                    </div>
-                    <div class="p-4">
-                        <pre
-                            class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-blue-400">let</span> x = <span class="text-green-400">0xFF</span>;   <span class="text-gray-400">// 255</span></code></pre>
-                        <button
-                            class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105"
-                            onclick="numbers_demo5()">
-                            ▶ Experimente você mesmo »
-                        </button>
-                        <div id="result5" class="mt-4 hidden bg-gray-50 p-3 rounded border border-gray-200">
-                            <p class="text-gray-700 font-medium">Resultado:</p>
-                            <div class="text-gray-900 mt-1 font-mono"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Navigation -->
             <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
-                <a href="strings.html"
+                <a href="bitwise.html"
                     class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
-                    ← Anterior: JS Strings
+                    ← Anterior: JS Bitwise
                 </a>
-                <a href="number_methods.html"
+                <a href="../index.html"
                     class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
-                    Próximo: JS Number Methods →
+                    Home →
                 </a>
             </div>
         </main>
