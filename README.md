@@ -84,7 +84,7 @@ Site-javascript/
 └── README.md                   # Este arquivo
 ```
 
-## 📚 Páginas Completas (17 de 22 implementadas)
+## 📚 Páginas Completas (22 de 22 implementadas)
 
 ### 🔢 Operadores (4 páginas)
 1. **operators.html** - Visão geral de todos os tipos de operadores JavaScript
@@ -108,8 +108,14 @@ Site-javascript/
 15. **break.html** - Break statement (5 exemplos: for, busca, while, aninhado, condição complexa)
 16. **continue.html** - Continue statement (6 exemplos: pular pares, múltiplos 3, negativos, nomes, vs break, soma seletiva)
 
+### 🔤 Strings (5 páginas) - ✅ COMPLETO
+17. **strings.html** - Introdução a strings, aspas, escape characters
+18. **string_templates.html** - Template literals, interpolação, multiline
+19. **string_methods.html** - Métodos principais (slice, replace, upper/lower)
+20. **string_search.html** - Métodos de busca (indexOf, includes, match)
+21. **string_reference.html** - Referência completa de métodos de string
+
 ### 📝 Próximas Seções
-- **Strings** (strings.html)
 - **Numbers** (numbers.html)
 - **Functions** (functions.html)
 - **Events** (events.html)
@@ -225,4 +231,4 @@ Projeto desenvolvido por **Jhonnatan Luiz** para fins educacionais.
 
 **Desenvolvido com ❤️ para aprender e ensinar JavaScript**
 
-**Status**: 🟢 **17 de 22 páginas básicas implementadas** (Operadores + Condicionais + Loops ✅ completos)
+**Status**: 🟢 **22 de 22 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings ✅ completos)
