@@ -783,6 +783,187 @@ function arrays_demo5() {
     showResult('result5', typeof cars);
 }
 
+// ========================================
+// FUNCTIONS.HTML DEMOS
+// ========================================
+function functions_demo1() {
+    function myFunction(p1, p2) {
+        return p1 * p2;
+    }
+    const result = myFunction(4, 3);
+    document.getElementById('demo1').innerHTML = "O resultado é: " + result;
+}
+
+function functions_demo2() {
+    function toCelsius(fahrenheit) {
+        return (5/9) * (fahrenheit - 32);
+    }
+    let value = toCelsius(77);
+    document.getElementById('demo2').innerHTML = "77 graus Fahrenheit são " + value.toFixed(2) + " graus Celsius";
+}
+
+function functions_demo3() {
+    function myFunction(a, b) {
+        return a * b;
+    }
+    let x = myFunction(4, 3);
+    document.getElementById('demo3').innerHTML = "O valor de x é: " + x;
+}
+
+function functions_demo4() {
+    function toCelsius(fahrenheit) {
+        return (5/9) * (fahrenheit - 32);
+    }
+    let text = "A temperatura é " + toCelsius(77).toFixed(2) + " Celsius";
+    document.getElementById('demo4').innerHTML = text;
+}
+
+function functions_demo5() {
+    function toCelsius(fahrenheit) {
+        return (5/9) * (fahrenheit - 32);
+    }
+    let text = toCelsius;
+    document.getElementById('demo5').innerHTML = "Função sem (): " + text;
+}
+
+function functions_demo6() {
+    function toCelsius(fahrenheit) {
+        return (5/9) * (fahrenheit - 32);
+    }
+    let x = toCelsius(77);
+    let text = "A temperatura é " + x.toFixed(2) + " Celsius";
+    document.getElementById('demo6').innerHTML = text;
+}
+
+function functions_demo7() {
+    function toCelsius(fahrenheit) {
+        return (5/9) * (fahrenheit - 32);
+    }
+    let text = "A temperatura é " + toCelsius(77).toFixed(2) + " Celsius";
+    document.getElementById('demo7').innerHTML = text;
+}
+
+function functions_demo8() {
+    function myFunction() {
+        let carName = "Volvo";
+        return "Dentro da função, carName é: " + carName;
+    }
+    try {
+        document.getElementById('demo8').innerHTML = myFunction() + "<br>Fora da função, carName gera erro!";
+    } catch(err) {
+        document.getElementById('demo8').innerHTML = myFunction();
+    }
+}
+
+// ========================================
+// FUNCTION_PARAMETERS.HTML DEMOS
+// ========================================
+function functionParams_demo1() {
+    function myFunction(x, y) {
+        if (y === undefined) {
+            y = 2;
+        }
+        return x * y;
+    }
+    document.getElementById('demo1').innerHTML = "Resultado com y undefined: " + myFunction(4) + "<br>Resultado com y definido: " + myFunction(4, 3);
+}
+
+function functionParams_demo2() {
+    function myFunction(x, y = 10) {
+        return x + y;
+    }
+    document.getElementById('demo2').innerHTML = "myFunction(5) = " + myFunction(5);
+}
+
+function functionParams_demo3() {
+    function sum(...args) {
+        let sum = 0;
+        for (let arg of args) sum += arg;
+        return sum;
+    }
+    let x = sum(4, 9, 16, 25, 29, 100, 66, 77);
+    document.getElementById('demo3').innerHTML = "Soma de todos os argumentos: " + x;
+}
+
+function functionParams_demo4() {
+    function findMax() {
+        let max = -Infinity;
+        for (let i = 0; i < arguments.length; i++) {
+            if (arguments[i] > max) {
+                max = arguments[i];
+            }
+        }
+        return max;
+    }
+    let x = findMax(1, 123, 500, 115, 44, 88);
+    document.getElementById('demo4').innerHTML = "O maior valor é: " + x;
+}
+
+function functionParams_demo5() {
+    function sumAll() {
+        let sum = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            sum += arguments[i];
+        }
+        return sum;
+    }
+    let x = sumAll(1, 123, 500, 115, 44, 88);
+    document.getElementById('demo5').innerHTML = "A soma de todos os valores é: " + x;
+}
+
+function functionParams_demo6() {
+    function myFunction(x) {
+        x = 10;
+    }
+    let y = 5;
+    myFunction(y);
+    document.getElementById('demo6').innerHTML = "Valor de y antes: 5<br>Chamou myFunction(y)<br>Valor de y depois: " + y + " (não mudou!)";
+}
+
+function functionParams_demo7() {
+    function myFunction(obj) {
+        obj.name = "BMW";
+    }
+    const myCar = {name: "Volvo"};
+    document.getElementById('demo7').innerHTML = "Nome do carro antes: " + myCar.name;
+    myFunction(myCar);
+    document.getElementById('demo7').innerHTML += "<br>Nome do carro depois: " + myCar.name + " (mudou!)";
+}
+
+// ========================================
+// FUNCTION_ARROW.HTML DEMOS
+// ========================================
+function arrowFunc_demo1() {
+    let myFunction = (a, b) => a * b;
+    document.getElementById('demo1').innerHTML = "myFunction(4, 5) = " + myFunction(4, 5);
+}
+
+function arrowFunc_demo2() {
+    let hello = name => "Olá " + name;
+    document.getElementById('demo2').innerHTML = hello("Mundo!");
+}
+
+function arrowFunc_demo3() {
+    let multiply = (a, b) => a * b;
+    document.getElementById('demo3').innerHTML = "multiply(7, 8) = " + multiply(7, 8);
+}
+
+function arrowFunc_demo4() {
+    let myFunction = (a, b) => {
+        let chuck = 42;
+        return a * b * chuck;
+    }
+    document.getElementById('demo4').innerHTML = "myFunction(2, 3) = " + myFunction(2, 3);
+}
+
+function arrowFunc_demo5() {
+    document.getElementById('demo5').innerHTML = "Com função regular, 'this' representa o objeto que chamou a função (window, document, button, etc.)";
+}
+
+function arrowFunc_demo6() {
+    document.getElementById('demo6').innerHTML = "Com arrow function, 'this' representa o proprietário da função (objeto que definiu a arrow function)";
+}
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         highlightActivePage,

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Function Parameters - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="function_parameters.html" class="font-semibold border-b-2 border-white pb-1">Function Parameters</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="operators.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Operators</a>
+                    <a href="strings.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Strings</a>
+                    <a href="numbers.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Numbers</a>
+                    <a href="bigint.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS BigInt</a>
+                    <a href="bitwise.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Bitwise</a>
+                    <a href="functions.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Functions</a>
+                    <a href="function_parameters.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Function Parameters</a>
+                    <a href="function_arrow.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrow Functions</a>
+                    <a href="events.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Events</a>
+                    <a href="arrays.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrays</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Function Parameters</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Function Parameters</h1>
+
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">Uma função JavaScript não realiza nenhuma verificação nos valores dos parâmetros (argumentos).</p>
+            </div>
+
+            <!-- Parâmetros e Argumentos -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Parâmetros e Argumentos de Função</h2>
+                <p class="text-gray-700 mb-4">Anteriormente neste tutorial, você aprendeu que funções podem ter <strong>parâmetros</strong>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Sintaxe</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">functionName</span>(parametro1, parametro2, parametro3) {
+  <span class="text-gray-400">// código a ser executado</span>
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 <strong>Parâmetros de função</strong> são os nomes listados na definição da função.</p>
+                    <p class="text-gray-800 mt-2">💡 <strong>Argumentos de função</strong> são os valores reais passados para (e recebidos pela) função.</p>
+                </div>
+            </div>
+
+            <!-- Regras de Parâmetros -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Regras de Parâmetros</h2>
+                <p class="text-gray-700 mb-4">As definições de função JavaScript não especificam tipos de dados para parâmetros.</p>
+                <p class="text-gray-700 mb-4">As funções JavaScript não realizam verificação de tipo nos argumentos passados.</p>
+                <p class="text-gray-700 mb-4">As funções JavaScript não verificam o número de argumentos recebidos.</p>
+            </div>
+
+            <!-- Parâmetros Padrão -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Parâmetros Padrão</h2>
+                <p class="text-gray-700 mb-4">Se uma função for chamada com argumentos <strong>faltando</strong> (menos do que declarado), os valores ausentes são definidos como <code class="bg-gray-100 px-2 py-1 rounded text-red-600">undefined</code>.</p>
+                <p class="text-gray-700 mb-4">Às vezes isso é aceitável, mas às vezes é melhor atribuir um valor padrão ao parâmetro:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">myFunction</span>(x, y) {
+  <span class="text-purple-400">if</span> (y === <span class="text-purple-400">undefined</span>) {
+    y = <span class="text-green-400">2</span>;
+  }
+  <span class="text-purple-400">return</span> x * y;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo1()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Valores Padrão ES6 -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Valores Padrão de Parâmetros (ES6)</h2>
+                <p class="text-gray-700 mb-4">ES6 permite que os parâmetros de função tenham valores padrão.</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">myFunction</span>(x, y = <span class="text-green-400">10</span>) {
+  <span class="text-purple-400">return</span> x + y;
+}
+
+<span class="text-yellow-300">myFunction</span>(<span class="text-green-400">5</span>);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo2()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 Se y não for passado ou for <code class="bg-gray-100 px-2 py-1 rounded text-red-600">undefined</code>, então y = 10.</p>
+                </div>
+            </div>
+
+            <!-- Parâmetro Rest -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Parâmetro Rest (...)</h2>
+                <p class="text-gray-700 mb-4">O <strong>parâmetro rest</strong> (...) permite que uma função trate um número indefinido de argumentos como um array:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">sum</span>(...args) {
+  <span class="text-purple-400">let</span> sum = <span class="text-green-400">0</span>;
+  <span class="text-purple-400">for</span> (<span class="text-purple-400">let</span> arg <span class="text-purple-400">of</span> args) sum += arg;
+  <span class="text-purple-400">return</span> sum;
+}
+
+<span class="text-purple-400">let</span> x = <span class="text-yellow-300">sum</span>(<span class="text-green-400">4, 9, 16, 25, 29, 100, 66, 77</span>);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo3()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objeto Arguments -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">O Objeto Arguments</h2>
+                <p class="text-gray-700 mb-4">As funções JavaScript têm um objeto integrado chamado <code class="bg-gray-100 px-2 py-1 rounded text-red-600">arguments</code>.</p>
+                <p class="text-gray-700 mb-4">O objeto <code class="bg-gray-100 px-2 py-1 rounded text-red-600">arguments</code> contém um array dos argumentos usados quando a função foi chamada (invocada).</p>
+                <p class="text-gray-700 mb-4">Dessa forma, você pode simplesmente usar uma função para encontrar (por exemplo) o maior valor em uma lista de números:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Encontrar o Maior Valor</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">findMax</span>() {
+  <span class="text-purple-400">let</span> max = -<span class="text-blue-400">Infinity</span>;
+  <span class="text-purple-400">for</span> (<span class="text-purple-400">let</span> i = <span class="text-green-400">0</span>; i < <span class="text-blue-400">arguments</span>.length; i++) {
+    <span class="text-purple-400">if</span> (<span class="text-blue-400">arguments</span>[i] > max) {
+      max = <span class="text-blue-400">arguments</span>[i];
+    }
+  }
+  <span class="text-purple-400">return</span> max;
+}
+
+<span class="text-purple-400">let</span> x = <span class="text-yellow-300">findMax</span>(<span class="text-green-400">1, 123, 500, 115, 44, 88</span>);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo4()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Ou criar uma função para somar todos os valores de entrada:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Somar Todos os Valores</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">sumAll</span>() {
+  <span class="text-purple-400">let</span> sum = <span class="text-green-400">0</span>;
+  <span class="text-purple-400">for</span> (<span class="text-purple-400">let</span> i = <span class="text-green-400">0</span>; i < <span class="text-blue-400">arguments</span>.length; i++) {
+    sum += <span class="text-blue-400">arguments</span>[i];
+  }
+  <span class="text-purple-400">return</span> sum;
+}
+
+<span class="text-purple-400">let</span> x = <span class="text-yellow-300">sumAll</span>(<span class="text-green-400">1, 123, 500, 115, 44, 88</span>);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo5()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Argumentos Passados por Valor -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Argumentos São Passados por Valor</h2>
+                <p class="text-gray-700 mb-4">Os parâmetros, em uma chamada de função, são os <strong>argumentos</strong> da função.</p>
+                <p class="text-gray-700 mb-4">Os argumentos JavaScript são passados por <strong>valor</strong>: A função obtém apenas os valores, não as localizações dos argumentos.</p>
+                <p class="text-gray-700 mb-4">Se uma função alterar o valor de um argumento, ela não altera o valor original do parâmetro.</p>
+                <p class="text-gray-700 mb-4">Alterações em argumentos não são visíveis (refletidas) fora da função.</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">myFunction</span>(x) {
+  x = <span class="text-green-400">10</span>;
+}
+
+<span class="text-purple-400">let</span> y = <span class="text-green-400">5</span>;
+<span class="text-yellow-300">myFunction</span>(y);
+<span class="text-gray-400">// y ainda é 5</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo6()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objetos Passados por Referência -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Objetos São Passados por Referência</h2>
+                <p class="text-gray-700 mb-4">Em JavaScript, referências de objetos são valores.</p>
+                <p class="text-gray-700 mb-4">Por causa disso, os objetos se comportarão como se fossem passados por <strong>referência</strong>:</p>
+                <p class="text-gray-700 mb-4">Se uma função altera uma propriedade de objeto, ela altera o valor original.</p>
+                <p class="text-gray-700 mb-4">Alterações em propriedades de objeto são visíveis (refletidas) fora da função.</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">function</span> <span class="text-yellow-300">myFunction</span>(obj) {
+  obj.name = <span class="text-green-400">"BMW"</span>;
+}
+
+<span class="text-purple-400">const</span> myCar = {name: <span class="text-green-400">"Volvo"</span>};
+<span class="text-yellow-300">myFunction</span>(myCar);
+<span class="text-gray-400">// myCar.name agora é "BMW"</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="functionParams_demo7()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo7" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 border-l-4 border-indigo-500 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">📝 Resumo</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>✓ JavaScript não verifica o tipo ou número de argumentos</li>
+                        <li>✓ Argumentos faltando são definidos como <code class="bg-gray-100 px-2 py-1 rounded text-red-600">undefined</code></li>
+                        <li>✓ Valores padrão podem ser definidos com ES6: <code class="bg-gray-100 px-2 py-1 rounded text-red-600">function(x, y = 10)</code></li>
+                        <li>✓ O parâmetro rest (...) permite número indefinido de argumentos</li>
+                        <li>✓ O objeto <code class="bg-gray-100 px-2 py-1 rounded text-red-600">arguments</code> contém todos os argumentos passados</li>
+                        <li>✓ Valores primitivos são passados por valor</li>
+                        <li>✓ Objetos são passados por referência</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="functions.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: Functions
+                </a>
+                <a href="function_arrow.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: Arrow Functions →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -84,7 +84,7 @@ Site-javascript/
 └── README.md                   # Este arquivo
 ```
 
-## 📚 Páginas Completas (30 de 30 implementadas)
+## 📚 Páginas Completas (33 de 33 implementadas)
 
 ### 🔢 Operadores (4 páginas)
 1. **operators.html** - Visão geral de todos os tipos de operadores JavaScript
@@ -123,9 +123,11 @@ Site-javascript/
 26. **bitwise.html** - Operadores bitwise (AND, OR, XOR, NOT, Shifts)
 27. **bigint.html** - Inteiros de precisão arbitrária (BigInt)
 
-### 🔧 Functions & Events (2 páginas) - ✅ COMPLETO
-28. **functions.html** - Declaração, invocação, retorno e escopo de variáveis
-29. **events.html** - Eventos HTML e manipuladores de eventos JavaScript
+### 🔧 Functions & Events (5 páginas) - ✅ COMPLETO
+28. **functions.html** - Declaração, invocação, retorno e escopo de variáveis (8 exemplos)
+29. **function_parameters.html** - Parâmetros, valores padrão, rest parameters, arguments (7 exemplos)
+30. **function_arrow.html** - Arrow functions, sintaxe ES6, this keyword (6 exemplos)
+31. **events.html** - Eventos HTML e manipuladores de eventos JavaScript
 
 ### 📝 Próximas Seções
 - **Arrays** (arrays.html)
@@ -147,8 +149,8 @@ Site-javascript/
 - **Navegação Padronizada** - Previous (gray) + Next (gradient) em todas as páginas
 
 ### Arquitetura JavaScript
-- **script.js centralizado** - 535+ linhas de código
-- **28 funções interativas** - Prefixos para evitar conflitos (loopsFor_, loopsWhile_, break_)
+- **script.js centralizado** - 802+ linhas de código
+- **49 funções interativas** - Prefixos para evitar conflitos (loopsFor_, loopsWhile_, break_, functionParams_, arrowFunc_)
 - **Zero código inline** - 100% JavaScript externo para manutenibilidade
 - **~500 linhas migradas** - De inline para arquivo externo
 
@@ -187,6 +189,15 @@ Site-javascript/
 - **Break vs Continue** demonstrados com filtros e validações
 - **Box de resumo visual** comparando break e continue
 - **Práticas reais** de iteração sobre arrays
+
+### Functions Section ✅
+- **21 exemplos interativos** funcionais
+- **21 funções JavaScript** em script.js (functions_demo, functionParams_demo, arrowFunc_demo)
+- **Funções básicas** com declaração, invocação e retorno de valores
+- **Parâmetros avançados** incluindo ES6 default parameters e rest parameters
+- **Arrow functions** com todas as variações de sintaxe ES6
+- **this keyword** comparação entre funções regulares e arrow functions
+- **Tabela de compatibilidade** de browsers para ES6 features
 
 ## 🎨 Index.html - Cards com Emojis
 
@@ -241,4 +252,4 @@ Projeto desenvolvido por **Jhonnatan Luiz** para fins educacionais.
 
 **Desenvolvido com ❤️ para aprender e ensinar JavaScript**
 
-**Status**: 🟢 **30 de 30 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings + Numbers + Functions/Events ✅ completos)
+**Status**: 🟢 **33 de 33 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings + Numbers + Functions ✅ completos)

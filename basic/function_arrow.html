@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrow Functions - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="function_arrow.html" class="font-semibold border-b-2 border-white pb-1">Arrow Functions</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Tutorial</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="operators.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Operators</a>
+                    <a href="strings.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Strings</a>
+                    <a href="numbers.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Numbers</a>
+                    <a href="bigint.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS BigInt</a>
+                    <a href="bitwise.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Bitwise</a>
+                    <a href="functions.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Functions</a>
+                    <a href="function_parameters.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Function Parameters</a>
+                    <a href="function_arrow.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Arrow Functions</a>
+                    <a href="events.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Events</a>
+                    <a href="arrays.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrays</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8">
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Arrow Functions</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Arrow Functions</h1>
+
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">Arrow functions foram introduzidas no ES6.</p>
+                <p class="text-gray-700 mb-4 text-lg">Arrow functions permitem que escrevamos uma sintaxe de função mais curta.</p>
+            </div>
+
+            <!-- Antes e Depois -->
+            <div class="mb-8">
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Antes (Função Tradicional)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">let</span> myFunction = <span class="text-purple-400">function</span>(a, b) {
+  <span class="text-purple-400">return</span> a * b;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Agora (Arrow Function)</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> myFunction = (a, b) <span class="text-purple-400">=></span> a * b;</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo1()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sintaxe Arrow Function -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Sintaxe de Arrow Function</h2>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Sintaxe Básica</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code>(param1, param2, ..., paramN) <span class="text-purple-400">=></span> { statements }</code></pre>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Se você tiver apenas <strong>um parâmetro</strong>, pode omitir os parênteses:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Um Parâmetro</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> hello = name <span class="text-purple-400">=></span> <span class="text-green-400">"Olá "</span> + name;</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo2()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Se você tiver apenas <strong>uma declaração</strong> e ela retorna um valor, pode omitir as chaves e a palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">return</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Retorno Implícito</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> multiply = (a, b) <span class="text-purple-400">=></span> a * b;</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo3()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 <strong>Nota:</strong> Isso funciona apenas se a função tiver uma declaração.</p>
+                </div>
+            </div>
+
+            <!-- Com Declarações Múltiplas -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Arrow Functions Com Múltiplas Declarações</h2>
+                <p class="text-gray-700 mb-4">Se você tiver mais de uma declaração, deve usar chaves e a palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">return</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">let</span> myFunction = (a, b) <span class="text-purple-400">=></span> {
+  <span class="text-purple-400">let</span> chuck = <span class="text-green-400">42</span>;
+  <span class="text-purple-400">return</span> a * b * chuck;
+}</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo4()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- O que é THIS? -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Arrow Functions e o <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code></h2>
+                <p class="text-gray-700 mb-4">O tratamento de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code> é diferente em arrow functions comparado às funções regulares.</p>
+                <p class="text-gray-700 mb-4">Em resumo, com arrow functions <strong>não há vinculação de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code></strong>.</p>
+                <p class="text-gray-700 mb-4">Em funções regulares, a palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code> representava o objeto que chamou a função, que poderia ser a janela, o documento, um botão ou o que quer que fosse.</p>
+                <p class="text-gray-700 mb-4">Com arrow functions, a palavra-chave <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code> sempre representa o objeto que definiu a arrow function.</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Função Regular</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-gray-400">// Função regular</span>
+<span class="text-purple-400">let</span> hello = <span class="text-purple-400">function</span>() {
+  <span class="text-purple-400">document</span>.<span class="text-yellow-300">getElementById</span>(<span class="text-green-400">"demo"</span>).<span class="text-blue-400">innerHTML</span> += <span class="text-purple-400">this</span>;
+}
+
+<span class="text-gray-400">// window chama a função:</span>
+<span class="text-purple-400">window</span>.<span class="text-yellow-300">addEventListener</span>(<span class="text-green-400">"load"</span>, hello);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo5()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Arrow Function</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-gray-400">// Arrow function</span>
+<span class="text-purple-400">let</span> hello = () <span class="text-purple-400">=></span> {
+  <span class="text-purple-400">document</span>.<span class="text-yellow-300">getElementById</span>(<span class="text-green-400">"demo"</span>).<span class="text-blue-400">innerHTML</span> += <span class="text-purple-400">this</span>;
+}
+
+<span class="text-gray-400">// window chama a função:</span>
+<span class="text-purple-400">window</span>.<span class="text-yellow-300">addEventListener</span>(<span class="text-green-400">"load"</span>, hello);</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrowFunc_demo6()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">⚠️ <strong>Lembre-se:</strong> Essas diferenças são importantes quando queremos usar objetos como métodos.</p>
+                </div>
+            </div>
+
+            <!-- Suporte em Navegadores -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Suporte em Navegadores</h2>
+                <p class="text-gray-700 mb-4">As tabelas a seguir definem a primeira versão do navegador com suporte completo para Arrow Functions:</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Versões Mínimas</h3>
+                    </div>
+                    <div class="p-4 overflow-x-auto">
+                        <table class="min-w-full text-left text-gray-700">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 font-bold">Chrome</th>
+                                    <th class="px-4 py-2 font-bold">Edge</th>
+                                    <th class="px-4 py-2 font-bold">Firefox</th>
+                                    <th class="px-4 py-2 font-bold">Safari</th>
+                                    <th class="px-4 py-2 font-bold">Opera</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-t">
+                                    <td class="px-4 py-2">45</td>
+                                    <td class="px-4 py-2">12</td>
+                                    <td class="px-4 py-2">22</td>
+                                    <td class="px-4 py-2">10</td>
+                                    <td class="px-4 py-2">32</td>
+                                </tr>
+                                <tr class="border-t bg-gray-50">
+                                    <td class="px-4 py-2 text-sm">Set 2015</td>
+                                    <td class="px-4 py-2 text-sm">Jul 2015</td>
+                                    <td class="px-4 py-2 text-sm">Mai 2015</td>
+                                    <td class="px-4 py-2 text-sm">Set 2016</td>
+                                    <td class="px-4 py-2 text-sm">Set 2015</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-indigo-50 via-purple-50 to-pink-50 border-l-4 border-indigo-500 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">📝 Resumo</h3>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>✓ Arrow functions têm sintaxe mais curta</li>
+                        <li>✓ Use <code class="bg-gray-100 px-2 py-1 rounded text-red-600">=></code> em vez de <code class="bg-gray-100 px-2 py-1 rounded text-red-600">function</code></li>
+                        <li>✓ Parênteses podem ser omitidos com um único parâmetro</li>
+                        <li>✓ Chaves e <code class="bg-gray-100 px-2 py-1 rounded text-red-600">return</code> podem ser omitidos com uma única expressão</li>
+                        <li>✓ Arrow functions não têm seu próprio <code class="bg-gray-100 px-2 py-1 rounded text-red-600">this</code></li>
+                        <li>✓ Arrow functions não devem ser usadas como métodos de objetos</li>
+                        <li>✓ Arrow functions são bem suportadas desde 2015</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="function_parameters.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: Function Parameters
+                </a>
+                <a href="events.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: Events →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
