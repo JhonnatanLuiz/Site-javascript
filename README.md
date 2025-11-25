@@ -84,7 +84,7 @@ Site-javascript/
 └── README.md                   # Este arquivo
 ```
 
-## 📚 Páginas Completas (33 de 33 implementadas)
+## 📚 Páginas Completas (37 de 37 implementadas)
 
 ### 🔢 Operadores (4 páginas)
 1. **operators.html** - Visão geral de todos os tipos de operadores JavaScript
@@ -123,11 +123,17 @@ Site-javascript/
 26. **bitwise.html** - Operadores bitwise (AND, OR, XOR, NOT, Shifts)
 27. **bigint.html** - Inteiros de precisão arbitrária (BigInt)
 
-### 🔧 Functions & Events (5 páginas) - ✅ COMPLETO
+### 🔧 Functions & Events (4 páginas) - ✅ COMPLETO
 28. **functions.html** - Declaração, invocação, retorno e escopo de variáveis (8 exemplos)
 29. **function_parameters.html** - Parâmetros, valores padrão, rest parameters, arguments (7 exemplos)
 30. **function_arrow.html** - Arrow functions, sintaxe ES6, this keyword (6 exemplos)
 31. **events.html** - Eventos HTML e manipuladores de eventos JavaScript
+
+### 🔷 Objects (4 páginas) - ✅ COMPLETO
+32. **objects.html** - Objetos JavaScript, propriedades, métodos (3 exemplos)
+33. **object_properties.html** - Acessar, adicionar, deletar propriedades, objetos aninhados (5 exemplos)
+34. **object_methods.html** - Definir métodos, usar this, métodos embutidos (4 exemplos)
+35. **object_display.html** - Exibir objetos, JSON.stringify(), Object.values() (5 exemplos)
 
 ### 📝 Próximas Seções
 - **Arrays** (arrays.html)
@@ -149,8 +155,8 @@ Site-javascript/
 - **Navegação Padronizada** - Previous (gray) + Next (gradient) em todas as páginas
 
 ### Arquitetura JavaScript
-- **script.js centralizado** - 802+ linhas de código
-- **49 funções interativas** - Prefixos para evitar conflitos (loopsFor_, loopsWhile_, break_, functionParams_, arrowFunc_)
+- **script.js centralizado** - 950+ linhas de código
+- **62 funções interativas** - Prefixos para evitar conflitos (loopsFor_, loopsWhile_, break_, functionParams_, arrowFunc_, objects_, objectProperties_, objectMethods_, objectDisplay_)
 - **Zero código inline** - 100% JavaScript externo para manutenibilidade
 - **~500 linhas migradas** - De inline para arquivo externo
 
@@ -198,6 +204,15 @@ Site-javascript/
 - **Arrow functions** com todas as variações de sintaxe ES6
 - **this keyword** comparação entre funções regulares e arrow functions
 - **Tabela de compatibilidade** de browsers para ES6 features
+
+### Objects Section ✅
+- **17 exemplos interativos** funcionais
+- **13 funções JavaScript** em script.js (objects_demo, objectProperties_demo, objectMethods_demo, objectDisplay_demo)
+- **Objetos literais** com definição de propriedades e métodos
+- **Manipulação de propriedades** adicionar, acessar, deletar
+- **Objetos aninhados** e notação de ponto vs colchetes
+- **Métodos de objeto** e uso da palavra-chave this
+- **Exibição de objetos** com JSON.stringify() e Object.values()
 
 ## 🎨 Index.html - Cards com Emojis
 
@@ -252,4 +267,4 @@ Projeto desenvolvido por **Jhonnatan Luiz** para fins educacionais.
 
 **Desenvolvido com ❤️ para aprender e ensinar JavaScript**
 
-**Status**: 🟢 **33 de 33 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings + Numbers + Functions ✅ completos)
+**Status**: 🟢 **37 de 37 páginas básicas implementadas** (Operadores + Condicionais + Loops + Strings + Numbers + Functions + Objects ✅ completos)

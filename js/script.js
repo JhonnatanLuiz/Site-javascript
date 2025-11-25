@@ -964,6 +964,198 @@ function arrowFunc_demo6() {
     document.getElementById('demo6').innerHTML = "Com arrow function, 'this' representa o proprietário da função (objeto que definiu a arrow function)";
 }
 
+// ========================================
+// OBJECTS.HTML DEMOS
+// ========================================
+function objects_demo1() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+    document.getElementById('demo1').innerHTML = person.firstName + " tem " + person.age + " anos.";
+}
+
+function objects_demo2() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+    document.getElementById('demo2').innerHTML = person.lastName;
+}
+
+function objects_demo3() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566,
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+    };
+    document.getElementById('demo3').innerHTML = person.fullName();
+}
+
+// ========================================
+// OBJECT_PROPERTIES.HTML DEMOS
+// ========================================
+function objectProperties_demo1() {
+    const person = {
+        firstname: "John",
+        lastname: "Doe",
+        age: 50,
+        eyecolor: "blue"
+    };
+    document.getElementById('demo1').innerHTML = person.firstname + " is " + person.age + " years old.";
+}
+
+function objectProperties_demo2() {
+    const person = {
+        firstname: "John",
+        lastname: "Doe",
+        age: 50,
+        eyecolor: "blue"
+    };
+    document.getElementById('demo2').innerHTML = person["firstname"] + " is " + person["age"] + " years old.";
+}
+
+function objectProperties_demo3() {
+    const person = {
+        firstname: "John",
+        lastname: "Doe",
+        age: 50,
+        eyecolor: "blue"
+    };
+    person.nationality = "English";
+    document.getElementById('demo3').innerHTML = person.firstname + " is " + person.nationality + ".";
+}
+
+function objectProperties_demo4() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+    delete person.age;
+    document.getElementById('demo4').innerHTML = person.firstName + " is " + person.age + " years old.";
+}
+
+function objectProperties_demo5() {
+    const myObj = {
+        name: "John",
+        age: 30,
+        cars: {
+            car1: "Ford",
+            car2: "BMW",
+            car3: "Fiat"
+        }
+    };
+    document.getElementById('demo5').innerHTML = myObj.cars.car2;
+}
+
+// ========================================
+// OBJECT_METHODS.HTML DEMOS
+// ========================================
+function objectMethods_demo1() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566,
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+    };
+    document.getElementById('demo1').innerHTML = person.fullName();
+}
+
+function objectMethods_demo2() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566,
+        fullName: function() {
+            return this.firstName + " " + this.lastName;
+        }
+    };
+    document.getElementById('demo2').innerHTML = person.fullName;
+}
+
+function objectMethods_demo3() {
+    const person = {
+        firstName: "John",
+        lastName: "Doe",
+        id: 5566
+    };
+    person.name = function() {
+        return this.firstName + " " + this.lastName;
+    };
+    document.getElementById('demo3').innerHTML = "Meu pai é " + person.name();
+}
+
+function objectMethods_demo4() {
+    let message = "Hello world!";
+    let x = message.toUpperCase();
+    document.getElementById('demo4').innerHTML = x;
+}
+
+// ========================================
+// OBJECT_DISPLAY.HTML DEMOS
+// ========================================
+function objectDisplay_demo1() {
+    const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+    };
+    document.getElementById('demo1').innerHTML = person;
+}
+
+function objectDisplay_demo2() {
+    const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+    };
+    document.getElementById('demo2').innerHTML = person.name + "," + person.age + "," + person.city;
+}
+
+function objectDisplay_demo3() {
+    const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+    };
+    let txt = "";
+    for (let x in person) {
+        txt += person[x] + " ";
+    }
+    document.getElementById('demo3').innerHTML = txt;
+}
+
+function objectDisplay_demo4() {
+    const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+    };
+    const myArray = Object.values(person);
+    document.getElementById('demo4').innerHTML = myArray;
+}
+
+function objectDisplay_demo5() {
+    const person = {
+        name: "John",
+        age: 30,
+        city: "New York"
+    };
+    let myString = JSON.stringify(person);
+    document.getElementById('demo5').innerHTML = myString;
+}
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
         highlightActivePage,
