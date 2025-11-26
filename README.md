@@ -13,7 +13,8 @@ Um site completo para aprender JavaScript do básico ao avançado, inspirado no 
 - ✅ **Sidebar Ativa** - Destaque da página atual no menu lateral
 - ✅ **Conteúdo em Português** - Tutorial completo traduzido e adaptado
 - ✅ **JavaScript Externo** - 100% do código em script.js (zero inline)
-- ✅ **Emojis nos Cards** - Todos os 39 cards com ícones visuais
+- ✅ **Emojis nos Cards** - Todos os 46 cards com ícones visuais
+- ✅ **Carrossel de Slides** - 15 slides com auto-play, controles e indicadores
 
 ## 📁 Estrutura do Projeto
 
@@ -79,7 +80,10 @@ Site-javascript/
 │   └── (outras páginas)       # Web API, AJAX, JSON, etc
 │
 ├── js/
-│   └── script.js              # ✅ 1150+ linhas - Menu, navegação e 94 funções interativas
+│   └── script.js              # ✅ 1250+ linhas - Menu, navegação, 94 funções + carrossel
+│
+├── img/                        # Imagens do site
+│   └── Slide1-15.PNG          # ✅ 15 slides do carrossel
 │
 └── README.md                   # Este arquivo
 ```
@@ -229,6 +233,16 @@ Site-javascript/
 - **Métodos Get** getFullYear(), getMonth() (com arrays de nomes), getDate(), getDay(), getHours()
 - **Métodos Set** setFullYear(), setMonth(), setDate(), setHours(), aritmética de datas (adicionar dias)
 - **Tabela de referência** completa com Get, Set, Conversion e Static methods
+
+### 🎠 Carrossel de Slides ✅
+- **15 slides** (Slide1.PNG até Slide15.PNG) na página tutorial.html
+- **Auto-play** a cada 10 segundos com botão Pausar/Reproduzir
+- **Navegação manual** com botões anterior (❮) e próximo (❯)
+- **15 indicadores** (bolinhas) clicáveis para navegação direta
+- **Contador** exibindo slide atual (ex: "7 / 15")
+- **Responsivo** - funciona em desktop e mobile
+- **Transições suaves** com CSS transitions
+- **Funções no script.js** - initCarousel(), nextSlide(), prevSlide(), goToSlide(), toggleAutoPlay()
 
 ## 🎨 Index.html - Cards com Emojis
 

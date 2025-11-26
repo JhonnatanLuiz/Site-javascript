@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Code syntax highlighting (básico)
     highlightCodeBlocks();
+
+    // Inicializar carrossel se existir na página
+    initCarousel();
 });
 
 /**
@@ -1304,6 +1307,107 @@ function dateSet_demo6() {
     const d = new Date();
     d.setHours(22);
     document.getElementById('demo6').innerHTML = d;
+}
+
+// ========================================
+// CARROSSEL DE SLIDES
+// ========================================
+let currentSlide = 0;
+let totalSlides = 15;
+let autoPlayInterval = null;
+let isPlaying = true;
+
+function initCarousel() {
+    const carouselTrack = document.getElementById('carouselTrack');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+    
+    // Verifica se o carrossel existe na página
+    if (!carouselTrack || !indicatorsContainer) return;
+    
+    // Criar indicadores (bolinhas)
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Ir para slide ${i + 1}`);
+        dot.onclick = () => goToSlide(i);
+        indicatorsContainer.appendChild(dot);
+    }
+    
+    // Iniciar auto-play
+    startAutoPlay();
+}
+
+function updateCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const counter = document.getElementById('slideCounter');
+    
+    if (!track) return;
+    
+    // Mover o track
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Atualizar indicadores
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+    
+    // Atualizar contador
+    if (counter) {
+        counter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+    }
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateCarousel();
+}
+
+function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+    
+    // Reiniciar auto-play se estiver ativo
+    if (isPlaying) {
+        stopAutoPlay();
+        startAutoPlay();
+    }
+}
+
+function startAutoPlay() {
+    if (autoPlayInterval) return;
+    autoPlayInterval = setInterval(nextSlide, 10000); // 10 segundos
+    isPlaying = true;
+    updatePlayPauseButton();
+}
+
+function stopAutoPlay() {
+    if (autoPlayInterval) {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = null;
+    }
+    isPlaying = false;
+    updatePlayPauseButton();
+}
+
+function toggleAutoPlay() {
+    if (isPlaying) {
+        stopAutoPlay();
+    } else {
+        startAutoPlay();
+    }
+}
+
+function updatePlayPauseButton() {
+    const btn = document.getElementById('playPauseBtn');
+    if (btn) {
+        btn.innerHTML = isPlaying ? '⏸️ Pausar' : '▶️ Reproduzir';
+    }
 }
 
 if (typeof module !== 'undefined' && module.exports) {
