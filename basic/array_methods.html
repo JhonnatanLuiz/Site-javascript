@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Methods - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="array_methods.html" class="font-semibold border-b-2 border-white pb-1">Array Methods</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto flex-shrink-0">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Arrays</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="dates.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Dates</a>
+                    <a href="arrays.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrays</a>
+                    <a href="array_methods.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Array Methods</a>
+                    <a href="array_search.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Search</a>
+                    <a href="array_sort.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Sort</a>
+                    <a href="array_iteration.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Iteration</a>
+                    <a href="array_const.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Const</a>
+                    <a href="array_reference.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Reference</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8 min-w-0">
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="arrays.html" class="text-blue-600 hover:underline">JS Arrays</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Array Methods</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Métodos de Array</h1>
+
+                <!-- Introdução -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Métodos Básicos de Array</h3>
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                        <ul class="list-disc list-inside space-y-1 text-gray-600">
+                            <li><code class="bg-gray-200 px-1 rounded">length</code> - Tamanho do array</li>
+                            <li><code class="bg-gray-200 px-1 rounded">toString()</code> - Converte para string</li>
+                            <li><code class="bg-gray-200 px-1 rounded">at()</code> - Acessa elemento pelo índice</li>
+                            <li><code class="bg-gray-200 px-1 rounded">join()</code> - Junta elementos com separador</li>
+                            <li><code class="bg-gray-200 px-1 rounded">pop()</code> - Remove último elemento</li>
+                            <li><code class="bg-gray-200 px-1 rounded">push()</code> - Adiciona ao final</li>
+                            <li><code class="bg-gray-200 px-1 rounded">shift()</code> - Remove primeiro elemento</li>
+                            <li><code class="bg-gray-200 px-1 rounded">unshift()</code> - Adiciona no início</li>
+                            <li><code class="bg-gray-200 px-1 rounded">concat()</code> - Concatena arrays</li>
+                            <li><code class="bg-gray-200 px-1 rounded">splice()</code> - Adiciona/remove elementos</li>
+                            <li><code class="bg-gray-200 px-1 rounded">slice()</code> - Extrai parte do array</li>
+                            <li><code class="bg-gray-200 px-1 rounded">flat()</code> - Achata arrays aninhados</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- length -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array length</h3>
+                    <p class="text-gray-600 mb-4">A propriedade <code class="bg-gray-200 px-1 rounded">length</code>
+                        retorna o tamanho (quantidade de elementos) de um array:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let tamanho = frutas.length;  // Retorna 4</code></pre>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">A propriedade <code class="bg-gray-200 px-1 rounded">length</code>
+                        também pode ser usada para definir o tamanho do array:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.length = 2;  // Agora frutas contém apenas ["Banana", "Laranja"]</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo1()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar length »
+                    </button>
+                    <div id="arrayMethods_demo1" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- toString() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array toString()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">toString()</code>
+                        converte um array em uma string separada por vírgulas:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let texto = frutas.toString();
+// Resultado: "Banana,Laranja,Maçã,Manga"</code></pre>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Nota:</strong> Todo objeto JavaScript tem um método
+                            <code>toString()</code>. O JavaScript converte automaticamente um array para string
+                            quando é necessário exibir como texto.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo2()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar toString() »
+                    </button>
+                    <div id="arrayMethods_demo2" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- at() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array at()</h3>
+                    <p class="text-gray-600 mb-4">O ES2022 introduziu o método <code
+                            class="bg-gray-200 px-1 rounded">at()</code>
+                        que retorna um elemento do array pelo índice:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+
+// Usando at()
+let fruta = frutas.at(2);  // "Maçã"
+
+// Usando [] - mesmo resultado
+let fruta2 = frutas[2];    // "Maçã"</code></pre>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">at()</code> permite
+                        índices negativos para acessar elementos do final:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let ultimo = frutas.at(-1);  // "Manga" (último elemento)
+let penultimo = frutas.at(-2);  // "Maçã"</code></pre>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="text-blue-700"><strong>Nota:</strong> Muitas linguagens permitem índices negativos
+                            como [-1] para acessar elementos do final. Isso não era possível em JavaScript com [],
+                            por isso o método <code>at()</code> foi introduzido no ES2022.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo3()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar at() »
+                    </button>
+                    <div id="arrayMethods_demo3" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- join() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array join()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">join()</code>
+                        junta todos os elementos do array em uma string, permitindo especificar o separador:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+
+let texto1 = frutas.join(" * ");
+// Resultado: "Banana * Laranja * Maçã * Manga"
+
+let texto2 = frutas.join(" - ");
+// Resultado: "Banana - Laranja - Maçã - Manga"</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo4()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar join() »
+                    </button>
+                    <div id="arrayMethods_demo4" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- pop() e push() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Popping e Pushing</h3>
+                    <p class="text-gray-600 mb-4">Quando trabalhamos com arrays, é fácil remover e adicionar elementos.
+                        <strong>Pop</strong> remove elementos do final, e <strong>Push</strong> adiciona ao final.</p>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array pop()</h4>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">pop()</code>
+                        remove o último elemento de um array e retorna o valor removido:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let removido = frutas.pop();  // Remove "Manga"
+// frutas agora é ["Banana", "Laranja", "Maçã"]
+// removido contém "Manga"</code></pre>
+                    </div>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array push()</h4>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">push()</code>
+                        adiciona um novo elemento ao final do array e retorna o novo tamanho:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let novoTamanho = frutas.push("Kiwi");  // Adiciona "Kiwi"
+// frutas agora é ["Banana", "Laranja", "Maçã", "Manga", "Kiwi"]
+// novoTamanho é 5</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo5()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar pop() e push() »
+                    </button>
+                    <div id="arrayMethods_demo5" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- shift() e unshift() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Shifting Elements</h3>
+                    <p class="text-gray-600 mb-4">Shifting é equivalente ao popping, mas trabalha no primeiro elemento
+                        em vez do último.</p>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array shift()</h4>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">shift()</code>
+                        remove o primeiro elemento do array e "desloca" todos os outros para um índice menor:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let removido = frutas.shift();  // Remove "Banana"
+// frutas agora é ["Laranja", "Maçã", "Manga"]
+// removido contém "Banana"</code></pre>
+                    </div>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array unshift()</h4>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">unshift()</code>
+                        adiciona um novo elemento no início do array e retorna o novo tamanho:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let novoTamanho = frutas.unshift("Limão");  // Adiciona "Limão" no início
+// frutas agora é ["Limão", "Banana", "Laranja", "Maçã", "Manga"]
+// novoTamanho é 5</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo6()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar shift() e unshift() »
+                    </button>
+                    <div id="arrayMethods_demo6" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- delete e isArray -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Array.isArray() e delete</h3>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2">Array.isArray()</h4>
+                    <p class="text-gray-600 mb-4">O ECMAScript 5 adicionou o método <code
+                            class="bg-gray-200 px-1 rounded">Array.isArray()</code>
+                        para verificar se um objeto é um array:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã"];
+Array.isArray(frutas);  // true
+
+const texto = "Olá";
+Array.isArray(texto);  // false</code></pre>
+                    </div>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array delete()</h4>
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                        <p class="text-red-700"><strong>Aviso!</strong> Usar <code>delete</code> deixa buracos
+                            <code>undefined</code> no array. Use <code>pop()</code> ou <code>shift()</code> em vez
+                            disso.</p>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+delete frutas[0];
+// frutas agora é [undefined, "Laranja", "Maçã", "Manga"]
+// O primeiro elemento virou undefined</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo7()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar isArray() e delete »
+                    </button>
+                    <div id="arrayMethods_demo7" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- concat() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array concat()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">concat()</code>
+                        cria um novo array mesclando (concatenando) arrays existentes:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>// Mesclando dois arrays
+const meninas = ["Cecília", "Joana"];
+const meninos = ["Emílio", "Tomás", "Lucas"];
+const criancas = meninas.concat(meninos);
+// ["Cecília", "Joana", "Emílio", "Tomás", "Lucas"]
+
+// Mesclando três arrays
+const arr1 = ["Cecília", "Joana"];
+const arr2 = ["Emílio", "Tomás"];
+const arr3 = ["Rafael", "Marina"];
+const todos = arr1.concat(arr2, arr3);
+
+// Mesclando array com valores
+const arr = ["Emílio", "Tomás", "Lucas"];
+const novo = arr.concat("Pedro");
+// ["Emílio", "Tomás", "Lucas", "Pedro"]</code></pre>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Nota:</strong> O método <code>concat()</code> não altera os
+                            arrays existentes. Ele sempre retorna um novo array.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo8()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar concat() »
+                    </button>
+                    <div id="arrayMethods_demo8" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- copyWithin() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Array copyWithin()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">copyWithin()</code>
+                        copia elementos do array para outra posição no mesmo array:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>// Copiar para índice 2, todos os elementos do índice 0
+const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.copyWithin(2, 0);
+// ["Banana", "Laranja", "Banana", "Laranja"]
+
+// Copiar para índice 2, elementos do índice 0 a 2
+const frutas2 = ["Banana", "Laranja", "Maçã", "Manga", "Kiwi"];
+frutas2.copyWithin(2, 0, 2);
+// ["Banana", "Laranja", "Banana", "Laranja", "Kiwi"]</code></pre>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Nota:</strong> O método <code>copyWithin()</code> sobrescreve
+                            valores existentes, não adiciona itens e não altera o tamanho do array.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo9()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar copyWithin() »
+                    </button>
+                    <div id="arrayMethods_demo9" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- flat() e flatMap() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Achatando Arrays</h3>
+                    <p class="text-gray-600 mb-4">"Achatar" um array é o processo de reduzir a dimensionalidade.
+                        É útil quando você quer converter um array multidimensional em um array unidimensional.</p>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array flat()</h4>
+                    <p class="text-gray-600 mb-4">O ES2019 introduziu o método <code
+                            class="bg-gray-200 px-1 rounded">flat()</code>
+                        que cria um novo array com os sub-arrays concatenados até uma profundidade especificada:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meuArr = [[1, 2], [3, 4], [5, 6]];
+const novoArr = meuArr.flat();
+// [1, 2, 3, 4, 5, 6]
+
+// Com profundidade maior
+const profundo = [1, [2, [3, [4]]]];
+profundo.flat(1);  // [1, 2, [3, [4]]]
+profundo.flat(2);  // [1, 2, 3, [4]]
+profundo.flat(Infinity);  // [1, 2, 3, 4]</code></pre>
+                    </div>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">JavaScript Array flatMap()</h4>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">flatMap()</code>
+                        primeiro mapeia todos os elementos e depois cria um novo array achatando o resultado:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meuArr = [1, 2, 3, 4, 5, 6];
+const novoArr = meuArr.flatMap(x => [x, x * 10]);
+// [1, 10, 2, 20, 3, 30, 4, 40, 5, 50, 6, 60]</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo10()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar flat() e flatMap() »
+                    </button>
+                    <div id="arrayMethods_demo10" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- splice() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array splice()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">splice()</code>
+                        pode ser usado para adicionar ou remover elementos em qualquer posição:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>// Adicionando elementos
+const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.splice(2, 0, "Limão", "Kiwi");
+// ["Banana", "Laranja", "Limão", "Kiwi", "Maçã", "Manga"]
+
+// Parâmetros:
+// 1º (2): posição onde adicionar
+// 2º (0): quantos elementos remover
+// 3º...: novos elementos a adicionar</code></pre>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">splice()</code>
+                        retorna um array com os itens deletados:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+let removidos = frutas.splice(2, 2, "Limão", "Kiwi");
+// frutas: ["Banana", "Laranja", "Limão", "Kiwi"]
+// removidos: ["Maçã", "Manga"]</code></pre>
+                    </div>
+
+                    <h4 class="text-xl font-semibold text-gray-700 mb-2 mt-6">Usando splice() para Remover</h4>
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.splice(0, 1);  // Remove o primeiro elemento
+// ["Laranja", "Maçã", "Manga"]</code></pre>
+                    </div>
+
+                    <button onclick="arrayMethods_demo11()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar splice() »
+                    </button>
+                    <div id="arrayMethods_demo11" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- toSpliced() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array toSpliced()</h3>
+                    <p class="text-gray-600 mb-4">O ES2023 adicionou o método <code
+                            class="bg-gray-200 px-1 rounded">toSpliced()</code>
+                        como uma forma segura de fazer splice sem alterar o array original:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meses = ["Jan", "Fev", "Mar", "Abr"];
+const alterado = meses.toSpliced(0, 1);
+// meses: ["Jan", "Fev", "Mar", "Abr"] (inalterado)
+// alterado: ["Fev", "Mar", "Abr"]</code></pre>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="text-blue-700"><strong>Diferença:</strong> O novo <code>toSpliced()</code> cria um
+                            novo array mantendo o original inalterado, enquanto <code>splice()</code> modifica o array
+                            original.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo12()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar toSpliced() »
+                    </button>
+                    <div id="arrayMethods_demo12" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- slice() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">JavaScript Array slice()</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">slice()</code>
+                        extrai uma parte do array e retorna um novo array, sem modificar o original:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Limão", "Maçã", "Manga"];
+
+// Um argumento: do índice até o final
+const citricos1 = frutas.slice(1);
+// ["Laranja", "Limão", "Maçã", "Manga"]
+
+// Dois argumentos: do início até o fim (não incluído)
+const citricos2 = frutas.slice(1, 3);
+// ["Laranja", "Limão"]
+
+// O array original permanece inalterado
+// frutas ainda é ["Banana", "Laranja", "Limão", "Maçã", "Manga"]</code></pre>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Nota:</strong> O método <code>slice()</code> cria um novo
+                            array e não remove elementos do array original. Se o argumento final for omitido, extrai
+                            até o final do array.</p>
+                    </div>
+
+                    <button onclick="arrayMethods_demo13()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar slice() »
+                    </button>
+                    <div id="arrayMethods_demo13" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="arrays.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: JS Arrays
+                </a>
+                <a href="array_search.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: Array Search →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

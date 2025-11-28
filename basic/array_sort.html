@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Sort - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="array_sort.html" class="font-semibold border-b-2 border-white pb-1">Array Sort</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto flex-shrink-0">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Arrays</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="dates.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Dates</a>
+                    <a href="arrays.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrays</a>
+                    <a href="array_methods.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Methods</a>
+                    <a href="array_search.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Search</a>
+                    <a href="array_sort.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Array Sort</a>
+                    <a href="array_iteration.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Iteration</a>
+                    <a href="array_const.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Const</a>
+                    <a href="array_reference.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Reference</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8 min-w-0">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-500 mb-4">
+                <a href="../index.html" class="hover:text-indigo-600">Início</a> &gt;
+                <a href="arrays.html" class="hover:text-indigo-600">Arrays</a> &gt;
+                <span class="text-gray-800">Array Sort</span>
+            </nav>
+
+            <article class="bg-white rounded-xl shadow-md p-6 lg:p-8 max-w-4xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">JavaScript Array Sort</h2>
+
+                <!-- Introdução -->
+                <section class="mb-8">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Ordenação Alfabética</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600 text-sm">
+                                <li><code class="bg-gray-200 px-1 rounded">sort()</code> - Ordena o array</li>
+                                <li><code class="bg-gray-200 px-1 rounded">reverse()</code> - Inverte o array</li>
+                                <li><code class="bg-gray-200 px-1 rounded">toSorted()</code> - Ordena sem modificar</li>
+                                <li><code class="bg-gray-200 px-1 rounded">toReversed()</code> - Inverte sem modificar</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Ordenação Numérica</h4>
+                            <ul class="list-disc list-inside space-y-1 text-gray-600 text-sm">
+                                <li>Função de comparação</li>
+                                <li>Ordenação aleatória</li>
+                                <li>Math.min() / Math.max()</li>
+                                <li>Ordenando objetos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- sort() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Ordenando um Array</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">sort()</code>
+                        ordena um array alfabeticamente:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.sort();
+// ["Banana", "Laranja", "Manga", "Maçã"]</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo1()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar sort() »
+                    </button>
+                    <div id="arraySort_demo1" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- reverse() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Invertendo um Array</h3>
+                    <p class="text-gray-600 mb-4">O método <code class="bg-gray-200 px-1 rounded">reverse()</code>
+                        inverte os elementos de um array:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.reverse();
+// ["Manga", "Maçã", "Laranja", "Banana"]</code></pre>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">Combinando <code>sort()</code> e <code>reverse()</code>, você pode
+                        ordenar um array em ordem decrescente:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const frutas = ["Banana", "Laranja", "Maçã", "Manga"];
+frutas.sort();
+frutas.reverse();
+// ["Maçã", "Manga", "Laranja", "Banana"]</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo2()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar reverse() »
+                    </button>
+                    <div id="arraySort_demo2" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- toSorted() e toReversed() -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">toSorted() e toReversed() (ES2023)</h3>
+
+                    <p class="text-gray-600 mb-4">O ES2023 adicionou o método <code
+                            class="bg-gray-200 px-1 rounded">toSorted()</code>
+                        como uma forma segura de ordenar um array sem alterar o original:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meses = ["Jan", "Fev", "Mar", "Abr"];
+const ordenado = meses.toSorted();
+// meses: ["Jan", "Fev", "Mar", "Abr"] (inalterado)
+// ordenado: ["Abr", "Fev", "Jan", "Mar"]</code></pre>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">Da mesma forma, <code
+                            class="bg-gray-200 px-1 rounded">toReversed()</code>
+                        inverte sem alterar o original:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meses = ["Jan", "Fev", "Mar", "Abr"];
+const invertido = meses.toReversed();
+// meses: ["Jan", "Fev", "Mar", "Abr"] (inalterado)
+// invertido: ["Abr", "Mar", "Fev", "Jan"]</code></pre>
+                    </div>
+
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                        <p class="text-blue-700"><strong>Diferença:</strong> <code>toSorted()</code> e
+                            <code>toReversed()</code> criam um novo array mantendo o original inalterado, enquanto
+                            <code>sort()</code> e <code>reverse()</code> modificam o array original.</p>
+                    </div>
+
+                    <button onclick="arraySort_demo3()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar toSorted() e toReversed() »
+                    </button>
+                    <div id="arraySort_demo3" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Ordenação Numérica -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Ordenação Numérica</h3>
+
+                    <p class="text-gray-600 mb-4">Por padrão, a função <code>sort()</code> ordena valores como
+                        <strong>strings</strong>. Isso funciona bem para strings ("Apple" vem antes de "Banana").</p>
+
+                    <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                        <p class="text-red-700"><strong>Problema:</strong> Se números são ordenados como strings,
+                            "25" é maior que "100", porque "2" é maior que "1". Por isso, o método <code>sort()</code>
+                            produz resultado incorreto ao ordenar números.</p>
+                    </div>
+
+                    <p class="text-gray-600 mb-4">Você pode corrigir isso fornecendo uma <strong>função de
+                            comparação</strong>:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const pontos = [40, 100, 1, 5, 25, 10];
+
+// Ordenação CRESCENTE
+pontos.sort(function(a, b) { return a - b });
+// [1, 5, 10, 25, 40, 100]
+
+// Ordenação DECRESCENTE
+pontos.sort(function(a, b) { return b - a });
+// [100, 40, 25, 10, 5, 1]</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo4()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar ordenação numérica »
+                    </button>
+                    <div id="arraySort_demo4" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Função de Comparação -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">A Função de Comparação</h3>
+
+                    <p class="text-gray-600 mb-4">O objetivo da função de comparação é definir uma ordem de
+                        classificação alternativa. A função deve retornar um valor negativo, zero ou positivo:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>function(a, b) { return a - b }</code></pre>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4">
+                        <ul class="space-y-2 text-gray-600">
+                            <li>• Se o resultado é <strong>negativo</strong>, <code>a</code> é ordenado antes de
+                                <code>b</code></li>
+                            <li>• Se o resultado é <strong>positivo</strong>, <code>b</code> é ordenado antes de
+                                <code>a</code></li>
+                            <li>• Se o resultado é <strong>0</strong>, não há mudança na ordem</li>
+                        </ul>
+                    </div>
+
+                    <p class="text-gray-600 mb-4"><strong>Exemplo:</strong> Ao comparar 40 e 100, a função calcula
+                        40 - 100 = -60. Como é negativo, 40 será ordenado antes de 100.</p>
+
+                    <button onclick="arraySort_demo5()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition mr-2 mb-2">
+                        Ordenar Alfabeticamente
+                    </button>
+                    <button onclick="arraySort_demo6()"
+                        class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition mb-2">
+                        Ordenar Numericamente
+                    </button>
+                    <div id="arraySort_demo5" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Ordenação Aleatória -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Ordenação Aleatória</h3>
+
+                    <p class="text-gray-600 mb-4">Você pode ordenar um array em ordem aleatória usando a função
+                        de ordenação:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const pontos = [40, 100, 1, 5, 25, 10];
+pontos.sort(function() { return 0.5 - Math.random() });</code></pre>
+                    </div>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                        <p class="text-yellow-700"><strong>Nota:</strong> O método acima não é muito preciso e pode
+                            favorecer alguns números. O método mais correto é o <strong>Fisher Yates shuffle</strong>.
+                        </p>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">O Método Fisher Yates</h4>
+                    <p class="text-gray-600 mb-4">O método mais popular e correto, introduzido na ciência de dados em
+                        1938:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const pontos = [40, 100, 1, 5, 25, 10];
+
+for (let i = pontos.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let k = pontos[i];
+    pontos[i] = pontos[j];
+    pontos[j] = k;
+}</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo7()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Embaralhar Array (Fisher Yates) »
+                    </button>
+                    <div id="arraySort_demo7" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Encontrar Min/Max -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Encontrar Menor e Maior Valor</h3>
+
+                    <p class="text-gray-600 mb-4">Não existem funções nativas para encontrar o menor ou maior valor
+                        em um array. Você tem 3 opções:</p>
+
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2">1. Usando sort()</h4>
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const pontos = [40, 100, 1, 5, 25, 10];
+
+// Ordenar e pegar o primeiro/último
+pontos.sort(function(a, b) { return a - b });
+let menor = pontos[0];              // 1
+let maior = pontos[pontos.length - 1];  // 100</code></pre>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2 mt-4">2. Usando Math.min() e Math.max()</h4>
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const pontos = [40, 100, 1, 5, 25, 10];
+
+// Usando spread operator (ES6)
+let menor = Math.min(...pontos);  // 1
+let maior = Math.max(...pontos);  // 100
+
+// Usando apply
+let menor2 = Math.min.apply(null, pontos);  // 1
+let maior2 = Math.max.apply(null, pontos);  // 100</code></pre>
+                    </div>
+
+                    <h4 class="text-lg font-semibold text-gray-700 mb-2 mt-4">3. Função personalizada</h4>
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>function encontrarMin(arr) {
+    let len = arr.length;
+    let min = Infinity;
+    while (len--) {
+        if (arr[len] < min) {
+            min = arr[len];
+        }
+    }
+    return min;
+}
+
+function encontrarMax(arr) {
+    let len = arr.length;
+    let max = -Infinity;
+    while (len--) {
+        if (arr[len] > max) {
+            max = arr[len];
+        }
+    }
+    return max;
+}</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo8()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                        Testar Min/Max »
+                    </button>
+                    <div id="arraySort_demo8" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Ordenando Objetos -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Ordenando Arrays de Objetos</h3>
+
+                    <p class="text-gray-600 mb-4">Arrays JavaScript frequentemente contêm objetos. Mesmo se os objetos
+                        tiverem propriedades de diferentes tipos, o método <code>sort()</code> pode ser usado:</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const carros = [
+    { tipo: "Volvo", ano: 2016 },
+    { tipo: "Saab", ano: 2001 },
+    { tipo: "BMW", ano: 2010 }
+];
+
+// Ordenar por ano (numérico)
+carros.sort(function(a, b) { return a.ano - b.ano });
+
+// Ordenar por tipo (string)
+carros.sort(function(a, b) {
+    let x = a.tipo.toLowerCase();
+    let y = b.tipo.toLowerCase();
+    if (x < y) { return -1; }
+    if (x > y) { return 1; }
+    return 0;
+});</code></pre>
+                    </div>
+
+                    <button onclick="arraySort_demo9()"
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition mr-2 mb-2">
+                        Ordenar por Ano »
+                    </button>
+                    <button onclick="arraySort_demo10()"
+                        class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition mb-2">
+                        Ordenar por Tipo »
+                    </button>
+                    <div id="arraySort_demo9" class="mt-3 p-3 bg-gray-100 rounded-lg text-gray-800"></div>
+                </section>
+
+                <!-- Ordenação Estável -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-3">Ordenação Estável (ES2019)</h3>
+
+                    <p class="text-gray-600 mb-4">O ES2019 revisou o método <code>sort()</code>. Antes de 2019,
+                        a especificação permitia algoritmos de ordenação instáveis como QuickSort.</p>
+
+                    <p class="text-gray-600 mb-4">Após ES2019, os navegadores devem usar um algoritmo de
+                        <strong>ordenação estável</strong>: ao ordenar elementos por um valor, os elementos
+                        devem manter sua posição relativa a outros elementos com o mesmo valor.</p>
+
+                    <div class="bg-gray-900 rounded-lg p-4 mb-4 overflow-x-auto">
+                        <pre class="text-green-400"><code>const meuArr = [
+    { nome: "X00", preco: 100 },
+    { nome: "X01", preco: 100 },
+    { nome: "X02", preco: 100 },
+    { nome: "X03", preco: 100 },
+    { nome: "X04", preco: 110 },
+    { nome: "X05", preco: 110 }
+];
+
+// Ao ordenar por preço, X00-X03 mantêm sua ordem relativa
+// e X04-X05 também mantêm sua ordem relativa</code></pre>
+                    </div>
+
+                    <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                        <p class="text-green-700"><strong>Ordenação estável:</strong> Elementos com valores iguais
+                            mantêm sua posição original relativa após a ordenação.</p>
+                    </div>
+                </section>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="array_search.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: Array Search
+                </a>
+                <a href="array_iteration.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: Array Iteration →
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

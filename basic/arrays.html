@@ -1,39 +1,486 @@
 ﻿<!DOCTYPE html>
-<html lang='pt-BR'>
-
+<html lang="pt-BR">
 <head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>arrays - JS Tutorial</title>
-    <link rel='stylesheet' href='../css/style.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
 </head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
 
-<body>
-    <div class='wrapper'>
-        <header class='header'>
-            <div class='header-container'>
-                <div class='logo'>
-                    <h1>JS<span>Tutorial</span></h1>
-                </div>
-                <nav class='main-nav'>
-                    <a href='../index.html'>Home</a>
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="arrays.html" class="font-semibold border-b-2 border-white pb-1">Arrays</a>
                 </nav>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <main class='container'>
-            <h1>arrays</h1>
-            <p>Conteúdo será adicionado aqui.</p>
-        </main>
+    <!-- Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
 
-        <footer class='footer'>
-            <div class='footer-content'>
-                <p>&copy; 2025 JS Tutorial</p>
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto flex-shrink-0">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Arrays</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="dates.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Dates</a>
+                    <a href="date_formats.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Date Formats</a>
+                    <a href="date_get.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Date Get</a>
+                    <a href="date_set.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Date Set</a>
+                    <a href="date_reference.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Date Reference</a>
+                    <a href="arrays.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Arrays</a>
+                    <a href="array_methods.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Methods</a>
+                    <a href="array_search.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Search</a>
+                    <a href="array_sort.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Sort</a>
+                    <a href="array_iteration.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Iteration</a>
+                    <a href="array_const.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Const</a>
+                    <a href="array_reference.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Reference</a>
+                </nav>
             </div>
-        </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8 min-w-0">
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-600 mb-6">
+                <a href="../index.html" class="text-blue-600 hover:underline">Home</a>
+                <span class="mx-2">›</span>
+                <a href="tutorial.html" class="text-blue-600 hover:underline">JavaScript Tutorial</a>
+                <span class="mx-2">›</span>
+                <span class="text-gray-800 font-semibold">JS Arrays</span>
+            </div>
+
+            <h1 class="text-4xl font-bold text-gray-900 mb-6">JavaScript Arrays</h1>
+
+            <!-- Introduction -->
+            <div class="mb-8">
+                <p class="text-gray-700 mb-4 text-lg">Um array é uma variável especial que pode conter mais de um valor.</p>
+                
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [<span class="text-green-400">"Saab"</span>, <span class="text-green-400">"Volvo"</span>, <span class="text-green-400">"BMW"</span>];</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo1()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo1" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why Use Arrays -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Por que Usar Arrays?</h2>
+                <p class="text-gray-700 mb-4">Se você tem uma lista de itens (por exemplo, uma lista de nomes de carros), armazenar os nomes em variáveis separadas ficaria assim:</p>
+                
+                <div class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4">
+                    <pre><code><span class="text-purple-400">let</span> car1 = <span class="text-green-400">"Saab"</span>;
+<span class="text-purple-400">let</span> car2 = <span class="text-green-400">"Volvo"</span>;
+<span class="text-purple-400">let</span> car3 = <span class="text-green-400">"BMW"</span>;</code></pre>
+                </div>
+
+                <p class="text-gray-700 mb-4">Mas e se você quisesse percorrer os carros e encontrar um específico? E se você tivesse não 3 carros, mas 300?</p>
+                <p class="text-gray-700 mb-4">A solução é um <strong>array</strong>!</p>
+                <p class="text-gray-700 mb-4">Um array pode conter muitos valores sob um único nome, e você pode acessar os valores referenciando um número de índice.</p>
+            </div>
+
+            <!-- Creating an Array -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Criando um Array</h2>
+                <p class="text-gray-700 mb-4">A maneira mais fácil de criar um array JavaScript é usando uma literal de array:</p>
+
+                <div class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4">
+                    <pre><code><span class="text-purple-400">const</span> array_name = [item1, item2, ...];</code></pre>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 <strong>Nota:</strong> É uma prática comum declarar arrays com a palavra-chave <code class="bg-white px-2 py-1 rounded text-red-600">const</code>.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Criando Array com Valores</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [<span class="text-green-400">"Saab"</span>, <span class="text-green-400">"Volvo"</span>, <span class="text-green-400">"BMW"</span>];</code></pre>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Você também pode criar um array vazio e adicionar elementos depois:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Array Vazio</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [];
+cars[<span class="text-orange-400">0</span>] = <span class="text-green-400">"Saab"</span>;
+cars[<span class="text-orange-400">1</span>] = <span class="text-green-400">"Volvo"</span>;
+cars[<span class="text-orange-400">2</span>] = <span class="text-green-400">"BMW"</span>;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accessing Array Elements -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Acessando Elementos do Array</h2>
+                <p class="text-gray-700 mb-4">Você acessa um elemento do array referenciando o <strong>número do índice</strong>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [<span class="text-green-400">"Saab"</span>, <span class="text-green-400">"Volvo"</span>, <span class="text-green-400">"BMW"</span>];
+<span class="text-purple-400">let</span> car = cars[<span class="text-orange-400">0</span>]; <span class="text-gray-500">// Acessa o primeiro elemento</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo2()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo2" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">⚠️ <strong>Índices de array começam com 0.</strong></p>
+                    <p class="text-gray-700 mt-2">[0] é o primeiro elemento. [1] é o segundo elemento.</p>
+                </div>
+            </div>
+
+            <!-- Changing Array Elements -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Alterando um Elemento do Array</h2>
+                <p class="text-gray-700 mb-4">Esta instrução altera o valor do primeiro elemento em <code class="bg-gray-100 px-2 py-1 rounded text-red-600">cars</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [<span class="text-green-400">"Saab"</span>, <span class="text-green-400">"Volvo"</span>, <span class="text-green-400">"BMW"</span>];
+cars[<span class="text-orange-400">0</span>] = <span class="text-green-400">"Opel"</span>; <span class="text-gray-500">// Altera "Saab" para "Opel"</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo3()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo3" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Converting to String -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Convertendo um Array para String</h2>
+                <p class="text-gray-700 mb-4">O método <code class="bg-gray-100 px-2 py-1 rounded text-red-600">toString()</code> converte um array em uma string de valores separados por vírgulas:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>, <span class="text-green-400">"Manga"</span>];
+document.<span class="text-yellow-300">getElementById</span>(<span class="text-green-400">"demo"</span>).<span class="text-blue-400">innerHTML</span> = fruits.<span class="text-yellow-300">toString</span>();
+<span class="text-gray-500">// Resultado: Banana,Laranja,Maçã,Manga</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo4()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo4" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Arrays are Objects -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Arrays são Objetos</h2>
+                <p class="text-gray-700 mb-4">Arrays são um tipo especial de objetos. O operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">typeof</code> em JavaScript retorna "object" para arrays.</p>
+                <p class="text-gray-700 mb-4">Mas, arrays JavaScript são melhor descritos como arrays.</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - typeof</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> cars = [<span class="text-green-400">"Saab"</span>, <span class="text-green-400">"Volvo"</span>, <span class="text-green-400">"BMW"</span>];
+<span class="text-purple-400">typeof</span> cars; <span class="text-gray-500">// Retorna "object"</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo5()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo5" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 <strong>Arrays usam números</strong> para acessar seus elementos. <strong>Objetos usam nomes</strong> para acessar seus "membros".</p>
+                </div>
+            </div>
+
+            <!-- The length Property -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">A Propriedade length</h2>
+                <p class="text-gray-700 mb-4">A propriedade <code class="bg-gray-100 px-2 py-1 rounded text-red-600">length</code> retorna o comprimento de um array (número de elementos):</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>, <span class="text-green-400">"Manga"</span>];
+<span class="text-purple-400">let</span> length = fruits.<span class="text-blue-400">length</span>; <span class="text-gray-500">// Retorna 4</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo6()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo6" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">💡 A propriedade <code class="bg-white px-2 py-1 rounded text-red-600">length</code> é sempre um a mais que o maior índice do array.</p>
+                </div>
+            </div>
+
+            <!-- Accessing First and Last Elements -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Acessando Primeiro e Último Elemento</h2>
+                
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                        <div class="bg-gradient-to-r from-green-500 to-emerald-500 px-4 py-3 rounded-t-lg">
+                            <h3 class="font-semibold text-white">Primeiro Elemento</h3>
+                        </div>
+                        <div class="p-4">
+                            <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">let</span> first = fruits[<span class="text-orange-400">0</span>];</code></pre>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-3 rounded-t-lg">
+                            <h3 class="font-semibold text-white">Último Elemento</h3>
+                        </div>
+                        <div class="p-4">
+                            <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code><span class="text-purple-400">let</span> last = fruits[fruits.<span class="text-blue-400">length</span> - <span class="text-orange-400">1</span>];</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Looping Array Elements -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Percorrendo Elementos do Array</h2>
+                <p class="text-gray-700 mb-4">Uma maneira de percorrer um array é usando um loop <code class="bg-gray-100 px-2 py-1 rounded text-red-600">for</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Loop for</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>, <span class="text-green-400">"Manga"</span>];
+<span class="text-purple-400">let</span> fLen = fruits.<span class="text-blue-400">length</span>;
+<span class="text-purple-400">let</span> text = <span class="text-green-400">"&lt;ul&gt;"</span>;
+
+<span class="text-purple-400">for</span> (<span class="text-purple-400">let</span> i = <span class="text-orange-400">0</span>; i < fLen; i++) {
+    text += <span class="text-green-400">"&lt;li&gt;"</span> + fruits[i] + <span class="text-green-400">"&lt;/li&gt;"</span>;
+}
+text += <span class="text-green-400">"&lt;/ul&gt;"</span>;</code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo7()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <div id="demo7" class="mt-4 text-gray-700 font-medium text-lg"></div>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Você também pode usar a função <code class="bg-gray-100 px-2 py-1 rounded text-red-600">Array.forEach()</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - forEach()</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>, <span class="text-green-400">"Manga"</span>];
+<span class="text-purple-400">let</span> text = <span class="text-green-400">"&lt;ul&gt;"</span>;
+
+fruits.<span class="text-yellow-300">forEach</span>(myFunction);
+text += <span class="text-green-400">"&lt;/ul&gt;"</span>;
+
+<span class="text-purple-400">function</span> <span class="text-yellow-300">myFunction</span>(value) {
+    text += <span class="text-green-400">"&lt;li&gt;"</span> + value + <span class="text-green-400">"&lt;/li&gt;"</span>;
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adding Array Elements -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Adicionando Elementos ao Array</h2>
+                <p class="text-gray-700 mb-4">A maneira mais fácil de adicionar um novo elemento a um array é usando o método <code class="bg-gray-100 px-2 py-1 rounded text-red-600">push()</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - push()</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>];
+fruits.<span class="text-yellow-300">push</span>(<span class="text-green-400">"Limão"</span>); <span class="text-gray-500">// Adiciona "Limão" ao final</span></code></pre>
+                        <button class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-2 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105" onclick="arrays_demo8()">
+                            ▶ Experimente você mesmo »
+                        </button>
+                        <p id="demo8" class="mt-4 text-gray-700 font-medium text-lg"></p>
+                    </div>
+                </div>
+
+                <p class="text-gray-700 mb-4">Novo elemento também pode ser adicionado usando a propriedade <code class="bg-gray-100 px-2 py-1 rounded text-red-600">length</code>:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo - Usando length</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> fruits = [<span class="text-green-400">"Banana"</span>, <span class="text-green-400">"Laranja"</span>, <span class="text-green-400">"Maçã"</span>];
+fruits[fruits.<span class="text-blue-400">length</span>] = <span class="text-green-400">"Limão"</span>; <span class="text-gray-500">// Adiciona "Limão" ao final</span></code></pre>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-red-50 to-pink-50 border-l-4 border-red-500 p-4 mb-6 rounded-r">
+                    <p class="text-gray-800">⚠️ <strong>AVISO!</strong></p>
+                    <p class="text-gray-700 mt-2">Adicionar elementos com índices altos pode criar "buracos" indefinidos em um array:</p>
+                    <pre class="bg-gray-900 text-gray-100 p-3 rounded mt-2 overflow-x-auto"><code>fruits[<span class="text-orange-400">6</span>] = <span class="text-green-400">"Limão"</span>; <span class="text-gray-500">// Cria "buracos" undefined</span></code></pre>
+                </div>
+            </div>
+
+            <!-- Recognizing an Array -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Como Reconhecer um Array</h2>
+                <p class="text-gray-700 mb-4">Uma pergunta comum é: Como eu sei se uma variável é um array?</p>
+                <p class="text-gray-700 mb-4">O problema é que o operador <code class="bg-gray-100 px-2 py-1 rounded text-red-600">typeof</code> retorna "object":</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                        <div class="bg-gradient-to-r from-green-500 to-emerald-500 px-4 py-3 rounded-t-lg">
+                            <h3 class="font-semibold text-white">Solução 1: Array.isArray()</h3>
+                        </div>
+                        <div class="p-4">
+                            <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code>Array.<span class="text-yellow-300">isArray</span>(fruits); <span class="text-gray-500">// true</span></code></pre>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md border border-gray-200">
+                        <div class="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-3 rounded-t-lg">
+                            <h3 class="font-semibold text-white">Solução 2: instanceof</h3>
+                        </div>
+                        <div class="p-4">
+                            <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto"><code>fruits <span class="text-purple-400">instanceof</span> Array; <span class="text-gray-500">// true</span></code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nested Arrays -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Arrays Aninhados</h2>
+                <p class="text-gray-700 mb-4">Valores em objetos podem ser arrays, e valores em arrays podem ser objetos:</p>
+
+                <div class="bg-white rounded-lg shadow-md border border-gray-200 mb-6">
+                    <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                        <h3 class="font-semibold text-gray-800">Exemplo</h3>
+                    </div>
+                    <div class="p-4">
+                        <pre class="bg-gray-900 text-gray-100 p-4 rounded overflow-x-auto mb-4"><code><span class="text-purple-400">const</span> myObj = {
+    name: <span class="text-green-400">"John"</span>,
+    age: <span class="text-orange-400">30</span>,
+    cars: [
+        {name: <span class="text-green-400">"Ford"</span>, models: [<span class="text-green-400">"Fiesta"</span>, <span class="text-green-400">"Focus"</span>, <span class="text-green-400">"Mustang"</span>]},
+        {name: <span class="text-green-400">"BMW"</span>, models: [<span class="text-green-400">"320"</span>, <span class="text-green-400">"X3"</span>, <span class="text-green-400">"X5"</span>]},
+        {name: <span class="text-green-400">"Fiat"</span>, models: [<span class="text-green-400">"500"</span>, <span class="text-green-400">"Panda"</span>]}
+    ]
+};</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Learn More Section -->
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Saiba Mais:</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <a href="array_methods.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Métodos de Array Básicos</h3>
+                        <p class="text-gray-600 text-sm mt-1">push, pop, shift, unshift, splice...</p>
+                    </a>
+                    <a href="array_search.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Métodos de Busca</h3>
+                        <p class="text-gray-600 text-sm mt-1">indexOf, find, includes...</p>
+                    </a>
+                    <a href="array_sort.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Métodos de Ordenação</h3>
+                        <p class="text-gray-600 text-sm mt-1">sort, reverse, toSorted...</p>
+                    </a>
+                    <a href="array_iteration.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Métodos de Iteração</h3>
+                        <p class="text-gray-600 text-sm mt-1">forEach, map, filter, reduce...</p>
+                    </a>
+                    <a href="array_const.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Arrays Const</h3>
+                        <p class="text-gray-600 text-sm mt-1">Usando const com arrays...</p>
+                    </a>
+                    <a href="array_reference.html" class="block bg-white rounded-lg shadow-md border border-gray-200 p-4 hover:shadow-lg transition-shadow">
+                        <h3 class="font-semibold text-blue-600 hover:underline">Referência Completa</h3>
+                        <p class="text-gray-600 text-sm mt-1">Todos os métodos e propriedades...</p>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                <a href="date_reference.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                    ← Anterior: Date Reference
+                </a>
+                <a href="array_methods.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                    Próximo: Array Methods →
+                </a>
+            </div>
+        </main>
     </div>
 
-    <script src='../js/script.js'></script>
-</body>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
 
+    <script src="../js/script.js"></script>
+</body>
 </html>

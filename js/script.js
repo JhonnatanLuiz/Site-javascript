@@ -758,35 +758,6 @@ function events_demo1() {
 }
 
 // ========================================
-// ARRAYS.HTML DEMOS
-// ========================================
-function arrays_demo1() {
-    const cars = ["Saab", "Volvo", "BMW"];
-    showResult('result1', cars);
-}
-
-function arrays_demo2() {
-    const cars = ["Saab", "Volvo", "BMW"];
-    showResult('result2', cars[0]);
-}
-
-function arrays_demo3() {
-    const cars = ["Saab", "Volvo", "BMW"];
-    cars[0] = "Opel";
-    showResult('result3', cars);
-}
-
-function arrays_demo4() {
-    const cars = ["Saab", "Volvo", "BMW"];
-    showResult('result4', cars.toString());
-}
-
-function arrays_demo5() {
-    const cars = ["Saab", "Volvo", "BMW"];
-    showResult('result5', typeof cars);
-}
-
-// ========================================
 // FUNCTIONS.HTML DEMOS
 // ========================================
 function functions_demo1() {
@@ -1408,6 +1379,392 @@ function updatePlayPauseButton() {
     if (btn) {
         btn.innerHTML = isPlaying ? '⏸️ Pausar' : '▶️ Reproduzir';
     }
+}
+
+// ========================================
+// ARRAYS.HTML DEMOS (Atualizados)
+// ========================================
+function arrays_demo1() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    document.getElementById('demo1').innerHTML = cars;
+}
+
+function arrays_demo2() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    document.getElementById('demo2').innerHTML = cars[0];
+}
+
+function arrays_demo3() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    cars[0] = "Opel";
+    document.getElementById('demo3').innerHTML = cars;
+}
+
+function arrays_demo4() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo4').innerHTML = fruits.length;
+}
+
+function arrays_demo5() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    let fLen = fruits.length;
+    let text = "<ul>";
+    for (let i = 0; i < fLen; i++) {
+        text += "<li>" + fruits[i] + "</li>";
+    }
+    text += "</ul>";
+    document.getElementById('demo5').innerHTML = text;
+}
+
+function arrays_demo6() {
+    const fruits = ["Banana", "Laranja", "Maçã"];
+    fruits.push("Limão");
+    document.getElementById('demo6').innerHTML = fruits;
+}
+
+function arrays_demo7() {
+    const fruits = ["Banana", "Laranja", "Maçã"];
+    fruits[fruits.length] = "Limão";
+    document.getElementById('demo7').innerHTML = fruits;
+}
+
+function arrays_demo8() {
+    const person = [];
+    person[0] = "John";
+    person[1] = "Doe";
+    person[2] = 46;
+    document.getElementById('demo8').innerHTML = person[0] + " " + person.length;
+}
+
+// ========================================
+// ARRAY_METHODS.HTML DEMOS
+// ========================================
+function arrayMethods_demo1() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo1').innerHTML = fruits.length;
+}
+
+function arrayMethods_demo2() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo2').innerHTML = fruits.toString();
+}
+
+function arrayMethods_demo3() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo3').innerHTML = fruits.at(2) + "<br>Ou com índice negativo: " + fruits.at(-1);
+}
+
+function arrayMethods_demo4() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo4').innerHTML = fruits.join(" * ");
+}
+
+function arrayMethods_demo5() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    let fruit = fruits.pop();
+    document.getElementById('demo5').innerHTML = "Removido: " + fruit + "<br>Array: " + fruits;
+}
+
+function arrayMethods_demo6() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    fruits.push("Kiwi");
+    document.getElementById('demo6').innerHTML = fruits;
+}
+
+function arrayMethods_demo7() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    let fruit = fruits.shift();
+    document.getElementById('demo7').innerHTML = "Removido: " + fruit + "<br>Array: " + fruits;
+}
+
+function arrayMethods_demo8() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    fruits.unshift("Limão");
+    document.getElementById('demo8').innerHTML = fruits;
+}
+
+function arrayMethods_demo9() {
+    const myGirls = ["Cecilie", "Lone"];
+    const myBoys = ["Emil", "Tobias", "Linus"];
+    const myChildren = myGirls.concat(myBoys);
+    document.getElementById('demo9').innerHTML = myChildren;
+}
+
+function arrayMethods_demo10() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    fruits.splice(2, 0, "Limão", "Kiwi");
+    document.getElementById('demo10').innerHTML = fruits;
+}
+
+function arrayMethods_demo11() {
+    const fruits = ["Banana", "Laranja", "Limão", "Maçã", "Manga"];
+    const citrus = fruits.slice(1, 3);
+    document.getElementById('demo11').innerHTML = "Original: " + fruits + "<br>Slice: " + citrus;
+}
+
+function arrayMethods_demo12() {
+    const myArr = [[1,2],[3,4],[5,6]];
+    const newArr = myArr.flat();
+    document.getElementById('demo12').innerHTML = newArr;
+}
+
+// ========================================
+// ARRAY_SEARCH.HTML DEMOS
+// ========================================
+function arraySearch_demo1() {
+    const fruits = ["Maçã", "Laranja", "Maçã", "Manga"];
+    let position = fruits.indexOf("Maçã");
+    document.getElementById('demo1').innerHTML = "Posição: " + position;
+}
+
+function arraySearch_demo2() {
+    const fruits = ["Maçã", "Laranja", "Maçã", "Manga"];
+    let position = fruits.lastIndexOf("Maçã");
+    document.getElementById('demo2').innerHTML = "Última posição: " + position;
+}
+
+function arraySearch_demo3() {
+    const fruits = ["Maçã", "Laranja", "Maçã", "Manga"];
+    document.getElementById('demo3').innerHTML = fruits.includes("Manga");
+}
+
+function arraySearch_demo4() {
+    const numbers = [4, 9, 16, 25, 29];
+    let first = numbers.find(x => x > 18);
+    document.getElementById('demo4').innerHTML = "Primeiro valor > 18: " + first;
+}
+
+function arraySearch_demo5() {
+    const numbers = [4, 9, 16, 25, 29];
+    let firstIndex = numbers.findIndex(x => x > 18);
+    document.getElementById('demo5').innerHTML = "Índice do primeiro > 18: " + firstIndex;
+}
+
+function arraySearch_demo6() {
+    const temp = [27, 28, 30, 40, 42, 35, 30];
+    let high = temp.findLast(x => x > 35);
+    document.getElementById('demo6').innerHTML = "Último valor > 35: " + high;
+}
+
+function arraySearch_demo7() {
+    const temp = [27, 28, 30, 40, 42, 35, 30];
+    let pos = temp.findLastIndex(x => x > 35);
+    document.getElementById('demo7').innerHTML = "Índice do último > 35: " + pos;
+}
+
+// ========================================
+// ARRAY_SORT.HTML DEMOS
+// ========================================
+function arraySort_demo1() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    fruits.sort();
+    document.getElementById('demo1').innerHTML = fruits;
+}
+
+function arraySort_demo2() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    fruits.reverse();
+    document.getElementById('demo2').innerHTML = fruits;
+}
+
+function arraySort_demo3() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    const sorted = fruits.toSorted();
+    document.getElementById('demo3').innerHTML = "Original: " + fruits + "<br>Ordenado: " + sorted;
+}
+
+function arraySort_demo4() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    const reversed = fruits.toReversed();
+    document.getElementById('demo4').innerHTML = "Original: " + fruits + "<br>Invertido: " + reversed;
+}
+
+function arraySort_demo5() {
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return a - b});
+    document.getElementById('demo5').innerHTML = points;
+}
+
+function arraySort_demo6() {
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return b - a});
+    document.getElementById('demo6').innerHTML = points;
+}
+
+function arraySort_demo7() {
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return a - b});
+    document.getElementById('demo7').innerHTML = "Menor: " + points[0];
+}
+
+function arraySort_demo8() {
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return b - a});
+    document.getElementById('demo8').innerHTML = "Maior: " + points[0];
+}
+
+function arraySort_demo9() {
+    const points = [40, 100, 1, 5, 25, 10];
+    points.sort(() => 0.5 - Math.random());
+    document.getElementById('demo9').innerHTML = points;
+}
+
+// ========================================
+// ARRAY_ITERATION.HTML DEMOS
+// ========================================
+function arrayIteration_demo1() {
+    const numbers = [45, 4, 9, 16, 25];
+    let txt = "";
+    numbers.forEach(myFunction);
+    function myFunction(value, index, array) {
+        txt += value + "<br>";
+    }
+    document.getElementById('demo1').innerHTML = txt;
+}
+
+function arrayIteration_demo2() {
+    const numbers1 = [45, 4, 9, 16, 25];
+    const numbers2 = numbers1.map(myFunction);
+    function myFunction(value, index, array) {
+        return value * 2;
+    }
+    document.getElementById('demo2').innerHTML = numbers2;
+}
+
+function arrayIteration_demo3() {
+    const myArr = [1, 2, 3, 4, 5, 6];
+    const newArr = myArr.flatMap(x => [x, x * 10]);
+    document.getElementById('demo3').innerHTML = newArr;
+}
+
+function arrayIteration_demo4() {
+    const numbers = [45, 4, 9, 16, 25];
+    const over18 = numbers.filter(myFunction);
+    function myFunction(value, index, array) {
+        return value > 18;
+    }
+    document.getElementById('demo4').innerHTML = over18;
+}
+
+function arrayIteration_demo5() {
+    const numbers = [45, 4, 9, 16, 25];
+    let sum = numbers.reduce(myFunction);
+    function myFunction(total, value, index, array) {
+        return total + value;
+    }
+    document.getElementById('demo5').innerHTML = "Soma: " + sum;
+}
+
+function arrayIteration_demo6() {
+    const numbers = [45, 4, 9, 16, 25];
+    let sum = numbers.reduceRight(myFunction);
+    function myFunction(total, value, index, array) {
+        return total + value;
+    }
+    document.getElementById('demo6').innerHTML = "Soma (direita para esquerda): " + sum;
+}
+
+function arrayIteration_demo7() {
+    const numbers = [45, 4, 9, 16, 25];
+    let allOver18 = numbers.every(myFunction);
+    function myFunction(value, index, array) {
+        return value > 18;
+    }
+    document.getElementById('demo7').innerHTML = "Todos > 18? " + allOver18;
+}
+
+function arrayIteration_demo8() {
+    const numbers = [45, 4, 9, 16, 25];
+    let someOver18 = numbers.some(myFunction);
+    function myFunction(value, index, array) {
+        return value > 18;
+    }
+    document.getElementById('demo8').innerHTML = "Algum > 18? " + someOver18;
+}
+
+function arrayIteration_demo9() {
+    let myArr = Array.from("ABCDEFG");
+    document.getElementById('demo9').innerHTML = myArr;
+}
+
+function arrayIteration_demo10() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    const keys = fruits.keys();
+    let text = "";
+    for (let x of keys) {
+        text += x + "<br>";
+    }
+    document.getElementById('demo10').innerHTML = text;
+}
+
+function arrayIteration_demo11() {
+    const fruits = ["Banana", "Laranja", "Maçã"];
+    const f = fruits.entries();
+    let text = "";
+    for (let x of f) {
+        text += x + "<br>";
+    }
+    document.getElementById('demo11').innerHTML = text;
+}
+
+function arrayIteration_demo12() {
+    const months = ["Janeiro", "Fevereiro", "Março", "Abril"];
+    const myMonths = months.with(2, "Março Atualizado");
+    document.getElementById('demo12').innerHTML = "Original: " + months + "<br>Novo: " + myMonths;
+}
+
+// ========================================
+// ARRAY_CONST.HTML DEMOS
+// ========================================
+function arrayConst_demo1() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    document.getElementById('demo1').innerHTML = cars;
+}
+
+function arrayConst_demo2() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    cars[0] = "Toyota";
+    cars.push("Audi");
+    document.getElementById('demo2').innerHTML = cars;
+}
+
+function arrayConst_demo3() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    // cars = ["Toyota", "Volvo", "Audi"]; // Erro!
+    document.getElementById('demo3').innerHTML = "Erro! Não é possível reatribuir um array const.";
+}
+
+function arrayConst_demo4() {
+    const cars = ["Saab", "Volvo", "BMW"];
+    // No mesmo escopo:
+    // var cars = ["Toyota"];  // Erro
+    // let cars = ["Toyota"];  // Erro
+    // const cars = ["Toyota"]; // Erro
+    document.getElementById('demo4').innerHTML = "Não é possível redeclarar no mesmo escopo!";
+}
+
+function arrayConst_demo5() {
+    const cars = ["Saab", "Volvo", "BMW"]; // escopo global
+    {
+        const cars = ["Toyota", "Audi"]; // escopo de bloco - permitido
+        document.getElementById('demo5').innerHTML = "No bloco: " + cars;
+    }
+    // Aqui cars ainda é ["Saab", "Volvo", "BMW"]
+}
+
+// ========================================
+// ARRAY_REFERENCE.HTML DEMO
+// ========================================
+function arrayRef_demo1() {
+    const fruits = ["Banana", "Laranja", "Maçã", "Manga"];
+    let output = "";
+    output += "Array: " + fruits.toString() + "<br>";
+    output += "Length: " + fruits.length + "<br>";
+    output += "at(1): " + fruits.at(1) + "<br>";
+    output += "indexOf('Maçã'): " + fruits.indexOf("Maçã") + "<br>";
+    output += "includes('Manga'): " + fruits.includes("Manga") + "<br>";
+    output += "join(' - '): " + fruits.join(" - ") + "<br>";
+    document.getElementById('demo1').innerHTML = output;
 }
 
 if (typeof module !== 'undefined' && module.exports) {

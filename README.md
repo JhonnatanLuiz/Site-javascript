@@ -55,7 +55,13 @@ Site-javascript/
 │   ├── functions.html         # Funções
 │   ├── events.html            # Eventos
 │   ├── dates.html             # Datas
-│   ├── arrays.html            # Arrays
+│   ├── arrays.html            # ✅ Arrays JavaScript (8 exemplos)
+│   ├── array_methods.html     # ✅ Métodos de array (12 exemplos)
+│   ├── array_search.html      # ✅ Busca em arrays (7 exemplos)
+│   ├── array_sort.html        # ✅ Ordenação de arrays (9 exemplos)
+│   ├── array_iteration.html   # ✅ Iteração em arrays (12 exemplos)
+│   ├── array_const.html       # ✅ Arrays com const (5 exemplos)
+│   ├── array_reference.html   # ✅ Referência de arrays (tabelas)
 │   ├── typed-arrays.html      # Typed Arrays
 │   ├── sets.html              # Sets
 │   ├── maps.html              # Maps
@@ -88,7 +94,7 @@ Site-javascript/
 └── README.md                   # Este arquivo
 ```
 
-## 📚 Páginas Completas (42 de 42 implementadas)
+## 📚 Páginas Completas (49 de 49 implementadas)
 
 ### 🔢 Operadores (4 páginas)
 1. **operators.html** - Visão geral de todos os tipos de operadores JavaScript
@@ -146,9 +152,19 @@ Site-javascript/
 39. **date_set.html** - Métodos set (setFullYear, setMonth, setDate, etc) (6 exemplos)
 40. **date_reference.html** - Referência completa de métodos Date (4 tabelas de referência)
 
+### 📋 Arrays (7 páginas) - ✅ COMPLETO
+41. **arrays.html** - Introdução a arrays, acesso, modificação (8 exemplos)
+42. **array_methods.html** - Métodos básicos: length, toString, at, join, pop, push, shift, unshift, concat, splice, slice, flat (12 exemplos)
+43. **array_search.html** - Métodos de busca: indexOf, lastIndexOf, includes, find, findIndex, findLast, findLastIndex (7 exemplos)
+44. **array_sort.html** - Ordenação: sort, reverse, toSorted, toReversed, ordenação numérica, aleatória (9 exemplos)
+45. **array_iteration.html** - Iteração: forEach, map, flatMap, filter, reduce, reduceRight, every, some, from, keys, entries, with (12 exemplos)
+46. **array_const.html** - Arrays com const: reatribuição vs mutação, escopo de bloco (5 exemplos)
+47. **array_reference.html** - Referência completa de propriedades e métodos de Array (1 demo + tabelas)
+
 ### 📝 Próximas Seções
-- **Arrays** (arrays.html)
-- **Array Methods** (array_methods.html)
+- **Typed Arrays** (typed-arrays.html)
+- **Sets** (sets.html)
+- **Maps** (maps.html)
 
 ## 🎨 Design e Tecnologias
 
@@ -234,6 +250,18 @@ Site-javascript/
 - **Métodos Set** setFullYear(), setMonth(), setDate(), setHours(), aritmética de datas (adicionar dias)
 - **Tabela de referência** completa com Get, Set, Conversion e Static methods
 
+### Arrays Section ✅
+- **54 exemplos interativos** funcionais
+- **54 funções JavaScript** em script.js (arrays_demo, arrayMethods_demo, arraySearch_demo, arraySort_demo, arrayIteration_demo, arrayConst_demo, arrayRef_demo)
+- **7 páginas completas** seguindo o W3Schools
+- **Arrays básicos** criação, acesso, modificação, length (8 exemplos)
+- **Métodos de array** pop, push, shift, unshift, concat, splice, slice, flat (12 exemplos)
+- **Busca em arrays** indexOf, lastIndexOf, includes, find, findIndex, findLast, findLastIndex (7 exemplos)
+- **Ordenação** sort, reverse, toSorted (ES2023), toReversed, ordenação numérica, shuffle (9 exemplos)
+- **Iteração** forEach, map, flatMap, filter, reduce, reduceRight, every, some, from, keys, entries, with (12 exemplos)
+- **Arrays const** reatribuição vs mutação, escopo de bloco (5 exemplos)
+- **Referência completa** tabela com todas as propriedades e métodos de Array
+
 ### 🎠 Carrossel de Slides ✅
 - **15 slides** (Slide1.PNG até Slide15.PNG) na página tutorial.html
 - **Auto-play** a cada 10 segundos com botão Pausar/Reproduzir
@@ -246,7 +274,7 @@ Site-javascript/
 
 ## 🎨 Index.html - Cards com Emojis
 
-Todos os **46 cards** da página inicial possuem emojis visuais:
+Todos os **52 cards** da página inicial possuem emojis visuais:
 
 | Card | Emoji | Card | Emoji |
 |------|-------|------|-------|
@@ -265,13 +293,16 @@ Todos os **46 cards** da página inicial possuem emojis visuais:
 | **Date Get** | **🔍** | **JS For Loop** | **➰** |
 | **Date Set** | **✏️** | **JS While Loop** | **🔄** |
 | **Date Reference** | **📖** | **JS Break** | **🛑** |
-| Arrays | 📋 | **JS Continue** | **⏭️** |
-| Typed Arrays | 🎯 | Data Types | 📊 |
-| Sets | 🔗 | Debugging | 🐛 |
-| Maps | 🗺️ | Programming | 💻 |
-| Math | 🧮 | References | 📖 |
-| RegExp | 🔍 | UTF-8 | 🌐 |
-| Errors | ❌ | Versions | 📜 |
+| **Arrays** | **📋** | **JS Continue** | **⏭️** |
+| **Array Methods** | **🛠️** | Data Types | 📊 |
+| **Array Search** | **🔍** | Debugging | 🐛 |
+| **Array Sort** | **🔄** | Programming | 💻 |
+| **Array Iteration** | **🔁** | References | 📖 |
+| **Array Const** | **🔒** | UTF-8 | 🌐 |
+| **Array Reference** | **📖** | Versions | 📜 |
+| Typed Arrays | 🎯 | Sets | 🔗 |
+| Maps | 🗺️ | Math | 🧮 |
+| RegExp | 🔍 | Errors | ❌ |
 
 ## 📖 Inspiração
 
@@ -299,4 +330,4 @@ Projeto desenvolvido por **Jhonnatan Luiz** para fins educacionais.
 
 **Desenvolvido com ❤️ para aprender e ensinar JavaScript**
 
-**Status**: 🟢 **42 de 42 páginas básicas implementadas** (Operators + Condicionais + Loops + Strings + Numbers + Functions + Objects + Dates ✅ completos)
+**Status**: 🟢 **49 de 49 páginas básicas implementadas** (Operators + Condicionais + Loops + Strings + Numbers + Functions + Objects + Dates + Arrays ✅ completos)

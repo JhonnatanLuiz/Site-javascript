@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Reference - JS Tutorial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .sidebar-transition {
+            transition: transform 0.3s ease-in-out;
+        }
+        .menu-overlay {
+            transition: opacity 0.3s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-screen-xl mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
+                <button id="menuToggle" class="lg:hidden text-white p-2 hover:bg-white/10 rounded transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+
+                <a href="../index.html" class="flex items-center space-x-2 hover:opacity-90 transition-opacity">
+                    <div class="bg-white text-blue-600 font-bold text-xl px-3 py-1 rounded">JS</div>
+                    <span class="text-2xl font-bold">Tutorial</span>
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../index.html" class="hover:text-blue-200 transition-colors">Home</a>
+                    <a href="tutorial.html" class="hover:text-blue-200 transition-colors">Tutorial</a>
+                    <a href="array_reference.html" class="font-semibold border-b-2 border-white pb-1">Array Reference</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overlay -->
+    <div id="menuOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden menu-overlay opacity-0"></div>
+
+    <div class="max-w-screen-xl mx-auto flex flex-col lg:flex-row">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 transform -translate-x-full lg:translate-x-0 w-64 bg-white border-r border-gray-200 lg:min-h-screen z-50 sidebar-transition overflow-y-auto flex-shrink-0">
+            <div class="p-4">
+                <div class="flex items-center justify-between mb-4 lg:hidden">
+                    <h3 class="font-bold text-gray-800 text-lg">Menu</h3>
+                    <button id="closeMenu" class="text-gray-600 hover:text-gray-900 p-2" aria-label="Fechar Menu">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-lg hidden lg:block">JavaScript Arrays</h3>
+                <nav class="space-y-1">
+                    <a href="tutorial.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Tutorial</a>
+                    <a href="dates.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Dates</a>
+                    <a href="arrays.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Arrays</a>
+                    <a href="array_methods.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Methods</a>
+                    <a href="array_search.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Search</a>
+                    <a href="array_sort.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Sort</a>
+                    <a href="array_iteration.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Iteration</a>
+                    <a href="array_const.html" class="block px-3 py-2 text-gray-700 hover:bg-blue-50 rounded transition-colors">JS Array Const</a>
+                    <a href="array_reference.html" class="block px-3 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded hover:from-blue-700 hover:to-indigo-700 transition-all shadow-md">JS Array Reference</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6 lg:p-8 min-w-0">
+            <!-- Breadcrumb -->
+            <nav class="text-sm text-gray-500 mb-4">
+                <a href="../index.html" class="hover:text-indigo-600">Início</a> &gt;
+                <a href="arrays.html" class="hover:text-indigo-600">Arrays</a> &gt;
+                <span class="text-gray-800">Array Reference</span>
+            </nav>
+
+            <article class="bg-white rounded-xl shadow-md p-6 lg:p-8 max-w-5xl">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">JavaScript Array Reference</h2>
+
+                <!-- Introdução -->
+                <section class="mb-8">
+                    <p class="text-gray-600 mb-4">Esta página contém uma referência completa de todas as propriedades
+                        e métodos de Array em JavaScript.</p>
+                </section>
+
+                <!-- Propriedades -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Propriedades de Array</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-indigo-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Propriedade</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">constructor
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna a função que criou o protótipo
+                                        do objeto Array</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">length</td>
+                                    <td class="border border-gray-300 px-4 py-2">Define ou retorna o número de
+                                        elementos de um array</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">prototype
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Permite adicionar propriedades e
+                                        métodos a um objeto Array</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Métodos Básicos -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Métodos Básicos de Array</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-indigo-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Método</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">at()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna um elemento em um índice
+                                        especificado (permite índices negativos)</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">concat()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Junta dois ou mais arrays e retorna um
+                                        novo array</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">copyWithin()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Copia elementos do array para outra
+                                        posição no mesmo array</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">entries()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna um objeto Array Iterator com
+                                        pares chave/valor</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">fill()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Preenche os elementos de um array com
+                                        um valor estático</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">flat()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Cria um novo array com sub-arrays
+                                        concatenados recursivamente</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">flatMap()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Mapeia cada elemento e achata o
+                                        resultado em um novo array</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">join()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Junta todos os elementos em uma string
+                                    </td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">keys()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna um Array Iterator com as
+                                        chaves (índices)</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">pop()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Remove o último elemento e o retorna
+                                    </td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">push()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Adiciona elementos ao final e retorna
+                                        o novo tamanho</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">reverse()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Inverte a ordem dos elementos no array
+                                    </td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">shift()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Remove o primeiro elemento e o retorna
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">slice()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Extrai uma porção do array e retorna
+                                        um novo array</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">sort()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Ordena os elementos do array</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">splice()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Adiciona/remove elementos do array
+                                    </td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">toString()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Converte o array em uma string e a
+                                        retorna</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">unshift()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Adiciona elementos no início e retorna
+                                        o novo tamanho</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-indigo-600">values()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna um Array Iterator com os
+                                        valores</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Métodos de Busca -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Métodos de Busca</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-green-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Método</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">find()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o valor do primeiro elemento
+                                        que passa no teste</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">findIndex()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o índice do primeiro elemento
+                                        que passa no teste</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">findLast()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o valor do último elemento que
+                                        passa no teste (ES2023)</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">
+                                        findLastIndex()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o índice do último elemento
+                                        que passa no teste (ES2023)</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">includes()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Verifica se o array contém um elemento
+                                        especificado</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">indexOf()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o primeiro índice de um
+                                        elemento no array</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-green-600">lastIndexOf()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna o último índice de um elemento
+                                        no array</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Métodos de Iteração -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Métodos de Iteração</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-purple-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Método</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">every()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Verifica se todos os elementos passam
+                                        no teste</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">filter()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Cria um novo array com elementos que
+                                        passam no teste</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">forEach()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Executa uma função para cada elemento
+                                    </td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">map()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Cria um novo array com resultados da
+                                        função aplicada</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">reduce()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Reduz o array a um único valor (da
+                                        esquerda para direita)</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">reduceRight()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Reduz o array a um único valor (da
+                                        direita para esquerda)</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-purple-600">some()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Verifica se algum elemento passa no
+                                        teste</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Métodos ES2023 -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Métodos Imutáveis (ES2023)</h3>
+                    <p class="text-gray-600 mb-4">Estes métodos criam novos arrays sem modificar o original:</p>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-orange-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Método</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Equivalente Mutável</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-orange-600">toReversed()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna novo array com ordem invertida
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2 font-mono">reverse()</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-orange-600">toSorted()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna novo array ordenado</td>
+                                    <td class="border border-gray-300 px-4 py-2 font-mono">sort()</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-orange-600">toSpliced()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna novo array com elementos
+                                        alterados</td>
+                                    <td class="border border-gray-300 px-4 py-2 font-mono">splice()</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-orange-600">with()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Retorna novo array com elemento
+                                        alterado</td>
+                                    <td class="border border-gray-300 px-4 py-2 font-mono">array[index] = value</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Métodos Estáticos -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Métodos Estáticos do Array</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-gray-300">
+                            <thead>
+                                <tr class="bg-blue-600 text-white">
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Método</th>
+                                    <th class="border border-gray-300 px-4 py-2 text-left">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-blue-600">Array.from()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Cria um array a partir de um objeto
+                                        iterável ou array-like</td>
+                                </tr>
+                                <tr class="bg-gray-50 hover:bg-gray-100">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-blue-600">Array.isArray()
+                                    </td>
+                                    <td class="border border-gray-300 px-4 py-2">Verifica se um valor é um array</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="border border-gray-300 px-4 py-2 font-mono text-blue-600">Array.of()</td>
+                                    <td class="border border-gray-300 px-4 py-2">Cria um novo array a partir dos
+                                        argumentos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Legenda de Versões -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Suporte por Versão ECMAScript</h3>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">ES5 (2009)</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• indexOf(), lastIndexOf()</li>
+                                <li>• forEach(), map(), filter()</li>
+                                <li>• reduce(), reduceRight()</li>
+                                <li>• every(), some()</li>
+                                <li>• Array.isArray()</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">ES6 (2015)</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• find(), findIndex()</li>
+                                <li>• Array.from(), Array.of()</li>
+                                <li>• fill(), copyWithin()</li>
+                                <li>• keys(), values(), entries()</li>
+                                <li>• Spread operator (...)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">ES2016+</h4>
+                            <ul class="text-sm text-gray-600 space-y-1">
+                                <li>• includes() (ES2016)</li>
+                                <li>• flat(), flatMap() (ES2019)</li>
+                                <li>• at() (ES2022)</li>
+                                <li>• toSorted(), toReversed() (ES2023)</li>
+                                <li>• toSpliced(), with() (ES2023)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Exemplo Interativo -->
+                <section class="mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-700 mb-4">Teste Rápido</h3>
+                    <p class="text-gray-600 mb-4">Clique nos botões para testar diferentes métodos:</p>
+
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <button onclick="arrayRef_demo('map')"
+                            class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            map()
+                        </button>
+                        <button onclick="arrayRef_demo('filter')"
+                            class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            filter()
+                        </button>
+                        <button onclick="arrayRef_demo('reduce')"
+                            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            reduce()
+                        </button>
+                        <button onclick="arrayRef_demo('find')"
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            find()
+                        </button>
+                        <button onclick="arrayRef_demo('sort')"
+                            class="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-lg transition">
+                            sort()
+                        </button>
+                    </div>
+                    <div id="arrayRef_demo" class="p-4 bg-gray-100 rounded-lg text-gray-800 min-h-[60px]">
+                        <p class="text-gray-500">Clique em um botão para ver o resultado...</p>
+                    </div>
+                </section>
+
+                <!-- Navigation -->
+                <div class="flex justify-between items-center mt-12 pt-8 border-t border-gray-200">
+                    <a href="array_const.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium px-6 py-3 rounded transition-all shadow hover:shadow-md">
+                        ← Anterior: Array Const
+                    </a>
+                    <a href="../index.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium px-6 py-3 rounded transition-all shadow-md hover:shadow-lg transform hover:scale-105">
+                        Voltar ao Início →
+                    </a>
+                </div>
+            </article>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-gray-800 via-gray-900 to-black text-white mt-12">
+        <div class="max-w-screen-xl mx-auto px-4 py-8">
+            <div class="text-center">
+                <p class="text-gray-300">&copy; 2025 JS Tutorial - Aprenda JavaScript de forma prática</p>
+                <p class="text-gray-400 text-sm mt-2">Conteúdo feito por Jhonnatan Luiz</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+
+</html>
